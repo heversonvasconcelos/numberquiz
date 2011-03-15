@@ -26,7 +26,7 @@
                     <div align="center">
                         <h3>
                             <h:outputFormat value="#{msgs.thankyou}">
-                                <f:param value="#{loginBean.name}"/>
+                                <f:param value="#{loginBean.loggedUser.name}"/>
                             </h:outputFormat>
                         </h3>
                         <p>
@@ -36,7 +36,7 @@
                         </p>
                         <p>
                             <p:commandButton value="#{msgs.restart}" action="#{quizBean.newGame()}" ajax="false"/>
-                            <p:commandButton value="#{msgs.quit}" action="index" onclick="#{quizBean.quit()}" ajax="false"/>
+                            <p:commandButton value="#{msgs.quit}" action="index" onclick="#{loginBean.logout()}" ajax="false"/>
                         </p>
                     </div>
                 </h:form>

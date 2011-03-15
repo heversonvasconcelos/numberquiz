@@ -27,11 +27,13 @@ public class QuizBean implements Serializable {
     private List<Problem> problems;
     private int currentIndex;
     private int score;
-    private ProblemDaoImpl problemDaoImpl = new ProblemDaoImpl();
+    private ProblemDaoImpl problemDaoImpl;
 
     public QuizBean() {
+        problemDaoImpl = new ProblemDaoImpl();
         problems = problemDaoImpl.list();
         Collections.shuffle(problems);
+
     }
 
     public void setProblems(List<Problem> problems) {

@@ -19,24 +19,45 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class LoginBean implements Serializable {
 
-    private String userName = new String();
-    private String userPassword;
-    public UserDaoImpl userDaoImpl = new UserDaoImpl();
+    private User user;
+    private User loggedUser;
+    public UserDaoImpl userDaoImpl;
 
-    public String getName() {
-        return userName;
+    public LoginBean() {
+        user = new User();
+        userDaoImpl = new UserDaoImpl();
     }
 
-    public void setName(String name) {
-        this.userName = name;
+    public User getUser() {
+        return user;
     }
 
-    public String getPassword() {
-        return userPassword;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public void setPassword(String password) {
-        this.userPassword = password;
+    public String getUserName() {
+        return user.getName();
+    }
+
+    public void setUserName(String name) {
+        this.user.setName(name);
+    }
+
+    public String getUserPassword() {
+        return user.getPassword();
+    }
+
+    public void setUserPassword(String password) {
+        this.user.setPassword(password);
+    }
+
+    public User getLoggedUser() {
+        return loggedUser;
+    }
+
+    public void setLoggedUser(User loggedUser) {
+        this.loggedUser = loggedUser;
     }
 
     /**
@@ -45,13 +66,22 @@ public class LoginBean implements Serializable {
      * @return
      */
     public String verifyLogin() {
-        User user = userDaoImpl.getUserByName(userName);
+        User userFromDataBase = userDaoImpl.getUserByName(getUserName());
 
-        if ((user != null) && (user.getPassword().compareTo(userPassword) == 0)) {
+        if ((userFromDataBase != null)
+                && (userFromDataBase.getPassword().compareTo(getUserPassword()) == 0)) {
+            loggedUser = user;
             return "numberquiz?faces-redirect=true";
         } else {
             FacesUtil.mensErro("Senha inválida.");
             return null;
         }
+    }
+
+    public String logout() {
+        user = new User();
+        loggedUser = null;
+
+        return "index";
     }
 }
