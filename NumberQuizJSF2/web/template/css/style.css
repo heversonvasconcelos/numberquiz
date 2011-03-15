@@ -1,0 +1,30 @@
+/* 
+    Document   : style
+    Created on : Feb 21, 2011, 4:12:36 PM
+    Author     : heverson.vasconcelos
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+#fullpage {
+    width: 1024px;
+    height: 768px;
+    background-color:#d0e4fe;
+    margin-left:auto;
+    margin-right:auto;
+
+}
+
+#top {
+    background-image: url(../img/layout/sprite.png);
+    background-repeat: repeat-x;
+    border-bottom: 1px solid #3f6087;
+    width: 100%;
+    height: 81px;
+    overflow: hidden;
+}
+
