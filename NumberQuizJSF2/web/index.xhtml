@@ -29,11 +29,11 @@
                                 <h:outputText value="#{msgs.name}: "/>
                                 <p:inputText required="true"
                                              requiredMessage="#{msgs.nameRequired}"
-                                             value="#{loginBean.userToauthenticate.name}"/>
+                                             value="#{loginBean.user.name}"/>
 
                                 <h:outputLabel value="#{msgs.password}: "/>
                                 <p:password required="true" requiredMessage="#{msgs.passRequired}"
-                                            value="#{loginBean.userToauthenticate.password}" feedback="true" minLength="4"
+                                            value="#{loginBean.user.password}" feedback="true" minLength="4"
                                             promptLabel="#{msgs.passRequired}"
                                             goodLabel="#{msgs.passGoodLabel}"
                                             weakLabel="#{msgs.passWeakLabel}"

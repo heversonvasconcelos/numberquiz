@@ -19,10 +19,10 @@ public abstract class DaoImpl<T> implements Dao<T> {
         if (!EntityManagerUtil.isTransactionActive()) {
             EntityManagerUtil.beginTransaction();
         }
-
-        EntityManagerUtil.insert(obj);
-        EntityManagerUtil.commit();
-
+        if (obj != null) {
+            EntityManagerUtil.insert(obj);
+            EntityManagerUtil.commit();
+        }
     }
 
     @Override
@@ -61,13 +61,17 @@ public abstract class DaoImpl<T> implements Dao<T> {
      */
     @Override
     public T update(T obj) {
+        T objReturn = null;
+
         if (!EntityManagerUtil.isTransactionActive()) {
             EntityManagerUtil.beginTransaction();
         }
 
-        EntityManagerUtil.merge(obj);
-        EntityManagerUtil.commit();
+        if (obj != null) {
+            objReturn = (T) EntityManagerUtil.merge(obj);
+            EntityManagerUtil.commit();
+        }
 
-        return obj;
+        return objReturn;
     }
 }

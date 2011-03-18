@@ -5,10 +5,17 @@
 package br.jus.trems.estagioaprendizado.numberquiz.controller;
 
 import br.jus.trems.estagioaprendizado.numberquiz.daoimpl.ProblemDaoImpl;
+import br.jus.trems.estagioaprendizado.numberquiz.daoimpl.QuizDaoImpl;
 import br.jus.trems.estagioaprendizado.numberquiz.entities.Problem;
+import br.jus.trems.estagioaprendizado.numberquiz.entities.Quiz;
+import br.jus.trems.estagioaprendizado.numberquiz.entities.User;
+import br.jus.trems.estagioaprendizado.numberquiz.utils.FacesUtil;
+import br.jus.trems.estagioaprendizado.numberquiz.utils.SessionUtil;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -25,19 +32,38 @@ public class QuizBean implements Serializable {
     private List<Problem> problems;
     private int currentIndex;
     private int score;
+    private Quiz quiz;
+    private User authenticatedUser;
+    /* DAOs */
     private ProblemDaoImpl problemDaoImpl;
+    private QuizDaoImpl quizDaoImpl;
 
     public QuizBean() {
         problemDaoImpl = new ProblemDaoImpl();
-        problems = problemDaoImpl.list();
-        Collections.shuffle(problems);
-
+        quizDaoImpl = new QuizDaoImpl();
     }
 
-    public void setProblems(List<Problem> problems) {
-        this.problems = problems;
-        currentIndex = 0;
+    @PostConstruct
+    public String init() {
+        authenticatedUser = (User) SessionUtil.getAttribute("authenticatedUser");
+
+        if (authenticatedUser == null) {
+            FacesUtil.mensErro("Usuário inválido");
+            return "index";
+        }
+
+        quiz = new Quiz();
+
+        problems = problemDaoImpl.list();
         score = 0;
+        currentIndex = 0;
+        Collections.shuffle(problems);
+        quiz.setProblems((ArrayList<Problem>) problems);
+        quiz.setScore(score);
+
+        quiz.setUser(authenticatedUser);
+
+        return null;
     }
 
     public int getScore() {
@@ -64,23 +90,12 @@ public class QuizBean implements Serializable {
     }
 
     /**
-     * Método para limpar o score, a sequencia de questões e embaralhar as questões
-     */
-    public void resetQuiz() {
-        score = 0;
-        currentIndex = 0;
-        Collections.shuffle(problems);
-    }
-
-    /**
      * Método para armazenar o score atual no banco. Este score será atrelado
      * a um jogo
      */
     public void saveScore() {
-        /*
-         * TODO: devera ser implementado o
-         * método para salvar o score atual
-         */
+        quiz.setScore(score);
+        quizDaoImpl.create(quiz);
     }
 
     /**
@@ -88,7 +103,7 @@ public class QuizBean implements Serializable {
      * e então serão 
      */
     public String newGame() {
-        resetQuiz();
+        init();
 
         return "numberquiz";
     }
@@ -97,14 +112,5 @@ public class QuizBean implements Serializable {
         saveScore();
 
         return "stats";
-    }
-
-    public String quit() {
-        resetQuiz();
-        /*
-         * TODO: devera ser implementado a finalizacao da sessao
-         */
-
-        return "index";
     }
 }
