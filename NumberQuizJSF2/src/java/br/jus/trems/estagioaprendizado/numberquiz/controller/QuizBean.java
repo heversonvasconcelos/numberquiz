@@ -6,7 +6,6 @@ package br.jus.trems.estagioaprendizado.numberquiz.controller;
 
 import br.jus.trems.estagioaprendizado.numberquiz.daoimpl.ProblemDaoImpl;
 import br.jus.trems.estagioaprendizado.numberquiz.entities.Problem;
-import br.jus.trems.estagioaprendizado.numberquiz.entities.User;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
@@ -23,7 +22,6 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class QuizBean implements Serializable {
 
-    private User user;
     private List<Problem> problems;
     private int currentIndex;
     private int score;

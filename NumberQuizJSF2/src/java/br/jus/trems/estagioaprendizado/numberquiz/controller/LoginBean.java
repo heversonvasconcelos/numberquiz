@@ -8,70 +8,74 @@ import br.jus.trems.estagioaprendizado.numberquiz.daoimpl.UserDaoImpl;
 import br.jus.trems.estagioaprendizado.numberquiz.entities.User;
 import br.jus.trems.estagioaprendizado.numberquiz.utils.FacesUtil;
 import java.io.Serializable;
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author heverson.vasconcelos
  */
 @ManagedBean(name = "loginBean")
-@SessionScoped
+@RequestScoped
 public class LoginBean implements Serializable {
 
-    private User user;
-    private User loggedUser;
-    public UserDaoImpl userDaoImpl;
+    private User userToauthenticate;
+    private User authenticatedUser;
+    /* Utils */
+    private UserDaoImpl userDaoImpl;
+    private HttpSession session;
 
-    public LoginBean() {
-        user = new User();
-        userDaoImpl = new UserDaoImpl();
+    @PostConstruct
+    public void init() {
+        userToauthenticate = new User();
     }
 
-    public User getUser() {
-        return user;
+    public User getUserToauthenticate() {
+        return userToauthenticate;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserToauthenticate(User userToauthenticate) {
+        this.userToauthenticate = userToauthenticate;
     }
 
-    public String getUserName() {
-        return user.getName();
+    public User getAuthenticatedUser() {
+        getRequestSession();
+        authenticatedUser = (User) session.getAttribute("authenticatedUser");
+
+        return (authenticatedUser != null) ? authenticatedUser : null;
     }
 
-    public void setUserName(String name) {
-        this.user.setName(name);
-    }
-
-    public String getUserPassword() {
-        return user.getPassword();
-    }
-
-    public void setUserPassword(String password) {
-        this.user.setPassword(password);
-    }
-
-    public User getLoggedUser() {
-        return loggedUser;
-    }
-
-    public void setLoggedUser(User loggedUser) {
-        this.loggedUser = loggedUser;
+    public void setAuthenticatedUser(User authenticatedUser) {
+        this.authenticatedUser = authenticatedUser;
     }
 
     /**
      * Metodo para verificar o login do usuario
-     * 
+     *
      * @return
      */
-    public String verifyLogin() {
-        User userFromDataBase = userDaoImpl.getUserByName(getUserName());
+    public User verifyLogin() {
+        userDaoImpl = new UserDaoImpl();
+        User userFromDataBase = userDaoImpl.getUserByName(userToauthenticate.getName());
 
         if ((userFromDataBase != null)
-                && (userFromDataBase.getPassword().compareTo(getUserPassword()) == 0)) {
-            loggedUser = user;
-            return "numberquiz?faces-redirect=true";
+                && (userFromDataBase.getPassword().compareTo(userToauthenticate.getPassword()) == 0)) {
+            return userFromDataBase;
+        }
+        return null;
+    }
+
+    public String login() {
+        authenticatedUser = verifyLogin();
+
+        if (authenticatedUser != null) {
+            getSession();
+            session.setAttribute("authenticatedUser", authenticatedUser);
+            return "numberquiz";
         } else {
             FacesUtil.mensErro("Senha inválida.");
             return null;
@@ -79,9 +83,28 @@ public class LoginBean implements Serializable {
     }
 
     public String logout() {
-        user = new User();
-        loggedUser = null;
+        userToauthenticate = new User();
+        authenticatedUser = null;
+        destroySession();
 
         return "index";
+    }
+
+    private void getSession() {
+        FacesContext ctx = FacesContext.getCurrentInstance();
+        session = (HttpSession) ctx.getExternalContext().getSession(false);
+    }
+
+    private void getRequestSession() {
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        HttpServletRequest request = (HttpServletRequest) facesContext.getExternalContext().getRequest();
+        session = request.getSession();
+    }
+
+    private void destroySession() {
+        getSession();
+        session.setAttribute("authenticatedUser", null);
+        session.invalidate();
+
     }
 }

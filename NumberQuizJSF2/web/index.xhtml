@@ -27,18 +27,18 @@
                         <h:panelGrid columns="2">
                             <h:form>
                                 <h:outputText value="#{msgs.name}: "/>
-                                <p:inputText id="userName" required="true"
+                                <p:inputText required="true"
                                              requiredMessage="#{msgs.nameRequired}"
-                                             value="#{loginBean.userName}"/>
+                                             value="#{loginBean.userToauthenticate.name}"/>
 
                                 <h:outputLabel value="#{msgs.password}: "/>
-                                <p:password id="userPassword" required="true" requiredMessage="#{msgs.passRequired}"
-                                            value="#{loginBean.userPassword}" feedback="true" minLength="4"
+                                <p:password required="true" requiredMessage="#{msgs.passRequired}"
+                                            value="#{loginBean.userToauthenticate.password}" feedback="true" minLength="4"
                                             promptLabel="#{msgs.passRequired}"
                                             goodLabel="#{msgs.passGoodLabel}"
                                             weakLabel="#{msgs.passWeakLabel}"
                                             strongLabel="#{msgs.passStrongLabel}"/>
-                                <p:commandButton  value="Login" action="#{loginBean.verifyLogin()}" ajax="false" />
+                                <p:commandButton  value="Login" action="#{loginBean.login()}" ajax="false" />
                             </h:form>
                         </h:panelGrid>
                     </p:panel>
