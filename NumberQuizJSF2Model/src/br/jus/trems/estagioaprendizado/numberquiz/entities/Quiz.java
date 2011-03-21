@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 /**
@@ -21,6 +22,8 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "TB_QUIZ")
+@NamedQuery(name = "Quiz.getTopScores",
+query = "SELECT q FROM Quiz AS q ORDER BY SCORE desc")
 public class Quiz implements Serializable {
 
     @Id

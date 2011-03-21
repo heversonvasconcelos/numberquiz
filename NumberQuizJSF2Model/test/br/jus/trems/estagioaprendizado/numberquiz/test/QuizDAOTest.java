@@ -118,9 +118,26 @@ public class QuizDAOTest {
     }
     }
      */
-    @Test
+    //@Test
     public void list() {
         List<Quiz> quizList = quizDaoImpl.list();
+
+        for (Quiz q : quizList) {
+            /*System.out.println("##Quiz: " + q.getId());
+            System.out.println("User: " + q.getUser().getName());
+            System.out.println("Problems: ");
+            for (Problem p : q.getProblems()) {
+                System.out.println(p.getId() + " - " + p.getProblemSequence());
+            }
+            System.out.println("Score: " + q.getScore());*/
+            System.out.println(q.toString());
+            System.out.println("----------------------------------------------");
+        }
+    }
+
+    @Test
+    public void getTopScores() {
+        List<Quiz> quizList = quizDaoImpl.getTopScores();
 
         for (Quiz q : quizList) {
             /*System.out.println("##Quiz: " + q.getId());

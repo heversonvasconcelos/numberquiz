@@ -6,6 +6,7 @@ package br.jus.trems.estagioaprendizado.numberquiz.controller;
 
 import br.jus.trems.estagioaprendizado.numberquiz.daoimpl.UserDaoImpl;
 import br.jus.trems.estagioaprendizado.numberquiz.entities.User;
+import br.jus.trems.estagioaprendizado.numberquiz.utils.Constants;
 import br.jus.trems.estagioaprendizado.numberquiz.utils.FacesUtil;
 import br.jus.trems.estagioaprendizado.numberquiz.utils.SessionUtil;
 import java.io.Serializable;
@@ -73,16 +74,16 @@ public class LoginBean implements Serializable {
         authenticatedUser = verifyLogin();
 
         if (authenticatedUser == null) {
-            FacesUtil.mensErro("Usuário inválido");
+            FacesUtil.mensErro(Constants.INVALID_USER);
             return null;
         } else if (!verifyPassword()) {
             authenticatedUser = null;
-            FacesUtil.mensErro("Senha inválida");
+            FacesUtil.mensErro(Constants.INVALID_PASSWORD);
             return null;
         }
 
         SessionUtil.setAttribute("authenticatedUser", authenticatedUser);
-        return "numberquiz";
+        return Constants.NUMBERQUIZ_PAGE;
     }
 
     public String logout() {
@@ -90,6 +91,32 @@ public class LoginBean implements Serializable {
         authenticatedUser = null;
         SessionUtil.destroySession();
 
-        return "index";
+        return Constants.INDEX_PAGE;
+    }
+
+    public String newUser() {
+        userDaoImpl = new UserDaoImpl();
+
+        if (userDaoImpl.verifyIfUserNameExists(user.getName())) {
+            FacesUtil.mensErro(Constants.USER_ALREADY_EXISTS);
+            return null;
+        }
+
+        userDaoImpl.create(user);
+        authenticatedUser = user;
+        SessionUtil.setAttribute("authenticatedUser", authenticatedUser);
+
+        return Constants.NUMBERQUIZ_PAGE;
+    }
+
+    public String verifyAuthenticatedUser() {
+        authenticatedUser = (User) SessionUtil.getAttribute("authenticatedUser");
+
+        if (authenticatedUser == null) {
+            FacesUtil.mensErro(Constants.INVALID_USER);
+            return Constants.INDEX_PAGE;
+        }
+
+        return null;
     }
 }

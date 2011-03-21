@@ -9,6 +9,7 @@ import br.jus.trems.estagioaprendizado.numberquiz.daoimpl.QuizDaoImpl;
 import br.jus.trems.estagioaprendizado.numberquiz.entities.Problem;
 import br.jus.trems.estagioaprendizado.numberquiz.entities.Quiz;
 import br.jus.trems.estagioaprendizado.numberquiz.entities.User;
+import br.jus.trems.estagioaprendizado.numberquiz.utils.Constants;
 import br.jus.trems.estagioaprendizado.numberquiz.utils.FacesUtil;
 import br.jus.trems.estagioaprendizado.numberquiz.utils.SessionUtil;
 import java.io.Serializable;
@@ -45,13 +46,6 @@ public class QuizBean implements Serializable {
 
     @PostConstruct
     public String init() {
-        authenticatedUser = (User) SessionUtil.getAttribute("authenticatedUser");
-
-        if (authenticatedUser == null) {
-            FacesUtil.mensErro("Usuário inválido");
-            return "index";
-        }
-
         quiz = new Quiz();
 
         problems = problemDaoImpl.list();
@@ -94,8 +88,10 @@ public class QuizBean implements Serializable {
      * a um jogo
      */
     public void saveScore() {
-        quiz.setScore(score);
-        quizDaoImpl.create(quiz);
+        if (score > 0) {
+            quiz.setScore(score);
+            quizDaoImpl.create(quiz);
+        }
     }
 
     /**
@@ -105,12 +101,17 @@ public class QuizBean implements Serializable {
     public String newGame() {
         init();
 
-        return "numberquiz";
+        return Constants.NUMBERQUIZ_PAGE;
     }
 
     public String showScore() {
         saveScore();
 
-        return "stats";
+        return Constants.STATS_PAGE;
     }
+
+    public List<Quiz> getTopScores() {
+        return quizDaoImpl.getTopScores();
+    }
+
 }

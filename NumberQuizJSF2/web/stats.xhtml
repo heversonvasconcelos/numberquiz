@@ -23,22 +23,36 @@
             <p:layoutUnit position="center">
                 <p:messages />
                 <h:form>
-                    <div align="center">
-                        <h3>
-                            <h:outputFormat value="#{msgs.thankyou}">
-                                <f:param value="#{loginBean.authenticatedUser.name}"/>
-                            </h:outputFormat>
-                        </h3>
-                        <p>
-                            <h:outputFormat value="#{msgs.finalScore}">
-                                <f:param value="#{quizBean.score}"/>
-                            </h:outputFormat>
-                        </p>
-                        <p>
-                            <p:commandButton value="#{msgs.restart}" action="#{quizBean.newGame()}" ajax="false"/>
-                            <p:commandButton value="#{msgs.quit}" action="#{loginBean.logout()}" ajax="false"/>
-                        </p>
-                    </div>
+                    <table align="center" style="width: 90%">
+                        <tr>
+                            <td align="center">
+                                <p:panel>
+                                    <h3>
+                                        <h:outputFormat value="#{msgs.thankyou}">
+                                            <f:param value="#{loginBean.authenticatedUser.name}"/>
+                                        </h:outputFormat>
+                                    </h3>
+                                    <p>
+                                        <h:outputFormat value="#{msgs.finalScore}">
+                                            <f:param value="#{quizBean.score}"/>
+                                        </h:outputFormat>
+                                    </p>
+                                    <p>
+                                        <p:commandButton value="#{msgs.restart}" action="#{quizBean.newGame()}" ajax="false" />
+                                        <p:commandButton value="#{msgs.quit}" action="#{loginBean.logout()}" ajax="false"/>
+                                    </p>
+                                </p:panel>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center">
+                                <h3>TOP Scores</h3>
+                                <p:dataList value="#{quizBean.topScores}" var="quiz" type="ordered">
+                                    #{quiz.user.name}, #{quiz.score}
+                                </p:dataList>
+                            </td>
+                        </tr>
+                    </table>
                 </h:form>
             </p:layoutUnit>
         </p:layout>
