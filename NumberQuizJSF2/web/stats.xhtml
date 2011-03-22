@@ -7,17 +7,17 @@
 
     <h:head>
         <title>#{msgs.title}</title>
-        <link href="template/css/style.css" rel="stylesheet" type="text/css"/>
+        <link href="#{request.contextPath}/template/css/style.css" rel="stylesheet" type="text/css"/>
     </h:head>
     <h:body>
-        <p:layout fullPage="true">
+        <p:layout fullPage="true" >
             <!-- TOP -->
             <p:layoutUnit id="top" position="top" height="81" >
                 <center> <h:outputText value="#{msgs.title}" style="font-size:27pt; font-weight: bold"/> </center>
             </p:layoutUnit>
 
             <!-- BOTTOM -->
-            <p:layoutUnit position="bottom" height="33" header="heverson.vasconcelos@tre-ms.gov.br" />
+            <p:layoutUnit position="bottom" height="33" header="#{msgs.author}" />
 
             <!-- CENTER -->
             <p:layoutUnit position="center">
@@ -46,7 +46,7 @@
                         </tr>
                         <tr>
                             <td align="center">
-                                <h3>TOP Scores</h3>
+                                <h3>#{msgs.topScores}</h3>
                                 <p:dataList value="#{quizBean.topScores}" var="quiz" type="ordered">
                                     #{quiz.user.name}, #{quiz.score}
                                 </p:dataList>

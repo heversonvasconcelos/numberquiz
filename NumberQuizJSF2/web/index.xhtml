@@ -6,7 +6,7 @@
 
     <h:head>
         <title>#{msgs.title}</title>
-        <link href="template/css/style.css" rel="stylesheet" type="text/css"/>
+        <link href="#{request.contextPath}/template/css/style.css" rel="stylesheet" type="text/css"/>
     </h:head>
     <h:body>
         <p:layout fullPage="true">
@@ -16,7 +16,7 @@
             </p:layoutUnit>
 
             <!-- BOTTOM -->
-            <p:layoutUnit position="bottom" height="33" header="heverson.vasconcelos@tre-ms.gov.br" />
+            <p:layoutUnit position="bottom" height="33" header="#{msgs.author}" />
 
             <!-- CENTER -->
             <p:layoutUnit position="center">
@@ -36,8 +36,8 @@
                                             value="#{loginBean.user.password}" feedback="false" minLength="4"
                                             promptLabel="#{msgs.passRequired}"/>
                                 <p>
-                                    <p:commandButton  value="Login" action="#{loginBean.login()}" ajax="false"/>
-                                    <p:commandButton  value="Cadastrar" action="#{loginBean.newUser()}" ajax="false"/>
+                                    <p:commandButton  value="#{msgs.login}" action="#{loginBean.login()}" ajax="false"/>
+                                    <p:commandButton  value="#{msgs.register}" action="#{loginBean.newUser()}" ajax="false"/>
                                 </p>
                             </h:form>
                         </h:panelGrid>

@@ -10,8 +10,6 @@ import br.jus.trems.estagioaprendizado.numberquiz.entities.Problem;
 import br.jus.trems.estagioaprendizado.numberquiz.entities.Quiz;
 import br.jus.trems.estagioaprendizado.numberquiz.entities.User;
 import br.jus.trems.estagioaprendizado.numberquiz.utils.Constants;
-import br.jus.trems.estagioaprendizado.numberquiz.utils.FacesUtil;
-import br.jus.trems.estagioaprendizado.numberquiz.utils.SessionUtil;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -101,17 +99,16 @@ public class QuizBean implements Serializable {
     public String newGame() {
         init();
 
-        return Constants.NUMBERQUIZ_PAGE;
+        return Constants.PAGE_NUMBERQUIZ;
     }
 
     public String showScore() {
         saveScore();
 
-        return Constants.STATS_PAGE;
+        return Constants.PAGE_STATS;
     }
 
     public List<Quiz> getTopScores() {
         return quizDaoImpl.getTopScores();
     }
-
 }

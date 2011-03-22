@@ -74,16 +74,16 @@ public class LoginBean implements Serializable {
         authenticatedUser = verifyLogin();
 
         if (authenticatedUser == null) {
-            FacesUtil.mensErro(Constants.INVALID_USER);
+            FacesUtil.mensErro(Constants.MSG_INVALID_USER);
             return null;
         } else if (!verifyPassword()) {
             authenticatedUser = null;
-            FacesUtil.mensErro(Constants.INVALID_PASSWORD);
+            FacesUtil.mensErro(Constants.MSG_INVALID_PASSWORD);
             return null;
         }
 
         SessionUtil.setAttribute("authenticatedUser", authenticatedUser);
-        return Constants.NUMBERQUIZ_PAGE;
+        return Constants.PAGE_NUMBERQUIZ;
     }
 
     public String logout() {
@@ -91,14 +91,14 @@ public class LoginBean implements Serializable {
         authenticatedUser = null;
         SessionUtil.destroySession();
 
-        return Constants.INDEX_PAGE;
+        return Constants.PAGE_INDEX;
     }
 
     public String newUser() {
         userDaoImpl = new UserDaoImpl();
 
         if (userDaoImpl.verifyIfUserNameExists(user.getName())) {
-            FacesUtil.mensErro(Constants.USER_ALREADY_EXISTS);
+            FacesUtil.mensErro(Constants.MSG_USER_ALREADY_EXISTS);
             return null;
         }
 
@@ -106,15 +106,15 @@ public class LoginBean implements Serializable {
         authenticatedUser = user;
         SessionUtil.setAttribute("authenticatedUser", authenticatedUser);
 
-        return Constants.NUMBERQUIZ_PAGE;
+        return Constants.PAGE_NUMBERQUIZ;
     }
 
     public String verifyAuthenticatedUser() {
         authenticatedUser = (User) SessionUtil.getAttribute("authenticatedUser");
 
         if (authenticatedUser == null) {
-            FacesUtil.mensErro(Constants.INVALID_USER);
-            return Constants.INDEX_PAGE;
+            FacesUtil.mensErro(Constants.MSG_INVALID_USER);
+            return Constants.PAGE_USER_ISNOT_LOGGED;
         }
 
         return null;
