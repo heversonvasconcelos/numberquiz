@@ -3,57 +3,51 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.prime.com.tr/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core">
 
-    <h:head>
-        <title>#{msgs.title}</title>
-        <link href="#{request.contextPath}/template/css/style.css" rel="stylesheet" type="text/css"/>
-    </h:head>
-    <h:body>
-        <p:layout fullPage="true">
-            <!-- TOP -->
-            <p:layoutUnit id="top" position="top" height="81" >
-                <center> <h:outputText value="#{msgs.title}" style="font-size:27pt; font-weight: bold"/> </center>
-            </p:layoutUnit>
+    <h:head><title>IGNORED</title></h:head>
 
-            <!-- BOTTOM -->
-            <p:layoutUnit position="bottom" height="33" header="#{msgs.author}" />
+    <h:body>
+        <ui:composition template="/resources/template/template.xhtml">
 
             <!-- CENTER -->
-            <p:layoutUnit position="center">
-                <p:messages />
-                <table align="center" style="width: 90%">
-                    <tr>
-                        <td align="left" style="width: 27%">
-                            <p:panel style="height: 300PX" header="#{msgs.message}, #{loginBean.authenticatedUser.name}">
-                                <center>
-                                    <h:graphicImage height="201" width="256" url="/template/img/layout/numberQuiz.gif"/>
-                                </center>
-                            </p:panel>
-                        </td>
-                        <td align="left" style="width: 70%">
-                            <p:panel style="height: 300PX">
-                                <h:form>
-                                    <h:outputFormat value="#{msgs.currentScore}">
-                                        <f:param value="#{quizBean.score}"/>
-                                    </h:outputFormat>
-                                    <p>#{msgs.guessNext}</p>
-                                    <p>#{quizBean.current.problemSequence}</p>
-                                    <p>
-                                        #{msgs.answer}
-                                        <p:inputText value="#{quizBean.answer}" />
-                                    </p>
-                                    <p>
-                                        <p:commandButton value="#{msgs.next}" action="pretty:" ajax="false"/>
-                                        <p:commandButton value="#{msgs.quit}" action="#{quizBean.showScore()}" ajax="false"/>
-                                    </p>
-                                </h:form>
-                            </p:panel>
-                        </td>
-                    </tr>
-                </table>
-            </p:layoutUnit>
-        </p:layout>
+            <ui:define name="content">
+                <h:form>
+                    <div align="center" style="padding: 10px">
+                        <p:messages/>
+                        <table align="center" style="width: 90%">
+                            <tr>
+                                <td align="left" style="width: 27%">
+                                    <p:panel style="height: 300PX" header="#{msgs.message}, #{loginBean.authenticatedUser.name}">
+                                        <center>
+                                            <h:graphicImage height="201" width="256" url="/resources/img/layout/numberQuiz.gif"/>
+                                        </center>
+                                    </p:panel>
+                                </td>
+                                <td align="left" style="width: 70%">
+                                    <p:panel style="height: 300PX">
+                                        <h:outputFormat value="#{msgs.currentScore}">
+                                            <f:param value="#{quizBean.score}"/>
+                                        </h:outputFormat>
+                                        <p>#{msgs.guessNext}</p>
+                                        <p>#{quizBean.current.problemSequence}</p>
+                                        <p>
+                                            #{msgs.answer}
+                                            <p:inputText value="#{quizBean.answer}" />
+                                        </p>
+                                        <p>
+                                            <p:commandButton value="#{msgs.next}" action="pretty:" ajax="false"/>
+                                            <p:commandButton value="#{msgs.quit}" action="#{quizBean.showScore()}" ajax="false"/>
+                                        </p>
+                                    </p:panel>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </h:form>
+            </ui:define>
+            
+        </ui:composition>
     </h:body>
-
 </html>

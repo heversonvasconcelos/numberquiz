@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <h:head>
+        <title>
+            <ui:insert name="title">
+                #{msgs.title}
+            </ui:insert>
+        </title>
+        <h:outputStylesheet library="css" name="style.css"/>
+    </h:head>
+
+    <h:body>
+        <div id="page">
+            <!-- PAGE TOP -->
+            <div id="top">
+                <ui:insert name="top">
+                     <h1>#{msgs.title}</h1>
+                </ui:insert>
+            </div>
+
+            <!-- PAGE CONTENT -->
+            <div id="content">
+                <ui:insert name="content">
+                </ui:insert>
+            </div>
+
+            <!-- PAGE BOTTOM -->
+            <div id="bottom">
+                <ui:insert name="bottom">
+                    <ui:include src="/resources/sections/bottom.xhtml"/>
+                </ui:insert>
+            </div>
+        </div>
+    </h:body>
+</html>

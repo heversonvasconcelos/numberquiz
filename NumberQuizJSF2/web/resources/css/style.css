@@ -1,0 +1,49 @@
+/* 
+    Document   : style
+    Created on : Feb 21, 2011, 4:12:36 PM
+    Author     : heverson.vasconcelos
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+#page {
+    width: 1024px;
+    height: 768px;
+    margin: auto;
+
+    font-family: Verdana,Arial,sans-serif;
+}
+
+#top {
+    background-color: #DBDCDD;
+    border-bottom: 2px solid black;
+    height: 80px;
+
+    text-align: center;
+    font-weight: bold;
+}
+
+#content {
+    background-color: #EBECEC;
+    height: 600px;
+    margin: auto;
+
+    font-size: 15px;
+
+}
+
+#bottom {
+    background-color: #DBDCDD;
+    border-top: 2px solid black;
+    margin: auto;
+    height: 40px;
+
+    text-align: right;
+
+}
+

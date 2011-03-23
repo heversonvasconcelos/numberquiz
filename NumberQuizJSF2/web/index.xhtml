@@ -2,39 +2,37 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.prime.com.tr/ui">
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
 
-    <h:head>
-        <title>#{msgs.title}</title>
-        <link href="#{request.contextPath}/template/css/style.css" rel="stylesheet" type="text/css"/>
-    </h:head>
+    <h:head><title>IGNORED</title></h:head>
+
     <h:body>
-        <p:layout fullPage="true">
+        <ui:composition template="/resources/template/template.xhtml">
             <!-- TOP -->
-            <p:layoutUnit id="top" position="top" height="81" >
-                <center> <h:outputText value="#{msgs.welcome}" style="font-size:27pt; font-weight: bold"/> </center>
-            </p:layoutUnit>
-
-            <!-- BOTTOM -->
-            <p:layoutUnit position="bottom" height="33" header="#{msgs.author}" />
+            <ui:define name="top">
+                <h1>#{msgs.welcome}</h1>
+            </ui:define>
 
             <!-- CENTER -->
-            <p:layoutUnit position="center">
-                <p:messages/>
-                <div align="center">
-                    <h3>#{msgs.enterNamePass}</h3>
-                    <p:panel id="panel" header="Login" style="width: 350PX">
-                        <p:focus/>
+            <ui:define name="content">
+                <div align="center" style="padding: 10px">
+                    <p:messages/>
+                    <p:panel id="panel" header="#{msgs.enterNamePass}" style="width: 450px">
                         <h:panelGrid columns="2">
                             <h:form>
-                                <h:outputText value="#{msgs.name}: "/>
-                                <p:inputText required="true"
-                                             requiredMessage="#{msgs.nameRequired}"
-                                             value="#{loginBean.user.name}"/>
-                                <h:outputLabel value="#{msgs.password}: "/>
-                                <p:password required="true" requiredMessage="#{msgs.passRequired}"
-                                            value="#{loginBean.user.password}" feedback="false" minLength="4"
-                                            promptLabel="#{msgs.passRequired}"/>
+                                <p>
+                                    <h:outputText value="#{msgs.name}: "/>
+                                    <p:inputText required="true"
+                                                 requiredMessage="#{msgs.nameRequired}"
+                                                 value="#{loginBean.user.name}"/>
+                                </p>
+                                <p>
+                                    <h:outputLabel value="#{msgs.password}: "/>
+                                    <p:password required="true" requiredMessage="#{msgs.passRequired}"
+                                                value="#{loginBean.user.password}" feedback="false" minLength="4"
+                                                promptLabel="#{msgs.passRequired}"/>
+                                </p>
                                 <p>
                                     <p:commandButton  value="#{msgs.login}" action="#{loginBean.login()}" ajax="false"/>
                                     <p:commandButton  value="#{msgs.register}" action="#{loginBean.newUser()}" ajax="false"/>
@@ -43,7 +41,7 @@
                         </h:panelGrid>
                     </p:panel>
                 </div>
-            </p:layoutUnit>
-        </p:layout>
+            </ui:define>
+        </ui:composition>
     </h:body>
 </html>
