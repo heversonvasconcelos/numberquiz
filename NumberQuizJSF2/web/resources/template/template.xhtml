@@ -17,9 +17,10 @@
     <h:body>
         <div id="page">
             <!-- PAGE TOP -->
-            <div id="top">
+            <div id="top" class="topBottomConfig">
                 <ui:insert name="top">
-                    <h1>#{msgs.title}</h1>
+                    <p class="alignleft" style="font-size: 35px">#{msgs.title}</p>
+                    <p class="alignright" style="font-size: 12px">#{msgs.topMsg}</p>
                 </ui:insert>
             </div>
 
@@ -30,7 +31,7 @@
             </div>
 
             <!-- PAGE BOTTOM -->
-            <div id="bottom">
+            <div id="bottom" class="topBottomConfig">
                 <ui:insert name="bottom">
                     <ui:include src="/resources/sections/bottom.xhtml"/>
                 </ui:insert>

@@ -10,6 +10,7 @@ import br.jus.trems.estagioaprendizado.numberquiz.entities.Problem;
 import br.jus.trems.estagioaprendizado.numberquiz.entities.Quiz;
 import br.jus.trems.estagioaprendizado.numberquiz.entities.User;
 import br.jus.trems.estagioaprendizado.numberquiz.utils.Constants;
+import br.jus.trems.estagioaprendizado.numberquiz.utils.SessionUtil;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -32,7 +33,6 @@ public class QuizBean implements Serializable {
     private int currentIndex;
     private int score;
     private Quiz quiz;
-    private User authenticatedUser;
     /* DAOs */
     private ProblemDaoImpl problemDaoImpl;
     private QuizDaoImpl quizDaoImpl;
@@ -43,7 +43,7 @@ public class QuizBean implements Serializable {
     }
 
     @PostConstruct
-    public String init() {
+    public void init() {
         quiz = new Quiz();
 
         problems = problemDaoImpl.list();
@@ -52,10 +52,8 @@ public class QuizBean implements Serializable {
         Collections.shuffle(problems);
         quiz.setProblems((ArrayList<Problem>) problems);
         quiz.setScore(score);
+        quiz.setUser((User) SessionUtil.getAttribute("authenticatedUser"));
 
-        quiz.setUser(authenticatedUser);
-
-        return null;
     }
 
     public int getScore() {
