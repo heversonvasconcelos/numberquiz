@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.jus.trems.estagioaprendizado.numberquiz.controller;
 
 import br.jus.trems.estagioaprendizado.numberquiz.daoimpl.UserDaoImpl;
@@ -22,9 +18,18 @@ import javax.faces.bean.RequestScoped;
 @RequestScoped
 public class LoginBean implements Serializable {
 
+    /**
+     * Armazena o usuário corrente
+     */
     private User user;
+    /**
+     * Armazena o usuárioo corrente após a autenticação
+     */
     private User authenticatedUser;
-    /* Utils */
+    /**
+     * Singleton UserDaoImpl utilizada nos métodos que necessitam de alguma
+     * operação da camada de persistência.
+     */
     private UserDaoImpl userDaoImpl;
 
     @PostConstruct
@@ -47,9 +52,10 @@ public class LoginBean implements Serializable {
     }
 
     /**
-     * Metodo para verificar o login do usuario
+     * Método para verificar o login do usuário.
+     * Consulta um determinado a partir do nome de login.
      *
-     * @return
+     * @return Usuário encontrado. Null caso o usuário não seja encontrado.
      */
     private User verifyLogin() {
         userDaoImpl = new UserDaoImpl();
@@ -58,9 +64,9 @@ public class LoginBean implements Serializable {
     }
 
     /**
-     * Metodo para verificar a senha do usuario
+     * Método para verificar a senha do usuário.
      *
-     * @return
+     * @return True caso a senha esteja correta.
      */
     private boolean verifyPassword() {
         if ((authenticatedUser.getPassword().compareTo(user.getPassword()) == 0)) {
@@ -70,6 +76,14 @@ public class LoginBean implements Serializable {
         return false;
     }
 
+    /**
+     * Método para autenticar o usuário. Verifica o login e a senha deste.
+     *
+     * @return String contendo o endereço de redirecionamento caso o usuário foi
+     *          corretamente autenticado. Neste caso será redirecionado para o
+     *          início do jogo (numberquiz.xhtml) <br>
+     *          Null caso houver um erro na autenticação.
+     */
     public String login() {
         authenticatedUser = verifyLogin();
 
@@ -86,6 +100,12 @@ public class LoginBean implements Serializable {
         return Constants.PAGE_NUMBERQUIZ;
     }
 
+    /**
+     * Método para executar o logout da sessão.
+     *
+     * @return String contendo o endereço de redirecionamento para a página
+     *          inicial (index.xhtml).
+     */
     public String logout() {
         user = new User();
         authenticatedUser = null;
@@ -94,6 +114,14 @@ public class LoginBean implements Serializable {
         return Constants.PAGE_INDEX;
     }
 
+    /**
+     * Método para cadastrar um novo usuário.
+     *
+     * @return String contendo o endereÃ§o de redirecionamento para início do
+     *          jogo (numberquiz.xhtml). <br>
+     *          Null caso exista um usuário previamente cadastrado com o mesmo
+     *          nome de login que o usuário corrente.
+     */
     public String newUser() {
         userDaoImpl = new UserDaoImpl();
 
@@ -109,6 +137,11 @@ public class LoginBean implements Serializable {
         return Constants.PAGE_NUMBERQUIZ;
     }
 
+    /**
+     * Método para verificar se o usuário está autenticado e logado.
+     * 
+     * @return
+     */
     public String verifyAuthenticatedUser() {
         authenticatedUser = (User) SessionUtil.getAttribute("authenticatedUser");
 

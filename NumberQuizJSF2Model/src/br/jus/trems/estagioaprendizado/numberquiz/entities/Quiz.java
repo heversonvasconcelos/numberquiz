@@ -14,10 +14,14 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 /**
- * Classe entidade (POJO - Plain Old Java Object) que representa o jogo em si.
- * É composto por um conjunto de problemas (entidade Problem) e por um
- * usuário (entidade User).
+ * Classe entidade que representa o jogo em si.
+ * É composto por um conjunto de problemas (Problem) e por um
+ * usuário (User).
  *
+ * Possui uma NamedQuery (Quiz.getTopScores) que será utilizada para consultar
+ * todas as pontuações dos jogos ordenadas de forma decrescente. O resultado
+ * desta query será utilizada para mostar as melhores pontuações.
+ * 
  * @author heverson.vasconcelos
  */
 @Entity
@@ -74,6 +78,11 @@ public class Quiz implements Serializable {
         this.score = score;
     }
 
+    /**
+     * Método para retornar uma representação dos dados do Quiz em modo texto
+     *
+     * @return String contendo os dados do quiz
+     */
     @Override
     public String toString() {
         String string = new String();

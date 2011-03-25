@@ -10,14 +10,18 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
- * Classe entidade (POJO - Plain Old Java Object) que representa cada problema a
- * ser solucionado pelo usuário.
- * É composto por uma sequência (semelhante a um enunciado de uma questão) e
- * a sua solução.
+ * Classe entidade que representa cada problema a ser solucionado pelo usuário.
+ * É composto por uma sequência de números (ProblemSequence). Este atributo
+ * define a unicidade de um problema, ou seja, para cada problema existirá
+ * somente uma sequência e vice-versa.
+ *
  * 
  * Ex.: Sequência: [1, 1, 2, 3, 5]; Solução: 8.
  *      (Sequência de Fibonacci)
  *
+ * Possui uma NamedQuery(Problem.findByProblemSequence) que será utilizada para
+ * consultar um problema a partir de uma sequência (ProblemSequence).
+ * 
  * @author heverson.vasconcelos
  */
 @Entity
@@ -80,6 +84,11 @@ public class Problem implements Serializable {
         this.problemSequence.setSolution(solution);
     }
 
+    /*
+     * Hashcode e equals foram sobrescritos para que um problema possa ser
+     * comparado com outro a partir da sequência deste problema (ProblemSequence)
+     *
+     */
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
@@ -102,23 +111,10 @@ public class Problem implements Serializable {
         return hash;
     }
 
-    /*
-    @Override
-    public String toString() {
-    String problemSequenceString = new String();
-
-    problemSequenceString += "[ ";
-    for (int i = 0; i < getProblemSequence().length; i++) {
-    if (i < (getProblemSequence().length - 1)) {
-    problemSequenceString += getProblemSequence()[i] + ", ";
-    } else {
-    problemSequenceString += getProblemSequence()[i] + " ]";
-    }
-    }
-
-    return (getId() + " - " + problemSequenceString + " - " + getSolution());
-    }
+    /**
+     * Método para retornar uma representação dos dados do problema em modo texto
      *
+     * @return String contendo os dados do problema
      */
     @Override
     public String toString() {

@@ -137,7 +137,7 @@ public class QuizDAOTest {
 
     @Test
     public void getTopScores() {
-        List<Quiz> quizList = quizDaoImpl.getTopScores();
+        List<Quiz> quizList = quizDaoImpl.getTopScores(5);
 
         for (Quiz q : quizList) {
             /*System.out.println("##Quiz: " + q.getId());

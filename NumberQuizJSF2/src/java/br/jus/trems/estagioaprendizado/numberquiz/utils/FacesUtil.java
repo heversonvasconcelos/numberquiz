@@ -3,6 +3,11 @@ package br.jus.trems.estagioaprendizado.numberquiz.utils;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
+/**
+ * Singleton utilizada na exibição de mensagens de alerta ou erro nos Facelets.
+ *
+ * @author heverson.vasconcelos
+ */
 public class FacesUtil {
 
     public static void mensInfo(String message) {

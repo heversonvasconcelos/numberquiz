@@ -107,6 +107,6 @@ public class QuizBean implements Serializable {
     }
 
     public List<Quiz> getTopScores() {
-        return quizDaoImpl.getTopScores();
+        return quizDaoImpl.getTopScores(Constants.CONFIG_NUMBER_OF_SCORES);
     }
 }

@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.jus.trems.estagioaprendizado.numberquiz.entities;
 
 import java.io.Serializable;
@@ -14,6 +10,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
+ * Representa a sequência de números contida em cada problema.
+ * É composta pela sequência de números e uma solução (próximo termo da sequência)
+ * 
+ * Ex.: Sequência: [1, 1, 2, 3, 5]; Solução: 8.
+ *      (Sequência de Fibonacci)
  *
  * @author heverson.vasconcelos
  */
@@ -24,13 +25,29 @@ public class ProblemSequence implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    /**
+     * Sequência de números
+     */
     @Column(nullable = false, unique = true)
     private Integer[] problemSequence;
     /**
-     * Representa a solução do problema, ou seja, o próximo número da sequência.
+     * Representa a solução do problema, ou seja, o próximo termo da sequência.
      */
     @Column(nullable = false)
     private int solution;
+
+    /*
+     *
+     * GETTERS e SETTERS
+     *
+     */
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public Integer[] getProblemSequence() {
         return problemSequence;
@@ -46,11 +63,6 @@ public class ProblemSequence implements Serializable {
 
     public void setSolution(int solution) {
         this.solution = solution;
-    }
-
-    @Override
-    public String toString() {
-        return Arrays.toString(problemSequence);
     }
 
     @Override
@@ -75,11 +87,14 @@ public class ProblemSequence implements Serializable {
         return hash;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
+    /**
+     * Método para retornar uma representação dos dados da sequência em modo
+     * texto
+     *
+     * @return String contendo os dados da sequência
+     */
+    @Override
+    public String toString() {
+        return Arrays.toString(problemSequence);
     }
 }

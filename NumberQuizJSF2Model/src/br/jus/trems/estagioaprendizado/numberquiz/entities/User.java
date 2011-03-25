@@ -10,8 +10,13 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 /**
- * Classe entidade (POJO - Plain Old Java Object) que representa um usuário do 
+ * Classe entidade que representa um usuário do 
  * jogo NumberQuiz. É composto por um nome de login e uma senha.
+ * O atributo nome define a unicidade de um usuário, ou seja, para cada usuário
+ * existirá somente um nome de login.
+ *
+ * Possui uma NamedQuery (User.findByUserName) que será utilizada para consultar
+ * um usuário a partir de um nome de login.
  *
  * @author heverson.vasconcelos
  */
@@ -24,8 +29,14 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    /**
+     * Nome de login do usuário
+     */
     @Column(length = 20, nullable = false, unique = true)
     private String name;
+    /**
+     * Senha do usuário
+     */
     @Column(length = 10, nullable = false)
     private String password;
 
@@ -58,6 +69,11 @@ public class User implements Serializable {
         this.password = password;
     }
 
+    /*
+     * Hashcode e equals foram sobrescritos para que um usuário possa ser
+     * comparado com outro a partir do nome
+     *
+     */
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
@@ -80,6 +96,11 @@ public class User implements Serializable {
         return hash;
     }
 
+    /**
+     * Método para retornar uma representação dos dados do usuário em modo texto
+     * 
+     * @return String contendo os dados do usuário
+     */
     @Override
     public String toString() {
         return (getId() + " - " + getName() + " - " + getPassword());

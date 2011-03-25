@@ -7,11 +7,19 @@ import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 /**
+ * Classe abstrata parametrizada que implementa a interface Dao.
+ * As operações implementadas aqui, serão utilizadas nas subclasses concretas:
+ * ProblemDaoImpl, QuizDaoImpl e UserDaoImpl.
  *
  * @author heverson.vasconcelos
  */
 public abstract class DaoImpl<T> implements Dao<T> {
 
+    /**
+     * Método para retornar a classe do parâmetro T
+     *
+     * @return Classe especificada por T
+     */
     public abstract Class<T> getDomainClass();
 
     @Override
@@ -68,7 +76,7 @@ public abstract class DaoImpl<T> implements Dao<T> {
         }
 
         if (obj != null) {
-            objReturn = (T) EntityManagerUtil.merge(obj);
+            objReturn = (T) EntityManagerUtil.update(obj);
             EntityManagerUtil.commit();
         }
 
