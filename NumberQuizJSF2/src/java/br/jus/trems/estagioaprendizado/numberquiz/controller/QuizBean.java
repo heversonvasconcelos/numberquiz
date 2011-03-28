@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.jus.trems.estagioaprendizado.numberquiz.controller;
 
 import br.jus.trems.estagioaprendizado.numberquiz.daoimpl.ProblemDaoImpl;
@@ -20,7 +16,13 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 /**
- *
+ * Bean gerenciável utilizado no controle dos quizzes (jogos realizados).
+ * Este controle envolve principalmente:
+ *                          verificar se a resposta do usuário está correta;
+ *                          salvar o jogo atual com a sua devida pontuação;
+ *                          iniciar um novo jogo;
+ *                          apresentar as melhores pontuações;
+ *                          
  *
  *
  * @author heverson.vasconcelos
@@ -29,19 +31,46 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class QuizBean implements Serializable {
 
+    /**
+     * Armazena a lista com os problemas que serão apresentados ao usuário.
+     */
     private List<Problem> problems;
+    /**
+     * Utilizado como índice de navegação na lista de problemas.
+     */
     private int currentIndex;
+    /**
+     * Armazena o score(pontuação) atual.
+     */
     private int score;
+    /**
+     * Armazena o quiz corrente, ou seja, o jogo propriamente dito.
+     */
     private Quiz quiz;
-    /* DAOs */
+    /**
+     * Singleton da camada de persistência utilizada nos métodos que irão
+     * inserir ou consultar alguma informação relativa aos problemas.
+     */
     private ProblemDaoImpl problemDaoImpl;
+    /**
+     * Singleton da camada de persistência utilizada nos métodos que irão
+     * inserir ou consultar alguma informação relativa aos quizzes(jogos 
+     * realizados).
+     */
     private QuizDaoImpl quizDaoImpl;
 
+    /**
+     * Construtor que inicializa as singletons que gerenciarão os problemas e
+     * os quizzes requisitados.
+     */
     public QuizBean() {
         problemDaoImpl = new ProblemDaoImpl();
         quizDaoImpl = new QuizDaoImpl();
     }
 
+    /**
+     * Método que inicializa todas as variáveis necessárias para um novo jogo.
+     */
     @PostConstruct
     public void init() {
         quiz = new Quiz();
@@ -56,21 +85,47 @@ public class QuizBean implements Serializable {
 
     }
 
+    /**
+     * Método que retorna o score atual.
+     * 
+     * @return O score atual.
+     */
     public int getScore() {
         return score;
     }
 
+    /**
+     * Método que retorna o problema corrente.
+     *
+     * @return O problema corrente.
+     */
     public Problem getCurrent() {
         return problems.get(currentIndex);
     }
 
+    /**
+     * Este método só foi implementado pela necessidade do JSF obter o valor
+     * atual de uma propriedade acessada pela "expression language", antes do
+     * novo valor ser submetido pelo formulário. <br>
+     * No caso desta aplicação, a expression language #{quizBean.answer} definida
+     * na página numberquiz.xhtml, acessa primeiramente o método getAnswer
+     * antes de setar a resposta do usuário no método setAnswer.
+     *
+     * @return String vazia ("").
+     */
     public String getAnswer() {
         return "";
     }
 
-    public void setAnswer(String newValue) {
+    /**
+     * Método que verifica se a resposta do usuário está correta.
+     * Incrementa o score caso a resposta esteja correta.
+     *
+     * @param answeredByUser Resposta do usuário.
+     */
+    public void setAnswer(String answeredByUser) {
         try {
-            int answer = Integer.parseInt(newValue.trim());
+            int answer = Integer.parseInt(answeredByUser.trim());
             if (getCurrent().getSolution() == answer) {
                 score++;
             }
@@ -80,8 +135,7 @@ public class QuizBean implements Serializable {
     }
 
     /**
-     * Método para armazenar o score atual no banco. Este score será atrelado
-     * a um jogo
+     * Método para armazenar no banco, o jogo que foi realizado com o seu score.
      */
     public void saveScore() {
         if (score > 0) {
@@ -91,8 +145,9 @@ public class QuizBean implements Serializable {
     }
 
     /**
-     * Método para iniciar um novo jogo. Inicialmente será armazenado o score atual
-     * e então serão 
+     * Método para iniciar um novo jogo.
+     * @return String contendo o endereço de redirecionamento para início do
+     *          jogo (numberquiz.xhtml).
      */
     public String newGame() {
         init();
@@ -100,12 +155,23 @@ public class QuizBean implements Serializable {
         return Constants.PAGE_NUMBERQUIZ;
     }
 
+    /**
+     * Método para apresentar ao usuário a sua pontuação final.
+     * 
+     * @return String contendo o endereço de redirecionamento para a página
+     *          de apresentação das pontuações (stats.xhtml).
+     */
     public String showScore() {
         saveScore();
 
         return Constants.PAGE_STATS;
     }
 
+    /**
+     * Método para listar as melhores pontuações já realizadas.
+     * 
+     * @return Lista contendo os quizzes(jogos realizados) com as melhores pontuações.
+     */
     public List<Quiz> getTopScores() {
         return quizDaoImpl.getTopScores(Constants.CONFIG_NUMBER_OF_SCORES);
     }

@@ -14,7 +14,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 /**
- * Classe entidade que representa o jogo em si.
+ * Classe entidade que representa um jogo realizado.
  * É composto por um conjunto de problemas (Problem) e por um
  * usuário (User).
  *

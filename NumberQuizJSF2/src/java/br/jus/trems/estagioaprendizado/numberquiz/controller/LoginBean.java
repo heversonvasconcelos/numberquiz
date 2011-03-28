@@ -11,6 +11,12 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
 /**
+ * Bean gerenciável utilizado no controle do login de usuários na aplicação.
+ * Este controle envolve principalmente:
+ *                          verificação do login e senha;
+ *                          login e logout;
+ *                          cadastro de um novo usuário;
+ *                          verificar se o usuário está autenticado e logado;
  *
  * @author heverson.vasconcelos
  */
@@ -23,12 +29,13 @@ public class LoginBean implements Serializable {
      */
     private User user;
     /**
-     * Armazena o usuárioo corrente após a autenticação
+     * Armazena o usuário corrente após a autenticação, ou seja, o usuário
+     * logado na sessão.
      */
     private User authenticatedUser;
     /**
-     * Singleton UserDaoImpl utilizada nos métodos que necessitam de alguma
-     * operação da camada de persistência.
+     * Singleton da camada de persistência utilizada nos métodos que irão
+     * inserir ou consultar alguma informação relativa aos usuários.
      */
     private UserDaoImpl userDaoImpl;
 
@@ -45,6 +52,12 @@ public class LoginBean implements Serializable {
         this.user = userToauthenticate;
     }
 
+    /**
+     * Método que retorna o usuário que foi previamente autenticado e
+     * está logado na sessão.
+     *
+     * @return Usuário autenticado.
+     */
     public User getAuthenticatedUser() {
         authenticatedUser = (User) SessionUtil.getAttribute("authenticatedUser");
 
@@ -117,7 +130,7 @@ public class LoginBean implements Serializable {
     /**
      * Método para cadastrar um novo usuário.
      *
-     * @return String contendo o endereÃ§o de redirecionamento para início do
+     * @return String contendo o endereço de redirecionamento para início do
      *          jogo (numberquiz.xhtml). <br>
      *          Null caso exista um usuário previamente cadastrado com o mesmo
      *          nome de login que o usuário corrente.
@@ -138,9 +151,12 @@ public class LoginBean implements Serializable {
     }
 
     /**
-     * Método para verificar se o usuário está autenticado e logado.
+     * Método para verificar se o usuário foi autenticado e está logado.
      * 
-     * @return
+     * @return String contendo o endereço de redirecionamento para a página
+     *          informando ao (userisnotlogged.xhtml). <br>
+     *          Null caso exista um usuário previamente cadastrado com o mesmo
+     *          nome de login que o usuário corrente.
      */
     public String verifyAuthenticatedUser() {
         authenticatedUser = (User) SessionUtil.getAttribute("authenticatedUser");
