@@ -16,7 +16,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 /**
- * Bean gerenciável utilizado no controle dos quizzes (jogos realizados).
+ * Bean gerenciável utilizado no controle dos quizzes (jogos realizados). <br>
  * Este controle envolve principalmente:
  *                          verificar se a resposta do usuário está correta;
  *                          salvar o jogo atual com a sua devida pontuação;
@@ -48,14 +48,13 @@ public class QuizBean implements Serializable {
      */
     private Quiz quiz;
     /**
-     * Singleton da camada de persistência utilizada nos métodos que irão
-     * inserir ou consultar alguma informação relativa aos problemas.
+     * Variável utilizada nos métodos que irão inserir ou consultar alguma
+     * informação relativa aos problemas.
      */
     private ProblemDaoImpl problemDaoImpl;
     /**
-     * Singleton da camada de persistência utilizada nos métodos que irão
-     * inserir ou consultar alguma informação relativa aos quizzes(jogos 
-     * realizados).
+     * Variável utilizada nos métodos que irão inserir ou consultar alguma
+     * informação relativa aos quizzes (jogos realizados).
      */
     private QuizDaoImpl quizDaoImpl;
 

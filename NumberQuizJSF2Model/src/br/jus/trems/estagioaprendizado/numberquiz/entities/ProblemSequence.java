@@ -11,8 +11,8 @@ import javax.persistence.Table;
 
 /**
  * Representa a sequência de números contida em cada problema.
- * É composta pela sequência de números e uma solução (próximo termo da sequência)
- * 
+ * É composta pela sequência de números e uma solução (próximo termo da sequência).
+ * <br><br>
  * Ex.: Sequência: [1, 1, 2, 3, 5]; Solução: 8.
  *      (Sequência de Fibonacci)
  *

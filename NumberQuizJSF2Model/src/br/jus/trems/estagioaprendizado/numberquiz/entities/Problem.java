@@ -14,11 +14,10 @@ import javax.persistence.Table;
  * É composto por uma sequência de números (ProblemSequence). Este atributo
  * define a unicidade de um problema, ou seja, para cada problema existirá
  * somente uma sequência e vice-versa.
- *
- * 
+ * <br><br>
  * Ex.: Sequência: [1, 1, 2, 3, 5]; Solução: 8.
  *      (Sequência de Fibonacci)
- *
+ * <br><br>
  * Possui uma NamedQuery(Problem.findByProblemSequence) que será utilizada para
  * consultar um problema a partir de uma sequência (ProblemSequence).
  * 

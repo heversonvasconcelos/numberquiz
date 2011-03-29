@@ -3,6 +3,7 @@ package br.jus.trems.estagioaprendizado.numberquiz.dao;
 import java.util.List;
 
 /**
+ * DAO - Data Access Object <br>
  * Interface que descreve a assinatura da operações básicas que cada entidade
  * do banco irá realizar. Operações do CRUD e mais uma de listagem.
  * 
@@ -18,7 +19,7 @@ public interface Dao<T> {
     public void create(T obj);
 
     /**
-     * Método para consultar um objeto especidificado pela id.
+     * Método para consultar um objeto especificado pela id.
      *
      * @param id Identificação do objeto.
      * @return Objeto consultado.

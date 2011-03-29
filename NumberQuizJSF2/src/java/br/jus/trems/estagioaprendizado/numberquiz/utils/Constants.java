@@ -7,10 +7,24 @@ package br.jus.trems.estagioaprendizado.numberquiz.utils;
  */
 public class Constants {
 
-    /* Constantes de redirecionamento de páginas */
+    /* Constantes com o endereço das páginas (relativos a raiz) */
+    /**
+     * Armazena o endereço da página de login (página inicial).
+     */
     public static final String PAGE_INDEX = "/index.xhtml";
+    /**
+     * Armazena o endereço da página onde o quiz sera apresentado ao usuario.
+     */
     public static final String PAGE_NUMBERQUIZ = "/numberquiz.xhtml";
+    /**
+     * Armazena o endereço da página onde serão apresentadas ao usuário a sua
+     * pontuação final e as melhores pontuações entre os jogos já realizados.
+     */
     public static final String PAGE_STATS = "/stats.xhtml";
+    /**
+     * Armazena o endereço da página que irá apresentar ao usuário uma mensagem
+     * alertando-o que não está devidamente autenticado e logado.
+     */
     public static final String PAGE_USER_ISNOT_LOGGED = "/userisnotlogged.xhtml";
 
     /* Mensagens de erro */
@@ -18,6 +32,10 @@ public class Constants {
     public static final String MSG_INVALID_PASSWORD = "Senha inválida";
     public static final String MSG_USER_ALREADY_EXISTS = "Usuário já foi cadastrado";
 
-    /* Algumas configurações */
+    /* Algumas constantes de configurações */
+    /**
+     * Armazena a quantidade máxima de itens que a lista com as melhores
+     * pontuações poderá ter.
+     */
     public static final int CONFIG_NUMBER_OF_SCORES = 5;
 }

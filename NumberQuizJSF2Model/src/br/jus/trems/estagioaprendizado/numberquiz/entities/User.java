@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 /**
  * Classe entidade que representa um usuário do 
- * jogo NumberQuiz. É composto por um nome de login e uma senha.
+ * jogo. É composto por um nome de login e uma senha.
  * O atributo nome define a unicidade de um usuário, ou seja, para cada usuário
  * existirá somente um nome de login.
  *

@@ -25,7 +25,7 @@ public class QuizDaoImpl extends DaoImpl<Quiz> {
      * Obs.: Utiliza a NamedQuery Quiz.getTopScores descrita na classe
      * Quiz.
      *
-     * @param Número máximo de quizzes que deverão ser consultados.
+     * @param numberOfScores Número máximo de quizzes que deverão ser consultados.
      * @return Lista contendo os quizzes resultado da consulta.
      */
     public List<Quiz> getTopScores(int numberOfScores) {

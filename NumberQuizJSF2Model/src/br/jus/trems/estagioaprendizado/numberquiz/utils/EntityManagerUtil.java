@@ -5,7 +5,7 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 /**
- * Esta classe é uma singleton que realiza as operações básicas para persistência
+ * Singleton que realiza as operações básicas para persistência
  * dos dados no banco. Inicializa uma EntityManager a partir da unidade de persistência
  * NumberQuizJSF2ModelPU.
  *

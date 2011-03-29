@@ -34,8 +34,8 @@ public class LoginBean implements Serializable {
      */
     private User authenticatedUser;
     /**
-     * Singleton da camada de persistência utilizada nos métodos que irão
-     * inserir ou consultar alguma informação relativa aos usuários.
+     * Variável utilizada nos métodos que irão inserir ou consultar alguma
+     * informação relativa aos usuários.
      */
     private UserDaoImpl userDaoImpl;
 
