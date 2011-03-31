@@ -4,7 +4,7 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.prime.com.tr/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
-    
+
     <!--
         NumberQuizJSF2
         @author heverson.vasconcelos
@@ -27,19 +27,19 @@
                             <h:form>
                                 <p>
                                     <h:outputText value="#{msgs.name}: "/>
-                                    <p:inputText required="true"
+                                    <p:inputText id="name" required="true"
                                                  requiredMessage="#{msgs.nameRequired}"
                                                  value="#{loginBean.user.name}"/>
                                 </p>
                                 <p>
                                     <h:outputLabel value="#{msgs.password}: "/>
-                                    <p:password required="true" requiredMessage="#{msgs.passRequired}"
+                                    <p:password id="pass" required="true" requiredMessage="#{msgs.passRequired}"
                                                 value="#{loginBean.user.password}" feedback="false" minLength="4"
                                                 promptLabel="#{msgs.passRequired}"/>
                                 </p>
                                 <p>
                                     <p:commandButton  value="#{msgs.login}" action="#{loginBean.login()}" ajax="false"/>
-                                    <p:commandButton  value="#{msgs.register}" action="#{loginBean.newUser()}" ajax="false"/>
+                                    <p:commandButton  value="#{msgs.register}" action="#{loginBean.newUser()}" ajax="false" />
                                 </p>
                             </h:form>
                         </h:panelGrid>
