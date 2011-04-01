@@ -111,6 +111,8 @@ public class UserDAOTest {
         if (userFound != null) {
             System.out.println("User to find: " + userToFind.toString());
             System.out.println("User found: " + userFound.toString());
+        } else {
+            System.out.println("User not found!");
         }
 
     }

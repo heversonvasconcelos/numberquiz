@@ -83,6 +83,8 @@ public class ProblemDAOTest {
         if (problemFound != null) {
             System.out.println("Problem to find: " + problemToFind.toString());
             System.out.println("Problem found: " + problemFound.toString());
+        } else {
+            System.out.println("Problem not found!");
         }
 
     }
