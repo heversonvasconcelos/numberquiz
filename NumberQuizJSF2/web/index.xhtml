@@ -22,18 +22,18 @@
             <ui:define name="content">
                 <div align="center" style="padding: 10px">
                     <p:messages/>
-                    <p:panel id="panel" header="#{msgs.enterNamePass}" style="width: 450px">
+                    <p:panel header="#{msgs.enterNamePass}" style="width: 450px">
                         <h:panelGrid columns="2">
                             <h:form>
                                 <p>
                                     <h:outputText value="#{msgs.name}: "/>
-                                    <p:inputText id="name" required="true"
+                                    <p:inputText required="true"
                                                  requiredMessage="#{msgs.nameRequired}"
-                                                 value="#{loginBean.user.name}"/>
+                                                 value="#{loginBean.user.name}" />
                                 </p>
                                 <p>
-                                    <h:outputLabel value="#{msgs.password}: "/>
-                                    <p:password id="pass" required="true" requiredMessage="#{msgs.passRequired}"
+                                    <h:outputText value="#{msgs.password}: "/>
+                                    <p:password required="true" requiredMessage="#{msgs.passRequired}"
                                                 value="#{loginBean.user.password}" feedback="false" minLength="4"
                                                 promptLabel="#{msgs.passRequired}"/>
                                 </p>
