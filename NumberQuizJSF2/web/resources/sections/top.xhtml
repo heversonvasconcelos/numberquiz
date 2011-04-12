@@ -2,7 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+      xmlns:h="http://java.sun.com/jsf/html">
 
     <!--
         NumberQuizJSF2
@@ -15,8 +17,60 @@
     <body>
         <ui:composition>
             <div>
-                <p class="alignleft" style="font-size: 35px">#{msgs.title}</p>
-                <p class="alignright" style="font-size: 12px">#{msgs.topMsg}</p>
+                <h:form>
+                    <p class="alignleft" style="font-size: 35px">#{msgs.title}</p>
+                    <p class="alignright" style="font-size: 12px">#{msgs.topMsg}</p>
+                    <p:commandButton title="#{msgs.about}" oncomplete="aboutModalDialog.show()" image="ui-icon ui-icon-info" style="position: fixed; top: 50px; left: 1060px;"/>
+                    <p:dialog header="#{msgs.about}" widgetVar="aboutModalDialog" draggable="false" resizable="false" modal="true" height="400" width="800" >
+                        <p:panel>
+                            <!--
+                                <h:outputText styleClass="aboutMessageTopic" value="
+                                <h:outputText styleClass="aboutMessageItem" value="
+                            -->
+                            <p>
+                                <h:outputText styleClass="aboutMessageTopic" value="#{msgs.aboutMessageWhatQuestion}"/>
+                                <br/>
+                                <h:outputText styleClass="aboutMessageItem" value="#{msgs.aboutMessageWhatAnswer}"/>
+                            </p>
+                        </p:panel>
+                        <p:panel>
+                            <p>
+                                <h:outputText styleClass="aboutMessageTopic" value="#{msgs.aboutMessageObjectiveQuestion}"/>
+                                <br/>
+                                <h:outputText styleClass="aboutMessageItem" value="#{msgs.aboutMessageObjectiveAnswer}"/>
+                            </p>
+                        </p:panel>
+                        <p:panel>
+                            <p>
+                                <h:outputText styleClass="aboutMessageTopic" value="#{msgs.aboutMessageFunctions}"/>
+                                <ul>
+                                    <li>
+                                        <h:outputText styleClass="aboutMessageItem" value="#{msgs.aboutMessageFunctionsStart01}"/>
+                                    </li>
+                                    <li>
+                                        <h:outputText styleClass="aboutMessageItem" value="#{msgs.aboutMessageFunctionsStart02}"/>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <h:outputText styleClass="aboutMessageItem" value="#{msgs.aboutMessageFunctionsQuiz01}"/>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <h:outputText styleClass="aboutMessageItem" value="#{msgs.aboutMessageFunctionsEnd01}"/>
+                                    </li>
+                                    <li>
+                                        <h:outputText styleClass="aboutMessageItem" value="#{msgs.aboutMessageFunctionsEnd02}"/>
+                                    </li>
+                                    <li>
+                                        <h:outputText styleClass="aboutMessageItem" value="#{msgs.aboutMessageFunctionsEnd03}"/>
+                                    </li>
+                                </ul>
+                            </p>
+                        </p:panel>
+                    </p:dialog>
+                </h:form>
             </div>
         </ui:composition>
     </body>

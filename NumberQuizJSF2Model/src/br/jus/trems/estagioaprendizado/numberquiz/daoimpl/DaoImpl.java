@@ -3,6 +3,7 @@ package br.jus.trems.estagioaprendizado.numberquiz.daoimpl;
 import br.jus.trems.estagioaprendizado.numberquiz.dao.Dao;
 import br.jus.trems.estagioaprendizado.numberquiz.utils.EntityManagerUtil;
 import java.util.List;
+import javax.annotation.PreDestroy;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
@@ -14,6 +15,10 @@ import javax.persistence.Query;
  * @author heverson.vasconcelos
  */
 public abstract class DaoImpl<T> implements Dao<T> {
+
+    public DaoImpl() {
+        EntityManagerUtil.init();
+    }
 
     /**
      * Método para retornar a classe do parâmetro T
@@ -81,5 +86,10 @@ public abstract class DaoImpl<T> implements Dao<T> {
         }
 
         return objReturn;
+    }
+
+    @PreDestroy
+    public void finalizeAccess() {
+        EntityManagerUtil.close();
     }
 }

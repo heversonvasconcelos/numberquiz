@@ -25,6 +25,25 @@
     float: right;
 }
 
+.aboutIcon {
+    height: 64px;
+    width: 64px;
+    position: fixed;
+    top: 38px;
+    left: 1060px;
+    background-image:  url('../images/aboutIcon.gif') !important;
+}
+
+.aboutMessageTopic {
+    font-size: 15px;
+    font-weight: bolder;
+}
+
+.aboutMessageItem {
+    font-size: 13px;
+    font-weight: normal;
+}
+
 #page {
     width: 1024px;
     height: 768px;

@@ -10,5 +10,11 @@
         <Node id="index.xhtml" x="58" y="238" zoom="false"/>
         <Node id="numberquiz.xhtml" x="403" y="451" zoom="false"/>
     </Scope>
-    <Scope Scope="All Faces Configurations"/>
+    <Scope Scope="All Faces Configurations">
+        <Node id="stats.xhtml" x="531" y="413" zoom="true"/>
+        <Node id="index.xhtml" x="30" y="173" zoom="true"/>
+        <Node id="*" x="269" y="32" zoom="true"/>
+        <Node id="numberquiz.xhtml" x="63" y="427" zoom="true"/>
+        <Node id="userisnotlogged.xhtml" x="618" y="146" zoom="true"/>
+    </Scope>
 </Scene>

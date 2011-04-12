@@ -106,14 +106,23 @@ public class UserDAOTest {
     @Test
     public void listAUser() {
         User userToFind = getAUser();
-        User userFound = userToFind != null ? userDaoImpl.getUserByName(userToFind.getName()) : null;
+        User userFound = null;
+
+        if (userToFind != null) {
+            userFound = userDaoImpl.getUserByName(userToFind.getName());
+        }
 
         if (userFound != null) {
-            System.out.println("User to find: " + userToFind.toString());
-            System.out.println("User found: " + userFound.toString());
+            System.out.println("User to find: " + userToFind);
+            System.out.println("User found: " + userFound);
         } else {
             System.out.println("User not found!");
         }
 
+    }
+
+    @Test
+    public void close() {
+        userDaoImpl.finalizeAccess();
     }
 }

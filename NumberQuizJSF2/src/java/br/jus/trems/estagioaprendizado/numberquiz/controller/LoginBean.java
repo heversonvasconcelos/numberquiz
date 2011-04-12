@@ -42,6 +42,7 @@ public class LoginBean implements Serializable {
     @PostConstruct
     public void init() {
         user = new User();
+        userDaoImpl = new UserDaoImpl();
     }
 
     public User getUser() {
@@ -71,7 +72,6 @@ public class LoginBean implements Serializable {
      * @return Usuário encontrado. Null caso o usuário não seja encontrado.
      */
     private User verifyLogin() {
-        userDaoImpl = new UserDaoImpl();
 
         return (userDaoImpl.getUserByName(user.getName()));
     }
@@ -110,6 +110,7 @@ public class LoginBean implements Serializable {
         }
 
         SessionUtil.setAttribute("authenticatedUser", authenticatedUser);
+
         return Constants.PAGE_NUMBERQUIZ;
     }
 
@@ -124,6 +125,8 @@ public class LoginBean implements Serializable {
         authenticatedUser = null;
         SessionUtil.destroySession();
 
+        userDaoImpl.finalizeAccess();
+
         return Constants.PAGE_INDEX;
     }
 
@@ -136,7 +139,6 @@ public class LoginBean implements Serializable {
      *          nome de login que o usuário corrente.
      */
     public String newUser() {
-        userDaoImpl = new UserDaoImpl();
 
         if (userDaoImpl.verifyIfUserNameExists(user.getName())) {
             FacesUtil.mensErro(Constants.MSG_USER_ALREADY_EXISTS);

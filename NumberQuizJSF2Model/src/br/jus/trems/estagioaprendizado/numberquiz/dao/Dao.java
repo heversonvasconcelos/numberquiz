@@ -35,7 +35,6 @@ public interface Dao<T> {
     public T update(T obj);
 
     /* public T delete(T obj); */
-
     /**
      * Método para listar todos os objetos do tipo T contidos no banco.
      *

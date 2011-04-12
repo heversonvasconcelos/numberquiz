@@ -39,6 +39,7 @@ public class QuizBean implements Serializable {
      * Utilizado como índice de navegação na lista de problemas.
      */
     private int currentIndex;
+    private int answer;
     /**
      * Armazena o score(pontuação) atual.
      */
@@ -124,11 +125,7 @@ public class QuizBean implements Serializable {
      */
     public void setAnswer(String answeredByUser) {
         try {
-            int answer = Integer.parseInt(answeredByUser.trim());
-            if (getCurrent().getSolution() == answer) {
-                score++;
-            }
-            currentIndex = (currentIndex + 1) % problems.size();
+            answer = Integer.parseInt(answeredByUser.trim());
         } catch (NumberFormatException ex) {
         }
     }
@@ -141,6 +138,15 @@ public class QuizBean implements Serializable {
             quiz.setScore(score);
             quizDaoImpl.create(quiz);
         }
+    }
+
+    public String checkSolution() {
+        if (getCurrent().getSolution() == answer) {
+            score++;
+        }
+        currentIndex = (currentIndex + 1) % problems.size();
+
+        return null;
     }
 
     /**

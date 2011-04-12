@@ -2,6 +2,7 @@ package br.jus.trems.estagioaprendizado.numberquiz.daoimpl;
 
 import br.jus.trems.estagioaprendizado.numberquiz.entities.Quiz;
 import br.jus.trems.estagioaprendizado.numberquiz.utils.EntityManagerUtil;
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
@@ -12,7 +13,7 @@ import javax.persistence.Query;
  * 
  * @author heverson.vasconcelos
  */
-public class QuizDaoImpl extends DaoImpl<Quiz> {
+public class QuizDaoImpl extends DaoImpl<Quiz> implements Serializable {
 
     @Override
     public Class<Quiz> getDomainClass() {

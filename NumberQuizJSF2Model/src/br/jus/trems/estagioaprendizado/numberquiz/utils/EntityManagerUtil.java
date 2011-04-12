@@ -1,6 +1,9 @@
 package br.jus.trems.estagioaprendizado.numberquiz.utils;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
@@ -13,7 +16,16 @@ import javax.persistence.Query;
  */
 public class EntityManagerUtil {
 
-    private static EntityManager em = Persistence.createEntityManagerFactory("NumberQuizJSF2ModelPU").createEntityManager();
+    private static EntityManagerFactory emf;
+    private static EntityManager em;
+
+    @PostConstruct
+    public static void init() {
+        if (!isOpen()) {
+            emf = Persistence.createEntityManagerFactory("NumberQuizJSF2ModelPU");
+            em = emf.createEntityManager();
+        }
+    }
 
     /**
      * Método para retornar a EntityManager criada
@@ -21,6 +33,7 @@ public class EntityManagerUtil {
      * @return EntityManager criada a partir da unidade de persistência NumberQuizJSF2ModelPU
      */
     public static EntityManager getEntityManager() {
+        init();
         return em;
     }
 
@@ -29,6 +42,7 @@ public class EntityManagerUtil {
      * transacionais.
      */
     public static void beginTransaction() {
+        init();
         em.getTransaction().begin();
     }
 
@@ -37,6 +51,7 @@ public class EntityManagerUtil {
      * @return True caso esteja ativa a transação. False caso contrário.
      */
     public static boolean isTransactionActive() {
+        init();
         return em.getTransaction().isActive();
     }
 
@@ -44,6 +59,7 @@ public class EntityManagerUtil {
      * Método para dar commit na transação.
      */
     public static void commit() {
+        init();
         em.getTransaction().commit();
     }
 
@@ -53,6 +69,7 @@ public class EntityManagerUtil {
      * @param obj Objeto a ser inserido
      */
     public static void insert(Object obj) {
+        init();
         em.persist(obj);
     }
 
@@ -63,6 +80,7 @@ public class EntityManagerUtil {
      * @return Query criada
      */
     public static Query createQuery(String query) {
+        init();
         return em.createQuery(query);
     }
 
@@ -73,6 +91,7 @@ public class EntityManagerUtil {
      * @return Objeto atualizado
      */
     public static Object update(Object obj) {
+        init();
         return em.merge(obj);
     }
 
@@ -82,6 +101,26 @@ public class EntityManagerUtil {
      * @param obj Objeto a ser removido.
      */
     public static void remove(Object obj) {
+        init();
         em.remove(obj);
+    }
+
+    @PreDestroy
+    public static void close() {
+        if (em.isOpen()) {
+            em.close();
+        }
+
+        if (emf.isOpen()) {
+            emf.close();
+        }
+    }
+
+    public static boolean isOpen() {
+        if (emf != null) {
+            return emf.isOpen();
+        }
+
+        return false;
     }
 }

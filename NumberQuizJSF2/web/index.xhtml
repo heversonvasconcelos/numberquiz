@@ -9,8 +9,9 @@
         NumberQuizJSF2
         @author heverson.vasconcelos
 
-        Pagina de login da aplicacao. Esta definida como a pagina inicial.
-        O usuario pode efetuar o login ou o cadastro.
+        Pagina de inicial da aplicacao.
+        O usuario pode visualizar algumas informacoes sobre a aplicacao
+        e iniciar o jogo apos o login.
     -->
 
     <h:head><title>IGNORED</title></h:head>
@@ -21,31 +22,27 @@
             <!-- CENTER -->
             <ui:define name="content">
                 <div align="center" style="padding: 10px">
-                    <p:messages/>
-                    <p:panel header="#{msgs.enterNamePass}" style="width: 450px">
-                        <h:panelGrid columns="2">
-                            <h:form>
-                                <p>
-                                    <h:outputText value="#{msgs.name}: "/>
-                                    <p:inputText required="true"
-                                                 requiredMessage="#{msgs.nameRequired}"
-                                                 value="#{loginBean.user.name}" />
-                                </p>
-                                <p>
-                                    <h:outputText value="#{msgs.password}: "/>
-                                    <p:password required="true" requiredMessage="#{msgs.passRequired}"
-                                                value="#{loginBean.user.password}" feedback="false" minLength="4"
-                                                promptLabel="#{msgs.passRequired}"/>
-                                </p>
-                                <p>
-                                    <p:commandButton  value="#{msgs.login}" action="#{loginBean.login()}" ajax="false" />
-                                    <p:commandButton  value="#{msgs.register}" action="#{loginBean.newUser()}" ajax="false" />
-                                </p>
-                            </h:form>
-                        </h:panelGrid>
-                    </p:panel>
+                    <h:form>
+                        <p:panel header="#{msgs.enterNamePass}" style="width: 450px">
+                            <h:panelGrid columns="2" >
+
+                                <h:outputText value="#{msgs.name}: "/>
+                                <p:inputText required="true"
+                                             requiredMessage="#{msgs.nameRequired}"
+                                             value="#{loginBean.user.name}" />
+                                <h:outputText value="#{msgs.password}: "/>
+                                <p:password required="true" requiredMessage="#{msgs.passRequired}"
+                                            value="#{loginBean.user.password}" feedback="false" minLength="4"
+                                            promptLabel="#{msgs.passRequired}"/>
+                            </h:panelGrid>
+                            <br/>
+                            <p:commandButton title="#{msgs.login}" value="#{msgs.login}" action="#{loginBean.login()}" ajax="false"/>
+                            <p:commandButton title="#{msgs.register}" value="#{msgs.register}" action="#{loginBean.newUser()}" ajax="false" />
+                        </p:panel>
+                    </h:form>
                 </div>
             </ui:define>
+
         </ui:composition>
     </h:body>
 </html>

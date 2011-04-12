@@ -2,6 +2,7 @@ package br.jus.trems.estagioaprendizado.numberquiz.daoimpl;
 
 import br.jus.trems.estagioaprendizado.numberquiz.entities.Problem;
 import br.jus.trems.estagioaprendizado.numberquiz.utils.EntityManagerUtil;
+import java.io.Serializable;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
@@ -11,7 +12,7 @@ import javax.persistence.Query;
  *
  * @author heverson.vasconcelos
  */
-public class ProblemDaoImpl extends DaoImpl<Problem> {
+public class ProblemDaoImpl extends DaoImpl<Problem> implements Serializable {
 
     @Override
     public Class<Problem> getDomainClass() {
