@@ -85,7 +85,7 @@ public class Quiz implements Serializable {
      */
     @Override
     public String toString() {
-        String string = new String();
+        String string = "";
 
         string += ("QuizID: " + getId() + "\n");
         string += ("User: " + getUser().getName() + "\n");

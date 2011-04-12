@@ -33,6 +33,7 @@ public class LoginBean implements Serializable {
      * logado na sessão.
      */
     private User authenticatedUser;
+    private final String sessionAttributeName = "authenticatedUser";
     /**
      * Variável utilizada nos métodos que irão inserir ou consultar alguma
      * informação relativa aos usuários.
@@ -60,7 +61,7 @@ public class LoginBean implements Serializable {
      * @return Usuário autenticado.
      */
     public User getAuthenticatedUser() {
-        authenticatedUser = (User) SessionUtil.getAttribute("authenticatedUser");
+        authenticatedUser = (User) SessionUtil.getAttribute(sessionAttributeName);
 
         return (authenticatedUser != null) ? authenticatedUser : null;
     }
@@ -109,7 +110,7 @@ public class LoginBean implements Serializable {
             return null;
         }
 
-        SessionUtil.setAttribute("authenticatedUser", authenticatedUser);
+        SessionUtil.setAttribute(sessionAttributeName, authenticatedUser);
 
         return Constants.PAGE_NUMBERQUIZ;
     }
@@ -147,7 +148,7 @@ public class LoginBean implements Serializable {
 
         userDaoImpl.create(user);
         authenticatedUser = user;
-        SessionUtil.setAttribute("authenticatedUser", authenticatedUser);
+        SessionUtil.setAttribute(sessionAttributeName, authenticatedUser);
 
         return Constants.PAGE_NUMBERQUIZ;
     }
@@ -161,7 +162,7 @@ public class LoginBean implements Serializable {
      *          nome de login que o usuário corrente.
      */
     public String verifyAuthenticatedUser() {
-        authenticatedUser = (User) SessionUtil.getAttribute("authenticatedUser");
+        authenticatedUser = (User) SessionUtil.getAttribute(sessionAttributeName);
 
         if (authenticatedUser == null) {
             FacesUtil.mensErro(Constants.MSG_INVALID_USER);
