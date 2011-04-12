@@ -20,7 +20,15 @@
                 <h:form>
                     <p class="alignleft" style="font-size: 35px">#{msgs.title}</p>
                     <p class="alignright" style="font-size: 12px">#{msgs.topMsg}</p>
-                    <p:commandButton title="#{msgs.about}" oncomplete="aboutModalDialog.show()" image="ui-icon ui-icon-info" style="position: fixed; top: 50px; left: 1060px;"/>
+
+                    <!-- Toolbar icons -->
+                    <p:panel  style="position: fixed; top: 45px; left: 900px;">
+                        <p:commandButton title="#{msgs.userAccount}" image="ui-icon ui-icon-home"/>
+                        <p:commandButton title="#{msgs.about}" oncomplete="aboutModalDialog.show()" image="ui-icon ui-icon-info"/>
+                        <p:commandButton title="#{msgs.quit}" image="ui-icon ui-icon-close"/>
+
+                    </p:panel>
+                    <!-- Modal Dialog -->
                     <p:dialog header="#{msgs.about}" widgetVar="aboutModalDialog" draggable="false" resizable="false" modal="true" height="400" width="800" >
                         <p:panel>
                             <!--
