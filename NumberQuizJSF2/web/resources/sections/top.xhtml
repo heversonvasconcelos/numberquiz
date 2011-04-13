@@ -22,13 +22,14 @@
                     <p class="alignright" style="font-size: 12px">#{msgs.topMsg}</p>
 
                     <!-- Toolbar icons -->
-                    <p:panel  style="position: fixed; top: 45px; left: 900px;">
+                    <p:panel styleClass="alignright">
                         <p:commandButton title="#{msgs.userAccount}" image="ui-icon ui-icon-home"/>
                         <p:commandButton title="#{msgs.about}" oncomplete="aboutModalDialog.show()" image="ui-icon ui-icon-info"/>
                         <p:commandButton title="#{msgs.quit}" image="ui-icon ui-icon-close"/>
 
                     </p:panel>
-                    <!-- Modal Dialog -->
+
+                    <!-- Modal Dialog Application About-->
                     <p:dialog header="#{msgs.about}" widgetVar="aboutModalDialog" draggable="false" resizable="false" modal="true" height="400" width="800" >
                         <p:panel>
                             <!--
@@ -78,6 +79,7 @@
                             </p>
                         </p:panel>
                     </p:dialog>
+
                 </h:form>
             </div>
         </ui:composition>
