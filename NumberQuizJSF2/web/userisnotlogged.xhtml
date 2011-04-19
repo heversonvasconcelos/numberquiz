@@ -1,42 +1,34 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.prime.com.tr/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+<!--
+    NumberQuizJSF2
+    @author heverson.vasconcelos
 
-    <!--
-        NumberQuizJSF2
-        @author heverson.vasconcelos
+    Pagina onde sera apresentada uma mensagem alertando o usuario que ele nao
+    esta devidamente autenticado (logado).
+    O usuario podera ser redirecionado para a pagina de login.
+-->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.prime.com.tr/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/resources/template/template.xhtml">
 
-        Pagina onde sera apresentada uma mensagem alertando o usuario que ele nao
-        esta devidamente autenticado (logado).
-        O usuario podera ser redirecionado para a pagina de login.
-    -->
-
-    <h:head><title>IGNORED</title></h:head>
-
-    <h:body>
-        <ui:composition template="/resources/template/template.xhtml">
-            <!-- CENTER -->
-            <ui:define name="content">
-                <h:form>
-                    <div align="center" style="padding: 10px">
-                        <table align="center" style="width: 90%">
-                            <tr>
-                                <td align="center">
-                                    <p:panel>
-                                        <h3> #{msgs.userIsNotLogged}</h3>
-                                        <p>
-                                            <p:commandButton  value="#{msgs.login}" action="index" ajax="false"/>
-                                        </p>
-                                    </p:panel>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </h:form>
-            </ui:define>
-        </ui:composition>
-    </h:body>
-</html>
+    <!-- CENTER -->
+    <ui:define name="content">
+        <h:form>
+            <div align="center" style="padding: 10px">
+                <table align="center" style="width: 90%">
+                    <tr>
+                        <td align="center">
+                    <p:panel>
+                        <h3> #{msgs.userIsNotLogged}</h3>
+                        <p>
+                        <p:commandButton  value="#{msgs.login}" action="index" ajax="false"/>
+                        </p>
+                    </p:panel>
+                    </td>
+                    </tr>
+                </table>
+            </div>
+        </h:form>
+    </ui:define>
+</ui:composition>

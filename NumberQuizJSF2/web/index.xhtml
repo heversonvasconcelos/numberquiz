@@ -1,49 +1,41 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.prime.com.tr/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
-
-    <!--
+<!--
         NumberQuizJSF2
         @author heverson.vasconcelos
 
         Pagina de inicial da aplicacao.
         O usuario pode visualizar algumas informacoes sobre a aplicacao
         e iniciar o jogo apos o login.
-    -->
+-->
 
-    <h:head><title>IGNORED</title></h:head>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.prime.com.tr/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/resources/template/template.xhtml">
 
-    <h:body>
-        <ui:composition template="/resources/template/template.xhtml">
+    <!-- CENTER -->
+    <ui:define name="content">
+        <div align="center" style="padding: 10px">
+            <h:form>
+                <p:messages />
+                <p:panel header="#{msgs.enterNamePass}" style="width: 450px">
+                    <h:panelGrid columns="2" >
 
-            <!-- CENTER -->
-            <ui:define name="content">
-                <div align="center" style="padding: 10px">
-                    <h:form>
-                        <p:messages />
-                        <p:panel header="#{msgs.enterNamePass}" style="width: 450px">
-                            <h:panelGrid columns="2" >
+                        <h:outputText value="#{msgs.name}: "/>
+                        <p:inputText required="true"
+                                     requiredMessage="#{msgs.nameRequired}"
+                                     value="#{loginBean.user.name}" />
+                        <h:outputText value="#{msgs.password}: "/>
+                        <p:password required="true" requiredMessage="#{msgs.passRequired}"
+                                    value="#{loginBean.user.password}" feedback="false" minLength="4"
+                                    promptLabel="#{msgs.passRequired}"/>
+                    </h:panelGrid>
+                    <br/>
+                    <p:commandButton title="#{msgs.login}" value="#{msgs.login}" action="#{loginBean.login()}" ajax="false"/>
+                    <p:commandButton title="#{msgs.register}" value="#{msgs.register}" action="#{loginBean.newUser()}" ajax="false" />
+                </p:panel>
+            </h:form>
+        </div>
+    </ui:define>
 
-                                <h:outputText value="#{msgs.name}: "/>
-                                <p:inputText required="true"
-                                             requiredMessage="#{msgs.nameRequired}"
-                                             value="#{loginBean.user.name}" />
-                                <h:outputText value="#{msgs.password}: "/>
-                                <p:password required="true" requiredMessage="#{msgs.passRequired}"
-                                            value="#{loginBean.user.password}" feedback="false" minLength="4"
-                                            promptLabel="#{msgs.passRequired}"/>
-                            </h:panelGrid>
-                            <br/>
-                            <p:commandButton title="#{msgs.login}" value="#{msgs.login}" action="#{loginBean.login()}" ajax="false"/>
-                            <p:commandButton title="#{msgs.register}" value="#{msgs.register}" action="#{loginBean.newUser()}" ajax="false" />
-                        </p:panel>
-                    </h:form>
-                </div>
-            </ui:define>
-
-        </ui:composition>
-    </h:body>
-</html>
+</ui:composition>

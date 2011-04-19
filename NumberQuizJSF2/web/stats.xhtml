@@ -1,79 +1,71 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.prime.com.tr/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core">
+<!--
+    NumberQuizJSF2
+    @author heverson.vasconcelos
 
-    <!--
-        NumberQuizJSF2
-        @author heverson.vasconcelos
+    Pagina onde sera apresentada ao usuario a sua pontuacao final e as
+    melhores pontuacoes entre os jogos ja realizados.
+-->
 
-        Pagina onde sera apresentada ao usuario a sua pontuacao final e as
-        melhores pontuacoes entre os jogos ja realizados.
-    -->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.prime.com.tr/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="/resources/template/template.xhtml">
 
-    <h:head><title>IGNORED</title></h:head>
+    <!-- CENTER -->
+    <ui:define name="content">
+        <h:form>
+            <div align="center" style="padding: 10px">
+                <table align="center" style="width: 90%">
+                    <tr>
+                        <!-- PONTUACAO FINAL -->
+                        <td align="center">
+                    <p:panel>
+                        <h3>
+                            <h:outputFormat value="#{msgs.thankyou}">
+                                <f:param value="#{loginBean.authenticatedUser.name}"/>
+                            </h:outputFormat>
+                        </h3>
+                        <p>
+                        <h:outputFormat value="#{msgs.finalScore}">
+                            <f:param value="#{quizBean.score}"/>
+                        </h:outputFormat>
+                        </p>
+                        <p>
+                        <p:commandButton value="#{msgs.restart}" action="#{quizBean.newGame()}" ajax="false" />
+                        <p:commandButton value="#{msgs.quit}" action="#{loginBean.logout()}" ajax="false"/>
+                        </p>
+                    </p:panel>
+                    </td>
+                    </tr>
+                    <tr>
+                        <!-- MELHORES PONTUACOES -->
+                        <td align="center">
+                    <p:dataTable var="quiz" value="#{quizBean.topScores}">
+                        <f:facet name="header">
+                            <h:outputText value="#{msgs.topScores}"/>
+                        </f:facet>
 
-    <h:body>
-        <ui:composition template="/resources/template/template.xhtml">
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{msgs.name}"/>
+                            </f:facet>
+                            <h:outputText value="#{quiz.user.name}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{msgs.score}"/>
+                            </f:facet>
+                            <h:outputText value="#{quiz.score}"/>
+                        </p:column>
 
-            <!-- CENTER -->
-            <ui:define name="content">
-                <h:form>
-                    <div align="center" style="padding: 10px">
-                        <table align="center" style="width: 90%">
-                            <tr>
-                                <!-- PONTUACAO FINAL -->
-                                <td align="center">
-                                    <p:panel>
-                                        <h3>
-                                            <h:outputFormat value="#{msgs.thankyou}">
-                                                <f:param value="#{loginBean.authenticatedUser.name}"/>
-                                            </h:outputFormat>
-                                        </h3>
-                                        <p>
-                                            <h:outputFormat value="#{msgs.finalScore}">
-                                                <f:param value="#{quizBean.score}"/>
-                                            </h:outputFormat>
-                                        </p>
-                                        <p>
-                                            <p:commandButton value="#{msgs.restart}" action="#{quizBean.newGame()}" ajax="false" />
-                                            <p:commandButton value="#{msgs.quit}" action="#{loginBean.logout()}" ajax="false"/>
-                                        </p>
-                                    </p:panel>
-                                </td>
-                            </tr>
-                            <tr>
-                                <!-- MELHORES PONTUACOES -->
-                                <td align="center">
-                                    <p:dataTable var="quiz" value="#{quizBean.topScores}">
-                                        <f:facet name="header">
-                                            <h:outputText value="#{msgs.topScores}"/>
-                                        </f:facet>
+                    </p:dataTable>
+                    </td>
+                    </tr>
+                </table>
+            </div>
+        </h:form>
+    </ui:define>
 
-                                        <p:column>
-                                            <f:facet name="header">
-                                                <h:outputText value="#{msgs.name}"/>
-                                            </f:facet>
-                                            <h:outputText value="#{quiz.user.name}"/>
-                                        </p:column>
-                                        <p:column>
-                                            <f:facet name="header">
-                                                <h:outputText value="#{msgs.score}"/>
-                                            </f:facet>
-                                            <h:outputText value="#{quiz.score}"/>
-                                        </p:column>
-
-                                    </p:dataTable>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </h:form>
-            </ui:define>
-
-        </ui:composition>
-    </h:body>
-</html>
+</ui:composition>

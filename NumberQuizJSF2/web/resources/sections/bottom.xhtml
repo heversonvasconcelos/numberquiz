@@ -1,23 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+<!--
+    NumberQuizJSF2
+    @author heverson.vasconcelos
 
-    <!--
-        NumberQuizJSF2
-        @author heverson.vasconcelos
+    Definicao do parte inferior da pagina (rodape).
+-->
 
-        Definicao do parte inferior da pagina (rodape).
-    -->
-
-    <head><title>IGNORED</title></head>
-    <body>
-        <ui:composition>
-            <div>
-                <p class="alignleft">#{msgs.bottomMsg}</p>
-                <p class="alignright">#{msgs.author}</p>
-            </div>
-        </ui:composition>
-    </body>
-</html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+    <div>
+        <p class="alignleft">#{msgs.bottomMsg}</p>
+        <p class="alignright">#{msgs.author}</p>
+    </div>
+</ui:composition>

@@ -1,68 +1,60 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.prime.com.tr/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core">
+<!--
+    NumberQuizJSF2
+    @author heverson.vasconcelos
 
-    <!--
-        NumberQuizJSF2
-        @author heverson.vasconcelos
+    Pagina onde o quiz sera apresentado ao usuario.
+    O usuario visualiza uma sequencia de numeros e tenta descobrir o proximo
+    termo.
+-->
 
-        Pagina onde o quiz sera apresentado ao usuario.
-        O usuario visualiza uma sequencia de numeros e tenta descobrir o proximo
-        termo.
-    -->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.prime.com.tr/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="/resources/template/template.xhtml">
 
-    <h:head><title>IGNORED</title></h:head>
+    <!-- CENTER -->
+    <ui:define name="content">
+        <h:form>
+            <div align="center" style="padding: 10px">
+                <table align="center" style="width: 90%">
+                    <tr>
+                        <!-- CENTER LEFT PANEL -->
+                        <td align="left" style="width: 27%">
+                    <p:panel style="height: 300PX" header="#{msgs.welcome}, #{loginBean.authenticatedUser.name}">
+                        <center>
+                            <h:graphicImage height="201" width="256" library="images" name="numberQuiz.gif"/>
+                        </center>
+                    </p:panel>
+                    </td>
+                    <!-- CENTER RIGHT PANEL -->
+                    <td align="left" style="width: 70%">
+                    <p:panel id="panel" style="height: 300PX">
+                        <h:panelGrid columns="1" >
+                            <h:outputFormat value="#{msgs.currentScore}">
+                                <f:param value="#{quizBean.score}"/>
+                            </h:outputFormat>
+                            <h:outputText value="#{msgs.guessNext}: "/>
+                            <h:outputText value="#{quizBean.current.problemSequence}" style="font-weight: bolder"/>
+                        </h:panelGrid>
 
-    <h:body>
-        <ui:composition template="/resources/template/template.xhtml">
+                        <br/>
+                        <h:outputText value="#{msgs.answer}: "/>
+                        <p:inputText value="#{quizBean.answer}"/>
 
-            <!-- CENTER -->
-            <ui:define name="content">
-                <h:form>
-                    <div align="center" style="padding: 10px">
-                        <table align="center" style="width: 90%">
-                            <tr>
-                                <!-- CENTER LEFT PANEL -->
-                                <td align="left" style="width: 27%">
-                                    <p:panel style="height: 300PX" header="#{msgs.welcome}, #{loginBean.authenticatedUser.name}">
-                                        <center>
-                                            <h:graphicImage height="201" width="256" library="images" name="numberQuiz.gif"/>
-                                        </center>
-                                    </p:panel>
-                                </td>
-                                <!-- CENTER RIGHT PANEL -->
-                                <td align="left" style="width: 70%">
-                                    <p:panel id="panel" style="height: 300PX">
-                                        <h:panelGrid columns="1" >
-                                            <h:outputFormat value="#{msgs.currentScore}">
-                                                <f:param value="#{quizBean.score}"/>
-                                            </h:outputFormat>
-                                            <h:outputText value="#{msgs.guessNext}: "/>
-                                            <h:outputText value="#{quizBean.current.problemSequence}" style="font-weight: bolder"/>
-                                        </h:panelGrid>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <p:commandButton value="#{msgs.next}" action="#{quizBean.checkSolution()}" update="panel"/>
+                        <p:commandButton value="#{msgs.quit}" action="#{quizBean.showScore()}" ajax="false" />
 
-                                        <br/>
-                                        <h:outputText value="#{msgs.answer}: "/>
-                                        <p:inputText value="#{quizBean.answer}"/>
+                    </p:panel>
+                    </td>
+                    </tr>
+                </table>
+            </div>
+        </h:form>
+    </ui:define>
 
-                                        <br/>
-                                        <br/>
-                                        <br/>
-                                        <p:commandButton value="#{msgs.next}" action="#{quizBean.checkSolution()}" update="panel"/>
-                                        <p:commandButton value="#{msgs.quit}" action="#{quizBean.showScore()}" ajax="false" />
-
-                                    </p:panel>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </h:form>
-            </ui:define>
-
-        </ui:composition>
-    </h:body>
-</html>
+</ui:composition>
