@@ -7,8 +7,9 @@ import br.jus.trems.estagioaprendizado.numberquiz.utils.FacesUtil;
 import br.jus.trems.estagioaprendizado.numberquiz.utils.SessionUtil;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 
 /**
  * Bean gerenciável utilizado no controle do login de usuários na aplicação.
@@ -21,7 +22,7 @@ import javax.faces.bean.RequestScoped;
  * @author heverson.vasconcelos
  */
 @ManagedBean(name = "loginBean")
-@RequestScoped
+@SessionScoped
 public class LoginBean implements Serializable {
 
     /**
@@ -44,6 +45,11 @@ public class LoginBean implements Serializable {
     public void init() {
         user = new User();
         userDaoImpl = new UserDaoImpl();
+    }
+
+    @PreDestroy
+    private void finalizeAccess() {
+        userDaoImpl.finalizeAccess();
     }
 
     public User getUser() {
@@ -147,8 +153,11 @@ public class LoginBean implements Serializable {
         }
 
         userDaoImpl.create(user);
+        userDaoImpl.finalizeAccess();
+
         authenticatedUser = user;
         SessionUtil.setAttribute(sessionAttributeName, authenticatedUser);
+
 
         return Constants.PAGE_NUMBERQUIZ;
     }

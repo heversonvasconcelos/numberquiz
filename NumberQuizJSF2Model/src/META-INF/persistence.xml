@@ -22,7 +22,8 @@
             <property name="hibernate.format_sql" value="false"/>
             <property name="use_sql_comments" value="false"/>
       
-            <!-- Hibernate C3P0 Connection Pool -->
+            <!-- Hibernate C3P0 Connection Pool 
+            
             <property name="hibernate.connection.provider_class" value="org.hibernate.connection.C3P0ConnectionProvider" />
             <property name="hibernate.c3p0.min_size" value="5" />
             <property name="hibernate.c3p0.max_size" value="20" />
@@ -30,7 +31,7 @@
             <property name="hibernate.c3p0.max_statements" value="50" />
             <property name="hibernate.c3p0.idle_test_period" value="3000" />
             <property name="hibernate.c3p0.acquire_increment" value="1" />
-            
+            -->
         </properties>
     </persistence-unit>
 </persistence>

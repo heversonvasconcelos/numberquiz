@@ -7,11 +7,23 @@
             <minimum-ant-version>1.6.5</minimum-ant-version>
             <web-module-libraries>
                 <library dirs="200">
+                    <file>${reference.NumberQuizJSF2Model.jar}</file>
+                    <path-in-war>WEB-INF/lib</path-in-war>
+                </library>
+                <library dirs="200">
+                    <file>${libs.hibernate-persistence.classpath}</file>
+                    <path-in-war>WEB-INF/lib</path-in-war>
+                </library>
+                <library dirs="200">
                     <file>${libs.jsf20.classpath}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
-                    <file>${reference.NumberQuizJSF2Model.jar}</file>
+                    <file>${libs.jstl11.classpath}</file>
+                    <path-in-war>WEB-INF/lib</path-in-war>
+                </library>
+                <library dirs="200">
+                    <file>${libs.primefaces.classpath}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
@@ -19,60 +31,15 @@
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
-                    <file>${libs.PrettyFaces.classpath}</file>
-                    <path-in-war>WEB-INF/lib</path-in-war>
-                </library>
-                <library dirs="200">
                     <file>${libs.Commons.classpath}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
-                    <file>${libs.c3p0.classpath}</file>
-                    <path-in-war>WEB-INF/lib</path-in-war>
-                </library>
-                <library dirs="200">
-                    <file>${libs.PrimeFaces.classpath}</file>
-                    <path-in-war>WEB-INF/lib</path-in-war>
-                </library>
-                <library dirs="200">
-                    <file>${libs.hibernate-persistence.classpath}</file>
+                    <file>${libs.PrettyFaces.classpath}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
             </web-module-libraries>
-            <web-module-additional-libraries>
-                <library dirs="200">
-                    <file>${libs.c3p0.classpath}</file>
-                    <path-in-war>/</path-in-war>
-                </library>
-                <library dirs="200">
-                    <file>${libs.jsf20.classpath}</file>
-                    <path-in-war>/</path-in-war>
-                </library>
-                <library dirs="200">
-                    <file>${reference.NumberQuizJSF2Model.jar}</file>
-                    <path-in-war>/</path-in-war>
-                </library>
-                <library dirs="200">
-                    <file>${libs.JavaDBDerby.classpath}</file>
-                    <path-in-war>/</path-in-war>
-                </library>
-                <library dirs="200">
-                    <file>${libs.PrettyFaces.classpath}</file>
-                    <path-in-war>/</path-in-war>
-                </library>
-                <library dirs="200">
-                    <file>${libs.Commons.classpath}</file>
-                    <path-in-war>/</path-in-war>
-                </library>
-                <library dirs="200">
-                    <file>${libs.PrimeFaces.classpath}</file>
-                    <path-in-war>/</path-in-war>
-                </library>
-                <library dirs="200">
-                    <file>${libs.hibernate-persistence.classpath}</file>
-                    <path-in-war>/</path-in-war>
-                </library>
-            </web-module-additional-libraries>
+            <web-module-additional-libraries/>
             <source-roots>
                 <root id="src.dir"/>
             </source-roots>

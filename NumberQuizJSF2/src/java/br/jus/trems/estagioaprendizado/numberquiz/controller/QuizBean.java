@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -83,6 +84,12 @@ public class QuizBean implements Serializable {
         quiz.setScore(score);
         quiz.setUser((User) SessionUtil.getAttribute("authenticatedUser"));
 
+    }
+
+    @PreDestroy
+    private void finalizeAccess() {
+        problemDaoImpl.finalizeAccess();
+        quizDaoImpl.finalizeAccess();
     }
 
     /**

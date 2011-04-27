@@ -43,7 +43,9 @@ public class EntityManagerUtil {
      */
     public static void beginTransaction() {
         init();
-        em.getTransaction().begin();
+        if (!isTransactionActive()) {
+            em.getTransaction().begin();
+        }
     }
 
     /**
