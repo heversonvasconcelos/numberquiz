@@ -1,11 +1,11 @@
 package br.jus.trems.estagioaprendizado.numberquiz.daoimpl;
 
+import br.jus.trems.estagioaprendizado.numberquiz.dao.QuizDao;
 import br.jus.trems.estagioaprendizado.numberquiz.entities.Quiz;
-import br.jus.trems.estagioaprendizado.numberquiz.utils.EntityManagerUtil;
-import java.io.Serializable;
 import java.util.List;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
+import org.springframework.stereotype.Repository;
 
 /**
  * Classe concreta que será utilizada na execução de todas as operações de
@@ -13,7 +13,8 @@ import javax.persistence.Query;
  * 
  * @author heverson.vasconcelos
  */
-public class QuizDaoImpl extends DaoImpl<Quiz> implements Serializable {
+@Repository
+public class QuizDaoImpl extends GenericDaoImpl<Quiz, Integer> implements QuizDao {
 
     @Override
     public Class<Quiz> getDomainClass() {
@@ -30,7 +31,7 @@ public class QuizDaoImpl extends DaoImpl<Quiz> implements Serializable {
      * @return Lista contendo os quizzes resultado da consulta.
      */
     public List<Quiz> getTopScores(int numberOfScores) {
-        Query query = EntityManagerUtil.getEntityManager().createNamedQuery("Quiz.getTopScores");
+        Query query = getEntityManager().createNamedQuery("Quiz.getTopScores");
 
         try {
             query.setMaxResults(numberOfScores);

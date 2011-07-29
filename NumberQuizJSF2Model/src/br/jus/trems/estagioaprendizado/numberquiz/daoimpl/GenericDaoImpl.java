@@ -1,11 +1,14 @@
 package br.jus.trems.estagioaprendizado.numberquiz.daoimpl;
 
-import br.jus.trems.estagioaprendizado.numberquiz.dao.Dao;
-import br.jus.trems.estagioaprendizado.numberquiz.utils.EntityManagerUtil;
+import br.jus.trems.estagioaprendizado.numberquiz.dao.GenericDao;
+import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PreDestroy;
+import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Classe abstrata parametrizada que implementa a interface Dao.
@@ -14,10 +17,17 @@ import javax.persistence.Query;
  *
  * @author heverson.vasconcelos
  */
-public abstract class DaoImpl<T> implements Dao<T> {
+public abstract class GenericDaoImpl<T, ID extends Serializable> implements GenericDao<T, ID> {
 
-    public DaoImpl() {
-        EntityManagerUtil.init();
+    private EntityManager entityManager;
+
+    public EntityManager getEntityManager() {
+        return entityManager;
+    }
+
+    @PersistenceContext
+    public void setEntityManager(EntityManager entityManager) {
+        this.entityManager = entityManager;
     }
 
     /**
@@ -28,26 +38,23 @@ public abstract class DaoImpl<T> implements Dao<T> {
     public abstract Class<T> getDomainClass();
 
     @Override
+    @Transactional
     public void create(T obj) {
-        if (!EntityManagerUtil.isTransactionActive()) {
-            EntityManagerUtil.beginTransaction();
-        }
-        if (obj != null) {
-            EntityManagerUtil.insert(obj);
-            EntityManagerUtil.commit();
-        }
+        getEntityManager().clear();
+        getEntityManager().persist(obj);
+
     }
 
     @Override
-    public T retrieve(Integer id) {
-        return (T) EntityManagerUtil.getEntityManager().find(getDomainClass(), id);
+    public T retrieve(ID id) {
+        return (T) getEntityManager().find(getDomainClass(), id);
 
     }
 
     @Override
     public List<T> list() {
         String queryS = "SELECT obj FROM " + getDomainClass().getSimpleName() + " obj";
-        Query query = EntityManagerUtil.createQuery(queryS);
+        Query query = getEntityManager().createQuery(queryS);
 
         try {
             return query.getResultList();
@@ -56,33 +63,23 @@ public abstract class DaoImpl<T> implements Dao<T> {
         }
     }
 
-    /*
     @Override
+    @Transactional
     public T delete(T obj) {
-    if (!EntityManagerUtil.isTransactionActive()) {
-    EntityManagerUtil.beginTransaction();
+        obj = getEntityManager().merge(obj);
+        getEntityManager().remove(obj);
+
+        return obj;
+
     }
 
-    obj = (T) EntityManagerUtil.merge(obj);
-    EntityManagerUtil.remove(obj);
-
-    EntityManagerUtil.commit();
-
-    return obj;
-    }
-     *
-     */
     @Override
+    @Transactional
     public T update(T obj) {
         T objReturn = null;
 
-        if (!EntityManagerUtil.isTransactionActive()) {
-            EntityManagerUtil.beginTransaction();
-        }
-
         if (obj != null) {
-            objReturn = (T) EntityManagerUtil.update(obj);
-            EntityManagerUtil.commit();
+            objReturn = (T) getEntityManager().merge(obj);
         }
 
         return objReturn;
@@ -90,6 +87,6 @@ public abstract class DaoImpl<T> implements Dao<T> {
 
     @PreDestroy
     public void finalizeAccess() {
-        EntityManagerUtil.close();
+        getEntityManager().close();
     }
 }

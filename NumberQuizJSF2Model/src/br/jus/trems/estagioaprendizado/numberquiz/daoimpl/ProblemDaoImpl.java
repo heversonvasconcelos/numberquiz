@@ -1,10 +1,10 @@
 package br.jus.trems.estagioaprendizado.numberquiz.daoimpl;
 
+import br.jus.trems.estagioaprendizado.numberquiz.dao.ProblemDao;
 import br.jus.trems.estagioaprendizado.numberquiz.entities.Problem;
-import br.jus.trems.estagioaprendizado.numberquiz.utils.EntityManagerUtil;
-import java.io.Serializable;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
+import org.springframework.stereotype.Repository;
 
 /**
  * Classe concreta que será utilizada na execução de todas as operações de
@@ -12,7 +12,8 @@ import javax.persistence.Query;
  *
  * @author heverson.vasconcelos
  */
-public class ProblemDaoImpl extends DaoImpl<Problem> implements Serializable {
+@Repository
+public class ProblemDaoImpl extends GenericDaoImpl<Problem, Integer> implements ProblemDao {
 
     @Override
     public Class<Problem> getDomainClass() {
@@ -29,7 +30,7 @@ public class ProblemDaoImpl extends DaoImpl<Problem> implements Serializable {
      *         Null caso não exista um problema contendo a sequência problemSequence.
      */
     public Problem getProblemBySequence(Integer[] problemSequence) {
-        Query query = EntityManagerUtil.getEntityManager().createNamedQuery("Problem.findByProblemSequence");
+        Query query = getEntityManager().createNamedQuery("Problem.findByProblemSequence");
         query.setParameter("problemSequence", problemSequence);
 
         try {

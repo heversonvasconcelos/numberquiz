@@ -8,8 +8,10 @@ import br.jus.trems.estagioaprendizado.numberquiz.utils.SessionUtil;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.inject.Named;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
 
 /**
  * Bean gerenciável utilizado no controle do login de usuários na aplicação.
@@ -21,8 +23,9 @@ import javax.faces.bean.SessionScoped;
  *
  * @author heverson.vasconcelos
  */
-@ManagedBean(name = "loginBean")
-@SessionScoped
+@Named("loginBean")
+@Controller
+@Scope("session")
 public class LoginBean implements Serializable {
 
     /**
@@ -41,14 +44,18 @@ public class LoginBean implements Serializable {
      */
     private UserDaoImpl userDaoImpl;
 
+    @Autowired
+    public LoginBean(UserDaoImpl userDaoImpl) {
+        this.userDaoImpl = userDaoImpl;
+    }
+
     @PostConstruct
     public void init() {
         user = new User();
-        userDaoImpl = new UserDaoImpl();
     }
 
     @PreDestroy
-    private void finalizeAccess() {
+    public void finalizeAccess() {
         userDaoImpl.finalizeAccess();
     }
 

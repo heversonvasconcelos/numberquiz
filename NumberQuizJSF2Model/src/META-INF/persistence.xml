@@ -1,37 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
+<persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
+    
     <persistence-unit name="NumberQuizJSF2ModelPU" transaction-type="RESOURCE_LOCAL">
-        <provider>org.hibernate.ejb.HibernatePersistence</provider>
-        <class>br.jus.trems.estagioaprendizado.numberquiz.entities.User</class>
-        <class>br.jus.trems.estagioaprendizado.numberquiz.entities.Problem</class>
-        <class>br.jus.trems.estagioaprendizado.numberquiz.entities.ProblemSequence</class>
-        <class>br.jus.trems.estagioaprendizado.numberquiz.entities.Quiz</class>
         <properties>
-            <!-- Apache Derby dialect, connection driver -->
-            <property name="hibernate.connection.driver_class" value="org.apache.derby.jdbc.ClientDriver"/>
-            <property name="hibernate.dialect" value="org.hibernate.dialect.DerbyDialect"/>
-            
-            <!-- Apache Derby access configuration -->
-            <property name="hibernate.connection.url" value="jdbc:derby://localhost:1527/numberquiz"/>
-            <property name="hibernate.connection.username" value="admin"/>
-            <property name="hibernate.connection.password" value="admin"/>
-
             <property name="hibernate.hbm2ddl.auto" value="update" />
-            <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
-            <property name="hibernate.show_sql" value="false"/>
-            <property name="hibernate.format_sql" value="false"/>
-            <property name="use_sql_comments" value="false"/>
-      
-            <!-- Hibernate C3P0 Connection Pool 
-            
-            <property name="hibernate.connection.provider_class" value="org.hibernate.connection.C3P0ConnectionProvider" />
-            <property name="hibernate.c3p0.min_size" value="5" />
-            <property name="hibernate.c3p0.max_size" value="20" />
-            <property name="hibernate.c3p0.timeout" value="300" />
-            <property name="hibernate.c3p0.max_statements" value="50" />
-            <property name="hibernate.c3p0.idle_test_period" value="3000" />
-            <property name="hibernate.c3p0.acquire_increment" value="1" />
-            -->
         </properties>
     </persistence-unit>
 </persistence>

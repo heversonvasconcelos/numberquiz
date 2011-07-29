@@ -13,8 +13,10 @@ import java.util.Collections;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.inject.Named;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
 
 /**
  * Bean gerenciável utilizado no controle dos quizzes (jogos realizados). <br>
@@ -28,8 +30,9 @@ import javax.faces.bean.SessionScoped;
  *
  * @author heverson.vasconcelos
  */
-@ManagedBean(name = "quizBean")
-@SessionScoped
+@Named("quizBean")
+@Controller
+@Scope("session")
 public class QuizBean implements Serializable {
 
     /**
@@ -64,9 +67,10 @@ public class QuizBean implements Serializable {
      * Construtor que inicializa as singletons que gerenciarão os problemas e
      * os quizzes requisitados.
      */
-    public QuizBean() {
-        problemDaoImpl = new ProblemDaoImpl();
-        quizDaoImpl = new QuizDaoImpl();
+    @Autowired
+    public QuizBean(ProblemDaoImpl problemDaoImpl, QuizDaoImpl quizDaoImpl) {
+        this.problemDaoImpl = problemDaoImpl;
+        this.quizDaoImpl = quizDaoImpl;
     }
 
     /**
@@ -87,7 +91,7 @@ public class QuizBean implements Serializable {
     }
 
     @PreDestroy
-    private void finalizeAccess() {
+    public void finalizeAccess() {
         problemDaoImpl.finalizeAccess();
         quizDaoImpl.finalizeAccess();
     }

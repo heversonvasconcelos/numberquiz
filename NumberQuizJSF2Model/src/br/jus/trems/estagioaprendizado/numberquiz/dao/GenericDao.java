@@ -1,5 +1,6 @@
 package br.jus.trems.estagioaprendizado.numberquiz.dao;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -9,7 +10,7 @@ import java.util.List;
  * 
  * @author heverson.vasconcelos
  */
-public interface Dao<T> {
+public interface GenericDao<T, ID extends Serializable> {
 
     /**
      * Método para inserir um novo objeto do tipo T no banco.
@@ -24,7 +25,7 @@ public interface Dao<T> {
      * @param id Identificação do objeto.
      * @return Objeto consultado.
      */
-    public T retrieve(Integer id);
+    public T retrieve(ID id);
 
     /**
      * Método para atualizar um objeto no banco.
@@ -33,6 +34,8 @@ public interface Dao<T> {
      * @return Objeto atualizado.
      */
     public T update(T obj);
+
+    public T delete(T obj);
 
     /* public T delete(T obj); */
     /**
