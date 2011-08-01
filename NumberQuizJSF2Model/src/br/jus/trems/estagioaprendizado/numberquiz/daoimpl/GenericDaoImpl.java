@@ -86,6 +86,7 @@ public abstract class GenericDaoImpl<T, ID extends Serializable> implements Gene
     }
 
     @PreDestroy
+    @Override
     public void finalizeAccess() {
         getEntityManager().close();
     }

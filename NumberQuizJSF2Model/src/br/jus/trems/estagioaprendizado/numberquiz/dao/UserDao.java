@@ -11,4 +11,8 @@ import br.jus.trems.estagioaprendizado.numberquiz.entities.User;
  * @author heverson.vasconcelos
  */
 public interface UserDao extends GenericDao<User, Integer> {
+
+    public User getUserByName(String userName);
+
+    public boolean verifyIfUserNameExists(String userName);
 }

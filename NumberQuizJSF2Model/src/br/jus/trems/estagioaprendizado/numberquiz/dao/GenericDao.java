@@ -44,4 +44,6 @@ public interface GenericDao<T, ID extends Serializable> {
      * @return Lista contendo objetos do tipo T.
      */
     public List<T> list();
+
+    public void finalizeAccess();
 }

@@ -1,7 +1,7 @@
 package br.jus.trems.estagioaprendizado.numberquiz.controller;
 
-import br.jus.trems.estagioaprendizado.numberquiz.daoimpl.ProblemDaoImpl;
-import br.jus.trems.estagioaprendizado.numberquiz.daoimpl.QuizDaoImpl;
+import br.jus.trems.estagioaprendizado.numberquiz.dao.ProblemDao;
+import br.jus.trems.estagioaprendizado.numberquiz.dao.QuizDao;
 import br.jus.trems.estagioaprendizado.numberquiz.entities.Problem;
 import br.jus.trems.estagioaprendizado.numberquiz.entities.Quiz;
 import br.jus.trems.estagioaprendizado.numberquiz.entities.User;
@@ -12,9 +12,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
-import javax.inject.Named;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
@@ -30,8 +28,7 @@ import org.springframework.stereotype.Controller;
  *
  * @author heverson.vasconcelos
  */
-@Named("quizBean")
-@Controller
+@Controller("quizBean")
 @Scope("session")
 public class QuizBean implements Serializable {
 
@@ -56,22 +53,14 @@ public class QuizBean implements Serializable {
      * Variável utilizada nos métodos que irão inserir ou consultar alguma
      * informação relativa aos problemas.
      */
-    private ProblemDaoImpl problemDaoImpl;
+    @Resource
+    private ProblemDao problemDao;
     /**
      * Variável utilizada nos métodos que irão inserir ou consultar alguma
      * informação relativa aos quizzes (jogos realizados).
      */
-    private QuizDaoImpl quizDaoImpl;
-
-    /**
-     * Construtor que inicializa as singletons que gerenciarão os problemas e
-     * os quizzes requisitados.
-     */
-    @Autowired
-    public QuizBean(ProblemDaoImpl problemDaoImpl, QuizDaoImpl quizDaoImpl) {
-        this.problemDaoImpl = problemDaoImpl;
-        this.quizDaoImpl = quizDaoImpl;
-    }
+    @Resource
+    private QuizDao quizDao;
 
     /**
      * Método que inicializa todas as variáveis necessárias para um novo jogo.
@@ -80,7 +69,7 @@ public class QuizBean implements Serializable {
     public void init() {
         quiz = new Quiz();
 
-        problems = problemDaoImpl.list();
+        problems = problemDao.list();
         score = 0;
         currentIndex = 0;
         Collections.shuffle(problems);
@@ -88,12 +77,6 @@ public class QuizBean implements Serializable {
         quiz.setScore(score);
         quiz.setUser((User) SessionUtil.getAttribute("authenticatedUser"));
 
-    }
-
-    @PreDestroy
-    public void finalizeAccess() {
-        problemDaoImpl.finalizeAccess();
-        quizDaoImpl.finalizeAccess();
     }
 
     /**
@@ -147,7 +130,7 @@ public class QuizBean implements Serializable {
     public void saveScore() {
         if (score > 0) {
             quiz.setScore(score);
-            quizDaoImpl.create(quiz);
+            quizDao.create(quiz);
         }
     }
 
@@ -189,6 +172,6 @@ public class QuizBean implements Serializable {
      * @return Lista contendo os quizzes(jogos realizados) com as melhores pontuações.
      */
     public List<Quiz> getTopScores() {
-        return quizDaoImpl.getTopScores(Constants.CONFIG_NUMBER_OF_SCORES);
+        return quizDao.getTopScores(Constants.CONFIG_NUMBER_OF_SCORES);
     }
 }

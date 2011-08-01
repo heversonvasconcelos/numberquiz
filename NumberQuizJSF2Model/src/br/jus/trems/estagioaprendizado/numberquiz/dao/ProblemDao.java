@@ -11,4 +11,8 @@ import br.jus.trems.estagioaprendizado.numberquiz.entities.Problem;
  * @author heverson.vasconcelos
  */
 public interface ProblemDao extends GenericDao<Problem, Integer> {
+
+    public Problem getProblemBySequence(Integer[] problemSequence);
+
+    public boolean verifyIfProblemSequenceExists(Integer[] problemSequence);
 }

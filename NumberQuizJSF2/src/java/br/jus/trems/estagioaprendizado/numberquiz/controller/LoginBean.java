@@ -1,15 +1,13 @@
 package br.jus.trems.estagioaprendizado.numberquiz.controller;
 
-import br.jus.trems.estagioaprendizado.numberquiz.daoimpl.UserDaoImpl;
+import br.jus.trems.estagioaprendizado.numberquiz.dao.UserDao;
 import br.jus.trems.estagioaprendizado.numberquiz.entities.User;
 import br.jus.trems.estagioaprendizado.numberquiz.utils.Constants;
 import br.jus.trems.estagioaprendizado.numberquiz.utils.FacesUtil;
 import br.jus.trems.estagioaprendizado.numberquiz.utils.SessionUtil;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
-import javax.inject.Named;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
@@ -23,8 +21,7 @@ import org.springframework.stereotype.Controller;
  *
  * @author heverson.vasconcelos
  */
-@Named("loginBean")
-@Controller
+@Controller("loginBean")
 @Scope("session")
 public class LoginBean implements Serializable {
 
@@ -42,21 +39,12 @@ public class LoginBean implements Serializable {
      * Variável utilizada nos métodos que irão inserir ou consultar alguma
      * informação relativa aos usuários.
      */
-    private UserDaoImpl userDaoImpl;
-
-    @Autowired
-    public LoginBean(UserDaoImpl userDaoImpl) {
-        this.userDaoImpl = userDaoImpl;
-    }
+    @Resource
+    private UserDao userDao;
 
     @PostConstruct
     public void init() {
         user = new User();
-    }
-
-    @PreDestroy
-    public void finalizeAccess() {
-        userDaoImpl.finalizeAccess();
     }
 
     public User getUser() {
@@ -87,7 +75,7 @@ public class LoginBean implements Serializable {
      */
     private User verifyLogin() {
 
-        return (userDaoImpl.getUserByName(user.getName()));
+        return (userDao.getUserByName(user.getName()));
     }
 
     /**
@@ -139,8 +127,6 @@ public class LoginBean implements Serializable {
         authenticatedUser = null;
         SessionUtil.destroySession();
 
-        userDaoImpl.finalizeAccess();
-
         return Constants.PAGE_INDEX;
     }
 
@@ -154,13 +140,12 @@ public class LoginBean implements Serializable {
      */
     public String newUser() {
 
-        if (userDaoImpl.verifyIfUserNameExists(user.getName())) {
+        if (userDao.verifyIfUserNameExists(user.getName())) {
             FacesUtil.mensErro(Constants.MSG_USER_ALREADY_EXISTS);
             return null;
         }
 
-        userDaoImpl.create(user);
-        userDaoImpl.finalizeAccess();
+        userDao.create(user);
 
         authenticatedUser = user;
         SessionUtil.setAttribute(sessionAttributeName, authenticatedUser);

@@ -35,11 +35,11 @@ public final class UserDAOTest {
         printListManifestacao(userList);
     }
 
-    //@Test
+    @Test
     public void testCreatANewUser() {
         User user = new User();
-        user.setName("joao");
-        user.setPassword("joao");
+        user.setName("mario");
+        user.setPassword("mario");
 
         userDao.create(user);
     }
@@ -50,5 +50,4 @@ public final class UserDAOTest {
             System.out.println(it.next());
         }
     }
-    
 }
