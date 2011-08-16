@@ -1,3 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
 <!--
     NumberQuizJSF2
     @author heverson.vasconcelos
@@ -17,19 +20,16 @@
     <!-- CENTER -->
     <ui:define name="content">
         <h:form>
-            <div align="center" style="padding: 10px">
-                <table align="center" style="width: 90%">
-                    <tr>
-                        <!-- CENTER LEFT PANEL -->
-                        <td align="left" style="width: 27%">
-                    <p:panel style="height: 300PX" header="#{msgs.welcome}, #{loginBean.authenticatedUser.name}">
-                        <center>
-                            <h:graphicImage height="201" width="256" library="images" name="numberQuiz.gif"/>
-                        </center>
+            <div id="numberQuizDivContent">
+                <!-- CENTER LEFT PANEL -->
+                <div>
+                    <p:panel style="height: 300px" header="#{msgs.welcome}, #{loginBean.authenticatedUser.name}">
+                        <h:graphicImage height="201" width="256" library="images" name="numberQuiz.gif"/>
                     </p:panel>
-                    </td>
-                    <!-- CENTER RIGHT PANEL -->
-                    <td align="left" style="width: 70%">
+                </div>
+
+                <!-- CENTER RIGHT PANEL -->
+                <div>
                     <p:panel id="panel" style="height: 300PX">
                         <h:panelGrid columns="1" >
                             <h:outputFormat value="#{msgs.currentScore}">
@@ -50,9 +50,7 @@
                         <p:commandButton value="#{msgs.quit}" action="#{quizBean.showScore()}" ajax="false" />
 
                     </p:panel>
-                    </td>
-                    </tr>
-                </table>
+                </div>
             </div>
         </h:form>
     </ui:define>

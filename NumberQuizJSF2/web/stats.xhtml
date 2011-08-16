@@ -1,3 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
 <!--
     NumberQuizJSF2
     @author heverson.vasconcelos
@@ -21,47 +24,47 @@
                     <tr>
                         <!-- PONTUACAO FINAL -->
                         <td align="center">
-                    <p:panel>
-                        <h3>
-                            <h:outputFormat value="#{msgs.thankyou}">
-                                <f:param value="#{loginBean.authenticatedUser.name}"/>
-                            </h:outputFormat>
-                        </h3>
-                        <p>
-                        <h:outputFormat value="#{msgs.finalScore}">
-                            <f:param value="#{quizBean.score}"/>
-                        </h:outputFormat>
-                        </p>
-                        <p>
-                        <p:commandButton value="#{msgs.restart}" action="#{quizBean.newGame()}" ajax="false" />
-                        <p:commandButton value="#{msgs.quit}" action="#{loginBean.logout()}" ajax="false"/>
-                        </p>
-                    </p:panel>
-                    </td>
+                            <p:panel>
+                                <h3>
+                                    <h:outputFormat value="#{msgs.thankyou}">
+                                        <f:param value="#{loginBean.authenticatedUser.name}"/>
+                                    </h:outputFormat>
+                                </h3>
+                                <p>
+                                    <h:outputFormat value="#{msgs.finalScore}">
+                                        <f:param value="#{quizBean.score}"/>
+                                    </h:outputFormat>
+                                </p>
+                                <p>
+                                    <p:commandButton value="#{msgs.restart}" action="#{quizBean.newGame()}" ajax="false" />
+                                    <p:commandButton value="#{msgs.quit}" action="#{loginBean.logout()}" ajax="false"/>
+                                </p>
+                            </p:panel>
+                        </td>
                     </tr>
                     <tr>
                         <!-- MELHORES PONTUACOES -->
                         <td align="center">
-                    <p:dataTable var="quiz" value="#{quizBean.topScores}">
-                        <f:facet name="header">
-                            <h:outputText value="#{msgs.topScores}"/>
-                        </f:facet>
+                            <p:dataTable var="quiz" value="#{quizBean.topScores}">
+                                <f:facet name="header">
+                                    <h:outputText value="#{msgs.topScores}"/>
+                                </f:facet>
 
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{msgs.name}"/>
-                            </f:facet>
-                            <h:outputText value="#{quiz.user.name}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{msgs.score}"/>
-                            </f:facet>
-                            <h:outputText value="#{quiz.score}"/>
-                        </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{msgs.name}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{quiz.user.name}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{msgs.score}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{quiz.score}"/>
+                                </p:column>
 
-                    </p:dataTable>
-                    </td>
+                            </p:dataTable>
+                        </td>
                     </tr>
                 </table>
             </div>

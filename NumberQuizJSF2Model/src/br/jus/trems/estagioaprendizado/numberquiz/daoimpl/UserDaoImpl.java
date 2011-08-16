@@ -28,6 +28,7 @@ public class UserDaoImpl extends GenericDaoImpl<User, Integer> implements UserDa
      * @return Usuário contendo o nome userName. <br>
      *         Null caso não exista um usuário contendo o nome userName.
      */
+    @Override
     public User getUserByName(String userName) {
         Query query = getEntityManager().createNamedQuery("User.findByUserName");
         query.setParameter("userName", userName);
@@ -46,6 +47,7 @@ public class UserDaoImpl extends GenericDaoImpl<User, Integer> implements UserDa
      * @param userName Nome de login a ser buscado.
      * @return True caso exista um usuário contendo o nome de login.
      */
+    @Override
     public boolean verifyIfUserNameExists(String userName) {
         return (getUserByName(userName) != null) ? true : false;
     }

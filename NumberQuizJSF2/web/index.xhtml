@@ -1,3 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
 <!--
         NumberQuizJSF2
         @author heverson.vasconcelos
@@ -15,27 +18,23 @@
 
     <!-- CENTER -->
     <ui:define name="content">
-        <div align="center" style="padding: 10px">
-            <h:form>
-                <p:messages />
-                <p:panel header="#{msgs.enterNamePass}" style="width: 450px">
-                    <h:panelGrid columns="2" >
-
-                        <h:outputText value="#{msgs.name}: "/>
-                        <p:inputText required="true"
-                                     requiredMessage="#{msgs.nameRequired}"
-                                     value="#{loginBean.user.name}" />
-                        <h:outputText value="#{msgs.password}: "/>
-                        <p:password required="true" requiredMessage="#{msgs.passRequired}"
-                                    value="#{loginBean.user.password}" feedback="false" minLength="4"
-                                    promptLabel="#{msgs.passRequired}"/>
-                    </h:panelGrid>
-                    <br/>
-                    <p:commandButton title="#{msgs.login}" value="#{msgs.login}" action="#{loginBean.login()}" ajax="false"/>
-                    <p:commandButton title="#{msgs.register}" value="#{msgs.register}" action="#{loginBean.newUser()}" ajax="false" />
-                </p:panel>
-            </h:form>
-        </div>
+        <h:form>
+            <p:messages />
+            <p:panel header="#{msgs.enterNamePass}" style="width: 450px">
+                <h:panelGrid columns="2" >
+                    <h:outputText value="#{msgs.name}: "/>
+                    <p:inputText required="true"
+                                 requiredMessage="#{msgs.nameRequired}"
+                                 value="#{loginBean.user.name}" />
+                    <h:outputText value="#{msgs.password}: "/>
+                    <p:password required="true" requiredMessage="#{msgs.passRequired}"
+                                value="#{loginBean.user.password}" feedback="false" minLength="4"
+                                promptLabel="#{msgs.passRequired}"/>
+                </h:panelGrid>
+                <br/>
+                <p:commandButton title="#{msgs.login}" value="#{msgs.login}" action="#{loginBean.login()}" ajax="false"/>
+                <p:commandButton title="#{msgs.register}" value="#{msgs.register}" action="#{loginBean.newUser()}" ajax="false" />
+            </p:panel>
+        </h:form>
     </ui:define>
-
 </ui:composition>

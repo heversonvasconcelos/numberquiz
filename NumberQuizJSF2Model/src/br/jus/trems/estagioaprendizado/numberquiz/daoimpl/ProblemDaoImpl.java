@@ -29,6 +29,7 @@ public class ProblemDaoImpl extends GenericDaoImpl<Problem, Integer> implements 
      * @return Problema contendo a sequência problemSequence. <br>
      *         Null caso não exista um problema contendo a sequência problemSequence.
      */
+    @Override
     public Problem getProblemBySequence(Integer[] problemSequence) {
         Query query = getEntityManager().createNamedQuery("Problem.findByProblemSequence");
         query.setParameter("problemSequence", problemSequence);
@@ -47,6 +48,7 @@ public class ProblemDaoImpl extends GenericDaoImpl<Problem, Integer> implements 
      * @param problemSequence Sequência a ser buscada.
      * @return True caso exista um problema contendo a determinada sequência.
      */
+    @Override
     public boolean verifyIfProblemSequenceExists(Integer[] problemSequence) {
         return (getProblemBySequence(problemSequence) != null) ? true : false;
     }

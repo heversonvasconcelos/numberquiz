@@ -25,6 +25,12 @@
     float: right;
 }
 
+.aligncenter {
+    margin: auto;
+    text-align: center;
+    width: 500px;
+}
+
 .aboutIcon {
     height: 50px;
     width: 50px;
@@ -49,7 +55,6 @@
     height: 768px;
     margin: auto;
     border: 1px solid black;
-
     font-family: Verdana,Arial,sans-serif;
 }
 
@@ -61,8 +66,10 @@
 #content {
     background-color: #EBECEC;
     height: 604px;
-    margin: auto;
     font-size: 15px;
+    margin-top: auto;
+    margin: auto;
+    text-align: center;
 
 }
 
