@@ -28,7 +28,6 @@
 .aligncenter {
     margin: auto;
     text-align: center;
-    width: 500px;
 }
 
 .aboutIcon {
@@ -67,9 +66,6 @@
     background-color: #EBECEC;
     height: 604px;
     font-size: 15px;
-    margin-top: auto;
-    margin: auto;
-    text-align: center;
 
 }
 

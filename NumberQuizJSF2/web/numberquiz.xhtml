@@ -20,17 +20,16 @@
     <!-- CENTER -->
     <ui:define name="content">
         <h:form>
-            <div id="numberQuizDivContent">
-                <!-- CENTER LEFT PANEL -->
-                <div>
+            <div class="aligncenter" style="padding: 50px">
+                <div class="alignleft" style="width: 35%">
+                    <!-- CENTER LEFT PANEL -->
                     <p:panel style="height: 300px" header="#{msgs.welcome}, #{loginBean.authenticatedUser.name}">
                         <h:graphicImage height="201" width="256" library="images" name="numberQuiz.gif"/>
                     </p:panel>
                 </div>
-
-                <!-- CENTER RIGHT PANEL -->
-                <div>
-                    <p:panel id="panel" style="height: 300PX">
+                <div class="alignright" style="width: 65%">
+                    <!-- CENTER RIGHT PANEL -->
+                    <p:panel id="panel" style="height: 300px; text-align: left">
                         <h:panelGrid columns="1" >
                             <h:outputFormat value="#{msgs.currentScore}">
                                 <f:param value="#{quizBean.score}"/>
@@ -38,7 +37,9 @@
                             <h:outputText value="#{msgs.guessNext}: "/>
                             <h:outputText value="#{quizBean.current.problemSequence}" style="font-weight: bolder"/>
                         </h:panelGrid>
-
+                        
+                        <br/>
+                        <br/>
                         <br/>
                         <h:outputText value="#{msgs.answer}: "/>
                         <p:inputText value="#{quizBean.answer}"/>
@@ -48,7 +49,6 @@
                         <br/>
                         <p:commandButton value="#{msgs.next}" action="#{quizBean.checkSolution()}" update="panel"/>
                         <p:commandButton value="#{msgs.quit}" action="#{quizBean.showScore()}" ajax="false" />
-
                     </p:panel>
                 </div>
             </div>

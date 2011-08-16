@@ -11,8 +11,9 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.prime.com.tr/ui"
                 xmlns:h="http://java.sun.com/jsf/html">
+
     <h:form>
-        <p class="alignleft" style="font-size: 35px">#{msgs.title}</p>
+        <h1 class="alignleft" style="font-size: 42px">#{msgs.title}</h1>
         <p class="alignright" style="font-size: 12px">#{msgs.topMsg}</p>
 
         <!-- Toolbar icons -->
@@ -20,16 +21,11 @@
             <p:commandButton title="#{msgs.userAccount}" image="ui-icon ui-icon-home"/>
             <p:commandButton title="#{msgs.about}" oncomplete="aboutModalDialog.show()" image="ui-icon ui-icon-info"/>
             <p:commandButton title="#{msgs.quit}" image="ui-icon ui-icon-close"/>
-
         </p:panel>
 
         <!-- Modal Dialog Application About-->
-        <p:dialog header="#{msgs.about}" widgetVar="aboutModalDialog" draggable="false" resizable="false" modal="true" height="400" width="800" >
+        <p:dialog header="#{msgs.about}" widgetVar="aboutModalDialog" draggable="false" resizable="false" modal="true" height="400" width="850" >
             <p:panel>
-                <!--
-                    <h:outputText styleClass="aboutMessageTopic" value="
-                    <h:outputText styleClass="aboutMessageItem" value="
-                -->
                 <p>
                     <h:outputText styleClass="aboutMessageTopic" value="#{msgs.aboutMessageWhatQuestion}"/>
                     <br/>

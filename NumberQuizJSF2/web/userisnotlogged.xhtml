@@ -18,19 +18,11 @@
     <!-- CENTER -->
     <ui:define name="content">
         <h:form>
-            <div align="center" style="padding: 10px">
-                <table align="center" style="width: 90%">
-                    <tr>
-                        <td align="center">
-                            <p:panel>
-                                <h3> #{msgs.userIsNotLogged}</h3>
-                                <p>
-                                    <p:commandButton  value="#{msgs.login}" action="index" ajax="false"/>
-                                </p>
-                            </p:panel>
-                        </td>
-                    </tr>
-                </table>
+            <div class="aligncenter" style="width: 70%; padding: 50px">
+                <p:panel>
+                    <h3> #{msgs.userIsNotLogged}</h3>
+                    <p> <p:commandButton  value="#{msgs.login}" action="index" ajax="false"/> </p>
+                </p:panel>
             </div>
         </h:form>
     </ui:define>
