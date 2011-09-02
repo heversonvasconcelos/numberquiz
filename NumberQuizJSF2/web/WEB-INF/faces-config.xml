@@ -8,7 +8,13 @@
     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
 
     <application>
-		<!-- Spring EL Resolver -->
+        <!-- Spring EL Resolver -->
         <el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
     </application>
+    
+    <!-- Listeners -->
+    <lifecycle>
+        <phase-listener>sampleapp.numberquiz.listener.LoggedInCheck</phase-listener>
+    </lifecycle>
+    
 </faces-config>

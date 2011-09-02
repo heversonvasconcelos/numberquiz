@@ -8,7 +8,7 @@
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
 
     <!-- holding properties for database connectivity /-->
-    <context:property-placeholder location="classpath:br/jus/trems/estagioaprendizado/numberquiz/bundle/jdbc.properties"/>
+    <context:property-placeholder location="classpath:sampleapp/numberquiz/bundle/jdbc.properties"/>
     
     <!-- JDBC Datasource -->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -30,7 +30,7 @@
 
     <!-- enabling annotation driven configuration /-->
     <context:annotation-config/>
-    <context:component-scan base-package="br.jus.trems.estagioaprendizado.numberquiz"/>
+    <context:component-scan base-package="sampleapp.numberquiz"/>
     <tx:annotation-driven/>
     <bean
       class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />

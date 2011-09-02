@@ -1,0 +1,18 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package sampleapp.numberquiz.dao;
+
+import sampleapp.numberquiz.entities.Problem;
+
+/**
+ *
+ * @author heverson.vasconcelos
+ */
+public interface ProblemDao extends GenericDao<Problem, Integer> {
+
+    public Problem getProblemBySequence(Integer[] problemSequence);
+
+    public boolean verifyIfProblemSequenceExists(Integer[] problemSequence);
+}

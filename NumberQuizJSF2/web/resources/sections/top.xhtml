@@ -13,15 +13,25 @@
                 xmlns:h="http://java.sun.com/jsf/html">
 
     <h:form>
-        <h1 class="alignleft" style="font-size: 42px">#{msgs.title}</h1>
+        <h1 class="logo">#{msgs.title}</h1>
+
         <p class="alignright" style="font-size: 12px">#{msgs.topMsg}</p>
 
         <!-- Toolbar icons -->
-        <p:panel styleClass="alignright">
+        <p:panel styleClass="alignright" rendered="#{loginBean.verifyAuthenticatedUser()}">
             <p:commandButton title="#{msgs.userAccount}" image="ui-icon ui-icon-home"/>
             <p:commandButton title="#{msgs.about}" oncomplete="aboutModalDialog.show()" image="ui-icon ui-icon-info"/>
-            <p:commandButton title="#{msgs.quit}" image="ui-icon ui-icon-close"/>
+            <p:commandButton title="#{msgs.quit}" oncomplete="quitConfirmModalDialog.show()"
+                             image="ui-icon ui-icon-close"/>
         </p:panel>
+
+        <!-- Modal Dialog Confirmacao de saida -->
+        <p:dialog header="#{msgs.quitConfirmQuestion}" widgetVar="quitConfirmModalDialog" draggable="false" resizable="false" modal="true" height="130" width="400" >
+            <p:panel styleClass="aligncenter">
+                <p:commandButton value="#{msgs.yes}" action="#{loginBean.logout()}" oncomplete="quitConfirmModalDialog.hide()" ajax="false"/>
+                <p:commandButton value="#{msgs.no}" oncomplete="quitConfirmModalDialog.hide()" />
+            </p:panel>
+        </p:dialog>
 
         <!-- Modal Dialog Application About-->
         <p:dialog header="#{msgs.about}" widgetVar="aboutModalDialog" draggable="false" resizable="false" modal="true" height="400" width="850" >
@@ -40,33 +50,31 @@
                 </p>
             </p:panel>
             <p:panel>
-                <p>
-                    <h:outputText styleClass="aboutMessageTopic" value="#{msgs.aboutMessageFunctions}"/>
-                    <ul>
-                        <li>
-                            <h:outputText styleClass="aboutMessageItem" value="#{msgs.aboutMessageFunctionsStart01}"/>
-                        </li>
-                        <li>
-                            <h:outputText styleClass="aboutMessageItem" value="#{msgs.aboutMessageFunctionsStart02}"/>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <h:outputText styleClass="aboutMessageItem" value="#{msgs.aboutMessageFunctionsQuiz01}"/>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <h:outputText styleClass="aboutMessageItem" value="#{msgs.aboutMessageFunctionsEnd01}"/>
-                        </li>
-                        <li>
-                            <h:outputText styleClass="aboutMessageItem" value="#{msgs.aboutMessageFunctionsEnd02}"/>
-                        </li>
-                        <li>
-                            <h:outputText styleClass="aboutMessageItem" value="#{msgs.aboutMessageFunctionsEnd03}"/>
-                        </li>
-                    </ul>
-                </p>
+                <h:outputText styleClass="aboutMessageTopic" value="#{msgs.aboutMessageFunctions}"/>
+                <ul>
+                    <li>
+                        <h:outputText styleClass="aboutMessageItem" value="#{msgs.aboutMessageFunctionsStart01}"/>
+                    </li>
+                    <li>
+                        <h:outputText styleClass="aboutMessageItem" value="#{msgs.aboutMessageFunctionsStart02}"/>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <h:outputText styleClass="aboutMessageItem" value="#{msgs.aboutMessageFunctionsQuiz01}"/>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <h:outputText styleClass="aboutMessageItem" value="#{msgs.aboutMessageFunctionsEnd01}"/>
+                    </li>
+                    <li>
+                        <h:outputText styleClass="aboutMessageItem" value="#{msgs.aboutMessageFunctionsEnd02}"/>
+                    </li>
+                    <li>
+                        <h:outputText styleClass="aboutMessageItem" value="#{msgs.aboutMessageFunctionsEnd03}"/>
+                    </li>
+                </ul>
             </p:panel>
         </p:dialog>
 
