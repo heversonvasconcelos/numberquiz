@@ -5,7 +5,7 @@
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.DerbyDialect" />
             <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
-            <property name="hibernate.hbm2ddl.auto" value="update"/>
+<!--            <property name="hibernate.hbm2ddl.auto" value="update"/>-->
         </properties>
     </persistence-unit>
 </persistence>

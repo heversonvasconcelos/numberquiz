@@ -1,7 +1,7 @@
-package sampleapp.numberquiz.daoimpl;
+package sampleapp.numberquiz.model.daoimpl;
 
-import sampleapp.numberquiz.dao.ProblemDao;
-import sampleapp.numberquiz.entities.Problem;
+import sampleapp.numberquiz.model.dao.ProblemDao;
+import sampleapp.numberquiz.model.entity.Problem;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import org.springframework.stereotype.Repository;

@@ -1,4 +1,4 @@
-package sampleapp.numberquiz.dao;
+package sampleapp.numberquiz.model.dao;
 
 import java.io.Serializable;
 import java.util.List;

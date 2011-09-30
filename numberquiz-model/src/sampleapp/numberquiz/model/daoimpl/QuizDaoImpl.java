@@ -1,7 +1,7 @@
-package sampleapp.numberquiz.daoimpl;
+package sampleapp.numberquiz.model.daoimpl;
 
-import sampleapp.numberquiz.dao.QuizDao;
-import sampleapp.numberquiz.entities.Quiz;
+import sampleapp.numberquiz.model.dao.QuizDao;
+import sampleapp.numberquiz.model.entity.Quiz;
 import java.util.List;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;

@@ -1,24 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-br"
-      xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:h="http://java.sun.com/jsf/html">
     <!--
         NumberQuizJSF2
         @author heverson.vasconcelos
-
+    
         Template de definicao do layout padrao das paginas da aplicacao.
     -->
-
     <h:head>
-        <title>
-            <ui:insert name="title">
-                #{msgs.title}
-            </ui:insert>
-        </title>
-        <h:outputStylesheet library="css" name="style.css"/>
-        <f:loadBundle basename="sampleapp.numberquiz.bundle.messages" var="msgs"/>
+        <title>#{msgs.title}</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="resources/css/style.css" rel="stylesheet" type="text/css"/>
     </h:head>
 
     <h:body>

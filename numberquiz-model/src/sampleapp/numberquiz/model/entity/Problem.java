@@ -1,4 +1,4 @@
-package sampleapp.numberquiz.entities;
+package sampleapp.numberquiz.model.entity;
 
 import java.io.Serializable;
 import javax.persistence.Entity;

@@ -1,4 +1,4 @@
-package sampleapp.numberquiz.utils;
+package sampleapp.numberquiz.ui.util;
 
 /**
  * Classe de definição de constantes utilizadas em diversas partes da aplicação.

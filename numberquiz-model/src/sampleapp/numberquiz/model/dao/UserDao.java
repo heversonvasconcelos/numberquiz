@@ -2,9 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package sampleapp.numberquiz.dao;
+package sampleapp.numberquiz.model.dao;
 
-import sampleapp.numberquiz.entities.User;
+import sampleapp.numberquiz.model.entity.User;
 
 /**
  *

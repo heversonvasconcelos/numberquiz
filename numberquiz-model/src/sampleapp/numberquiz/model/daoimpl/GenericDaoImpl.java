@@ -1,6 +1,6 @@
-package sampleapp.numberquiz.daoimpl;
+package sampleapp.numberquiz.model.daoimpl;
 
-import sampleapp.numberquiz.dao.GenericDao;
+import sampleapp.numberquiz.model.dao.GenericDao;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PreDestroy;

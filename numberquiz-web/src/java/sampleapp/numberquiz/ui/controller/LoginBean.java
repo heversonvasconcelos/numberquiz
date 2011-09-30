@@ -1,10 +1,10 @@
-package sampleapp.numberquiz.controller;
+package sampleapp.numberquiz.ui.controller;
 
-import sampleapp.numberquiz.dao.UserDao;
-import sampleapp.numberquiz.entities.User;
-import sampleapp.numberquiz.utils.Constants;
-import sampleapp.numberquiz.utils.FacesUtil;
-import sampleapp.numberquiz.utils.SessionUtil;
+import sampleapp.numberquiz.model.dao.UserDao;
+import sampleapp.numberquiz.model.entity.User;
+import sampleapp.numberquiz.ui.util.Constants;
+import sampleapp.numberquiz.ui.util.FacesUtil;
+import sampleapp.numberquiz.ui.util.SessionUtil;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;

@@ -2,10 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package sampleapp.numberquiz.listener;
+package sampleapp.numberquiz.ui.listener;
 
-import sampleapp.numberquiz.utils.Constants;
-import sampleapp.numberquiz.utils.SessionUtil;
+import sampleapp.numberquiz.ui.util.Constants;
+import sampleapp.numberquiz.ui.util.SessionUtil;
 import javax.faces.application.NavigationHandler;
 import javax.faces.context.FacesContext;
 import javax.faces.event.PhaseEvent;

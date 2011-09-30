@@ -1,12 +1,12 @@
-package sampleapp.numberquiz.controller;
+package sampleapp.numberquiz.ui.controller;
 
-import sampleapp.numberquiz.dao.ProblemDao;
-import sampleapp.numberquiz.dao.QuizDao;
-import sampleapp.numberquiz.entities.Problem;
-import sampleapp.numberquiz.entities.Quiz;
-import sampleapp.numberquiz.entities.User;
-import sampleapp.numberquiz.utils.Constants;
-import sampleapp.numberquiz.utils.SessionUtil;
+import sampleapp.numberquiz.model.dao.ProblemDao;
+import sampleapp.numberquiz.model.dao.QuizDao;
+import sampleapp.numberquiz.model.entity.Problem;
+import sampleapp.numberquiz.model.entity.Quiz;
+import sampleapp.numberquiz.model.entity.User;
+import sampleapp.numberquiz.ui.util.Constants;
+import sampleapp.numberquiz.ui.util.SessionUtil;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;

@@ -1,4 +1,4 @@
-package sampleapp.numberquiz.utils;
+package sampleapp.numberquiz.ui.util;
 
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;

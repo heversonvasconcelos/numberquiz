@@ -1,4 +1,4 @@
-package sampleapp.numberquiz.entities;
+package sampleapp.numberquiz.model.entity;
 
 import java.io.Serializable;
 import javax.persistence.Column;
@@ -39,6 +39,7 @@ public class User implements Serializable {
      */
     @Column(length = 10, nullable = false)
     private String password;
+    //TODO: criptografar a senha armazenada no banco
 
     /*
      *

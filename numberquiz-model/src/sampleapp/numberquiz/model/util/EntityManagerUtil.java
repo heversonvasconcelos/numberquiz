@@ -1,4 +1,4 @@
-package sampleapp.numberquiz.utils;
+package sampleapp.numberquiz.model.util;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;

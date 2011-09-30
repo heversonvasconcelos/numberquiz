@@ -12,7 +12,7 @@
     <context:component-scan base-package="sampleapp.numberquiz"/>
            
     <!-- holding properties for database connectivity /-->
-    <context:property-placeholder location="classpath:sampleapp/numberquiz/bundle/jdbc.properties"/>
+    <context:property-placeholder location="classpath:sampleapp/numberquiz/ui/bundle/jdbc.properties"/>
     
     <!-- JDBC Datasource -->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">

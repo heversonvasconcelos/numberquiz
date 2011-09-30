@@ -1,4 +1,4 @@
-package sampleapp.numberquiz.test;
+package sampleapp.numberquiz.ui.test;
 
 import java.util.Calendar;
 import java.util.List;
@@ -8,8 +8,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import sampleapp.numberquiz.dao.ProblemDao;
-import sampleapp.numberquiz.entities.Problem;
+import sampleapp.numberquiz.model.dao.ProblemDao;
+import sampleapp.numberquiz.model.entity.Problem;
 
 /**
  *

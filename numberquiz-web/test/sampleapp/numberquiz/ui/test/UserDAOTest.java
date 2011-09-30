@@ -1,7 +1,7 @@
-package sampleapp.numberquiz.test;
+package sampleapp.numberquiz.ui.test;
 
-import sampleapp.numberquiz.dao.UserDao;
-import sampleapp.numberquiz.entities.User;
+import sampleapp.numberquiz.model.dao.UserDao;
+import sampleapp.numberquiz.model.entity.User;
 import java.util.Iterator;
 import java.util.List;
 import javax.annotation.Resource;
