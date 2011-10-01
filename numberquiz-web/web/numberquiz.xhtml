@@ -19,12 +19,14 @@
 
     <!-- CENTER -->
     <ui:define name="content">
-        <h:form>
-            <div class="aligncenter" style="padding: 50px">
+        <h:form id="numberquizForm">
+            <ui:include src="/resources/sections/toolbar.xhtml"/>
+            
+            <div class="aligncenter" style="padding: 65px">
                 <div class="alignleft" style="width: 35%">
                     <!-- CENTER LEFT PANEL -->
                     <p:panel style="height: 300px" header="#{msgs.welcome}, #{loginBean.authenticatedUser.name}">
-                        <h:graphicImage height="201" width="256" library="images" name="numberQuiz.gif"/>
+                        <h:graphicImage height="201" width="256" library="images" name="numberQuiz.gif" alt="#{msgs.cubosMagicosNumeros}"/>
                     </p:panel>
                 </div>
                 <div class="alignright" style="width: 65%">
@@ -37,7 +39,7 @@
                             <h:outputText value="#{msgs.guessNext}: "/>
                             <h:outputText value="#{quizBean.current.problemSequence}" style="font-weight: bolder"/>
                         </h:panelGrid>
-                        
+
                         <br/>
                         <br/>
                         <br/>
@@ -47,8 +49,8 @@
                         <br/>
                         <br/>
                         <br/>
-                        <p:commandButton value="#{msgs.next}" action="#{quizBean.checkSolution()}" update="panel"/>
-                        <p:commandButton value="#{msgs.quit}" action="#{quizBean.showScore()}" ajax="false" />
+                        <p:commandButton id="nextSequenceButton" value="#{msgs.next}" action="#{quizBean.checkSolution()}" update="panel"/>
+                        <p:commandButton id="quitGameButton" value="#{msgs.quit}" action="#{quizBean.showScore()}" ajax="false" />
                     </p:panel>
                 </div>
             </div>

@@ -18,23 +18,22 @@
 
     <h:body>
         <div id="page">
-            <!-- PAGE TOP -->
-            <div id="top" class="topBottomConfig">
-                <ui:insert name="top">
-                    <ui:include src="/resources/sections/top.xhtml"/>
-                </ui:insert>
+            <!-- PAGE HEADER -->
+            <div id="header" class="headerFooterConfig">
+                <ui:include src="/resources/sections/header.xhtml"/>
             </div>
 
             <!-- PAGE CONTENT -->
             <div id="content">
                 <ui:insert name="content">
+
                 </ui:insert>
             </div>
 
-            <!-- PAGE BOTTOM -->
-            <div id="bottom" class="topBottomConfig">
-                <ui:insert name="bottom">
-                    <ui:include src="/resources/sections/bottom.xhtml"/>
+            <!-- PAGE FOOTER -->
+            <div id="footer" class="headerFooterConfig">
+                <ui:insert name="footer">
+                    <ui:include src="/resources/sections/footer.xhtml"/>
                 </ui:insert>
             </div>
         </div>

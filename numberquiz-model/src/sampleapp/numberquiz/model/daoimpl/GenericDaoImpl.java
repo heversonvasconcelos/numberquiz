@@ -17,9 +17,9 @@ import org.springframework.transaction.annotation.Transactional;
  *
  * @author heverson.vasconcelos
  */
-public abstract class GenericDaoImpl<T, ID extends Serializable> implements GenericDao<T, ID> {
+public abstract class GenericDaoImpl<T, ID extends Serializable> implements GenericDao<T, ID>, Serializable {
 
-    @PersistenceContext(name="numberquiz-pu")
+    @PersistenceContext(name = "numberquiz-pu")
     protected EntityManager entityManager;
 
     public EntityManager getEntityManager() {

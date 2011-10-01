@@ -16,9 +16,11 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 template="/resources/template/template.xhtml">
 
+    <ui:define name="toolbar"/>
+
     <!-- CENTER -->
     <ui:define name="content">
-        <h:form>
+        <h:form id="indexform">
             <div class="aligncenter" style="width: 50%; padding: 50px;">
                 <p:panel header="#{msgs.enterNamePass}">
                     <h:panelGrid columns="2" styleClass="aligncenter">
