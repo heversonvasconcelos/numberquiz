@@ -7,10 +7,9 @@ import sampleapp.numberquiz.ui.util.FacesUtil;
 import sampleapp.numberquiz.ui.util.SessionUtil;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
-import javax.faces.bean.ManagedBean;
+import javax.inject.Inject;
+import javax.inject.Named;
 import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Controller;
 
 /**
  * Bean gerenciável utilizado no controle do login de usuários na aplicação.
@@ -22,10 +21,9 @@ import org.springframework.stereotype.Controller;
  *
  * @author heverson.vasconcelos
  */
-@ManagedBean(name = "loginBean")
-@Controller
+@Named
 @Scope("request")
-public class LoginBean implements Serializable {
+public class LoginBean {
 
     /**
      * Armazena o usuário corrente
@@ -40,7 +38,7 @@ public class LoginBean implements Serializable {
      * Variável utilizada nos métodos que irão inserir ou consultar alguma
      * informação relativa aos usuários.
      */
-    @Resource
+    @Inject
     private UserDao userDao;
 
     @PostConstruct

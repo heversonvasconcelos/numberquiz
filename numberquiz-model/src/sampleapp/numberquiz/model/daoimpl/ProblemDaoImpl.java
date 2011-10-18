@@ -1,10 +1,10 @@
 package sampleapp.numberquiz.model.daoimpl;
 
+import javax.inject.Named;
 import sampleapp.numberquiz.model.dao.ProblemDao;
 import sampleapp.numberquiz.model.entity.Problem;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
-import org.springframework.stereotype.Repository;
 
 /**
  * Classe concreta que será utilizada na execução de todas as operações de
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
  *
  * @author heverson.vasconcelos
  */
-@Repository
+@Named
 public class ProblemDaoImpl extends GenericDaoImpl<Problem, Integer> implements ProblemDao {
 
     @Override

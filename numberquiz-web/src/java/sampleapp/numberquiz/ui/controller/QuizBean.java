@@ -12,10 +12,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
-import javax.faces.bean.ManagedBean;
+import javax.inject.Inject;
+import javax.inject.Named;
 import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Controller;
 
 /**
  * Bean gerenciável utilizado no controle dos quizzes (jogos realizados). <br>
@@ -29,10 +28,9 @@ import org.springframework.stereotype.Controller;
  *
  * @author heverson.vasconcelos
  */
-@ManagedBean(name = "quizBean")
-@Controller
+@Named
 @Scope("session")
-public class QuizBean implements Serializable {
+public class QuizBean {
 
     /**
      * Armazena a lista com os problemas que serão apresentados ao usuário.
@@ -55,13 +53,13 @@ public class QuizBean implements Serializable {
      * Variável utilizada nos métodos que irão inserir ou consultar alguma
      * informação relativa aos problemas.
      */
-    @Resource
+    @Inject
     private ProblemDao problemDao;
     /**
      * Variável utilizada nos métodos que irão inserir ou consultar alguma
      * informação relativa aos quizzes (jogos realizados).
      */
-    @Resource
+    @Inject
     private QuizDao quizDao;
 
     /**

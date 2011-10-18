@@ -3,9 +3,9 @@ package sampleapp.numberquiz.model.daoimpl;
 import sampleapp.numberquiz.model.dao.QuizDao;
 import sampleapp.numberquiz.model.entity.Quiz;
 import java.util.List;
+import javax.inject.Named;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
-import org.springframework.stereotype.Repository;
 
 /**
  * Classe concreta que será utilizada na execução de todas as operações de
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
  * 
  * @author heverson.vasconcelos
  */
-@Repository
+@Named
 public class QuizDaoImpl extends GenericDaoImpl<Quiz, Integer> implements QuizDao {
 
     @Override
