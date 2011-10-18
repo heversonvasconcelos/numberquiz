@@ -1,12 +1,7 @@
-/* 
-    Document   : style
-    Created on : Feb 21, 2011, 4:12:36 PM
-    Author     : heverson.vasconcelos
-    Description:
-        Purpose of the stylesheet follows.
-
-   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
-*/
+#body{
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 12px;
+}
 
 .headerFooterConfig{
     background: repeat scroll 0 0 #C4C4C4;
@@ -81,7 +76,7 @@
 }
 
 #toolbaricons{
-    width: 166px;
+    width: 122px;
     float: right;
     top: -80px;
     right: 80px;
@@ -93,4 +88,6 @@
     text-align: right;
 }
 
-
+.ui-widget {
+    font-size: 90% !important;
+}
