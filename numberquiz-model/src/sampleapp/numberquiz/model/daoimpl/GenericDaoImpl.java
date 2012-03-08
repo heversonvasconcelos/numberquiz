@@ -1,6 +1,5 @@
 package sampleapp.numberquiz.model.daoimpl;
 
-import sampleapp.numberquiz.model.dao.GenericDao;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PreDestroy;
@@ -9,10 +8,11 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import org.springframework.transaction.annotation.Transactional;
+import sampleapp.numberquiz.model.dao.GenericDao;
 
 /**
- * Classe abstrata parametrizada que implementa a interface Dao.
- * As operações implementadas aqui, serão utilizadas nas subclasses concretas:
+ * Classe abstrata parametrizada que implementa a interface Dao. As operações
+ * implementadas aqui, serão utilizadas nas subclasses concretas:
  * ProblemDaoImpl, QuizDaoImpl e UserDaoImpl.
  *
  * @author heverson.vasconcelos

@@ -7,7 +7,9 @@ package sampleapp.numberquiz.ui.util;
  */
 public class Constants {
 
-    /* Constantes com o endereço das páginas (relativos a raiz) */
+    /*
+     * Constantes com o endereço das páginas (relativos a raiz)
+     */
     /**
      * Armazena o endereço da página de login (página inicial).
      */
@@ -27,12 +29,16 @@ public class Constants {
      */
     public static final String PAGE_USER_NOT_LOGGED = "/usernotlogged.xhtml";
 
-    /* Mensagens de erro */
+    /*
+     * Mensagens de erro
+     */
     public static final String MSG_INVALID_USER = "Usuário inválido";
     public static final String MSG_INVALID_PASSWORD = "Senha inválida";
     public static final String MSG_USER_ALREADY_EXISTS = "Usuário já foi cadastrado";
 
-    /* Algumas constantes de configurações */
+    /*
+     * Algumas constantes de configurações
+     */
     public static final String LOGGED_USER = "loggedUser";
     /**
      * Armazena a quantidade máxima de itens que a lista com as melhores

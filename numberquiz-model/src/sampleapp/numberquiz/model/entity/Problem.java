@@ -1,26 +1,17 @@
 package sampleapp.numberquiz.model.entity;
 
 import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Classe entidade que representa cada problema a ser solucionado pelo usuário.
  * É composto por uma sequência de números (ProblemSequence). Este atributo
  * define a unicidade de um problema, ou seja, para cada problema existirá
- * somente uma sequência e vice-versa.
- * <br><br>
- * Ex.: Sequência: [1, 1, 2, 3, 5]; Solução: 8.
- *      (Sequência de Fibonacci)
- * <br><br>
- * Possui uma NamedQuery(Problem.findByProblemSequence) que será utilizada para
- * consultar um problema a partir de uma sequência (ProblemSequence).
- * 
+ * somente uma sequência e vice-versa. <br><br> Ex.: Sequência: [1, 1, 2, 3, 5];
+ * Solução: 8. (Sequência de Fibonacci) <br><br> Possui uma
+ * NamedQuery(Problem.findByProblemSequence) que será utilizada para consultar
+ * um problema a partir de uma sequência (ProblemSequence).
+ *
  * @author heverson.vasconcelos
  */
 @Entity
@@ -35,8 +26,8 @@ public class Problem implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     /**
-     * Representa a sequência de números que o usuário deverá adivinhar
-     * o próximo número desta mesma.
+     * Representa a sequência de números que o usuário deverá adivinhar o
+     * próximo número desta mesma.
      */
     @OneToOne(cascade = javax.persistence.CascadeType.ALL)
     private ProblemSequence problemSequence = new ProblemSequence();
@@ -44,7 +35,7 @@ public class Problem implements Serializable {
     /*
      *
      * GETTERS e SETTERS
-     * 
+     *
      */
     public Integer getId() {
         return id;
@@ -85,7 +76,8 @@ public class Problem implements Serializable {
 
     /*
      * Hashcode e equals foram sobrescritos para que um problema possa ser
-     * comparado com outro a partir da sequência deste problema (ProblemSequence)
+     * comparado com outro a partir da sequência deste problema
+     * (ProblemSequence)
      *
      */
     @Override
@@ -111,7 +103,8 @@ public class Problem implements Serializable {
     }
 
     /**
-     * Método para retornar uma representação dos dados do problema em modo texto
+     * Método para retornar uma representação dos dados do problema em modo
+     * texto
      *
      * @return String contendo os dados do problema
      */

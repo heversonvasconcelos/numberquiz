@@ -3,9 +3,9 @@
     <persistence-unit name="numberquiz-pu">
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <properties>
-            <property name="hibernate.dialect" value="org.hibernate.dialect.DerbyDialect" />
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
             <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
-<!--            <property name="hibernate.hbm2ddl.auto" value="update"/>-->
+<!--            <property name="hibernate.hbm2ddl.auto" value="create"/>-->
         </properties>
     </persistence-unit>
 </persistence>

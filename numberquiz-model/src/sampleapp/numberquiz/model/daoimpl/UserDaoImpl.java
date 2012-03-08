@@ -1,15 +1,15 @@
 package sampleapp.numberquiz.model.daoimpl;
 
 import javax.inject.Named;
-import sampleapp.numberquiz.model.dao.UserDao;
-import sampleapp.numberquiz.model.entity.User;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
+import sampleapp.numberquiz.model.dao.UserDao;
+import sampleapp.numberquiz.model.entity.User;
 
 /**
  * Classe concreta que será utilizada na execução de todas as operações de
  * persistência relativas a entidade User.
- * 
+ *
  * @author heverson.vasconcelos
  */
 @Named
@@ -21,12 +21,12 @@ public class UserDaoImpl extends GenericDaoImpl<User, Integer> implements UserDa
     }
 
     /**
-     * Método para consultar um usuário a partir de um nome de login.
-     * Obs.: Utiliza a NamedQuery User.findByUserName descrita na classe User.
+     * Método para consultar um usuário a partir de um nome de login. Obs.:
+     * Utiliza a NamedQuery User.findByUserName descrita na classe User.
      *
      * @param userName Nome de login a ser buscado.
-     * @return Usuário contendo o nome userName. <br>
-     *         Null caso não exista um usuário contendo o nome userName.
+     * @return Usuário contendo o nome userName. <br> Null caso não exista um
+     * usuário contendo o nome userName.
      */
     @Override
     public User getUserByName(String userName) {
@@ -42,7 +42,8 @@ public class UserDaoImpl extends GenericDaoImpl<User, Integer> implements UserDa
     }
 
     /**
-     * Método para verificar se existe um usuário com um determinado nome de login.
+     * Método para verificar se existe um usuário com um determinado nome de
+     * login.
      *
      * @param userName Nome de login a ser buscado.
      * @return True caso exista um usuário contendo o nome de login.

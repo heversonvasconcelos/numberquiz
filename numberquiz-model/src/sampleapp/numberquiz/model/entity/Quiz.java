@@ -3,25 +3,16 @@ package sampleapp.numberquiz.model.entity;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
- * Classe entidade que representa um jogo realizado.
- * É composto por um conjunto de problemas (Problem) e por um
- * usuário (User).
+ * Classe entidade que representa um jogo realizado. É composto por um conjunto
+ * de problemas (Problem) e por um usuário (User).
  *
  * Possui uma NamedQuery (Quiz.getTopScores) que será utilizada para consultar
  * todas as pontuações dos jogos ordenadas de forma decrescente. O resultado
  * desta query será utilizada para mostar as melhores pontuações.
- * 
+ *
  * @author heverson.vasconcelos
  */
 @Entity

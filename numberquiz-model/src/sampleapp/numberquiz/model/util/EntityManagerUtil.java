@@ -8,8 +8,8 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 /**
- * Singleton que realiza as operações básicas para persistência
- * dos dados no banco. Inicializa uma EntityManager a partir da unidade de persistência
+ * Singleton que realiza as operações básicas para persistência dos dados no
+ * banco. Inicializa uma EntityManager a partir da unidade de persistência
  * NumberQuizJSF2ModelPU.
  *
  * @author heverson.vasconcelos
@@ -18,6 +18,9 @@ public class EntityManagerUtil {
 
     private static EntityManagerFactory emf;
     private static EntityManager em;
+
+    private EntityManagerUtil() {
+    }
 
     @PostConstruct
     public static void init() {
@@ -30,7 +33,8 @@ public class EntityManagerUtil {
     /**
      * Método para retornar a EntityManager criada
      *
-     * @return EntityManager criada a partir da unidade de persistência NumberQuizJSF2ModelPU
+     * @return EntityManager criada a partir da unidade de persistência
+     * NumberQuizJSF2ModelPU
      */
     public static EntityManager getEntityManager() {
         init();
@@ -50,6 +54,7 @@ public class EntityManagerUtil {
 
     /**
      * Método para verificar se a transação está ativa.
+     *
      * @return True caso esteja ativa a transação. False caso contrário.
      */
     public static boolean isTransactionActive() {
@@ -67,7 +72,7 @@ public class EntityManagerUtil {
 
     /**
      * Método para inserir um novo objeto no banco.
-     * 
+     *
      * @param obj Objeto a ser inserido
      */
     public static void insert(Object obj) {
@@ -77,7 +82,7 @@ public class EntityManagerUtil {
 
     /**
      * Método para criar uma query a ser executada no banco.
-     * 
+     *
      * @param query String que representa a query
      * @return Query criada
      */
@@ -88,7 +93,7 @@ public class EntityManagerUtil {
 
     /**
      * Método para atualizar o estado de um determinado objeto no banco.
-     * 
+     *
      * @param obj Objeto a ser atualizado
      * @return Objeto atualizado
      */
@@ -99,7 +104,7 @@ public class EntityManagerUtil {
 
     /**
      * Método para remover um determinado objeto.
-     * 
+     *
      * @param obj Objeto a ser removido.
      */
     public static void remove(Object obj) {

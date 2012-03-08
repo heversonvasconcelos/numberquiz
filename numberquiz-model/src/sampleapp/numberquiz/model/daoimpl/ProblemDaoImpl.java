@@ -1,10 +1,10 @@
 package sampleapp.numberquiz.model.daoimpl;
 
 import javax.inject.Named;
-import sampleapp.numberquiz.model.dao.ProblemDao;
-import sampleapp.numberquiz.model.entity.Problem;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
+import sampleapp.numberquiz.model.dao.ProblemDao;
+import sampleapp.numberquiz.model.entity.Problem;
 
 /**
  * Classe concreta que será utilizada na execução de todas as operações de
@@ -22,12 +22,12 @@ public class ProblemDaoImpl extends GenericDaoImpl<Problem, Integer> implements 
 
     /**
      * Método para consultar um problema a partir de uma determinada sequência.
-     * Obs.: Utiliza a NamedQuery Problem.findByProblemSequence descrita na classe
-     * Problem.
+     * Obs.: Utiliza a NamedQuery Problem.findByProblemSequence descrita na
+     * classe Problem.
      *
      * @param problemSequence Sequência a ser buscada.
-     * @return Problema contendo a sequência problemSequence. <br>
-     *         Null caso não exista um problema contendo a sequência problemSequence.
+     * @return Problema contendo a sequência problemSequence. <br> Null caso não
+     * exista um problema contendo a sequência problemSequence.
      */
     @Override
     public Problem getProblemBySequence(Integer[] problemSequence) {
@@ -43,7 +43,8 @@ public class ProblemDaoImpl extends GenericDaoImpl<Problem, Integer> implements 
     }
 
     /**
-     * Método para verificar se existe um problema com uma determinada sequência.
+     * Método para verificar se existe um problema com uma determinada
+     * sequência.
      *
      * @param problemSequence Sequência a ser buscada.
      * @return True caso exista um problema contendo a determinada sequência.

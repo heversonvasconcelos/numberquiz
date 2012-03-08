@@ -10,6 +10,9 @@ import javax.faces.context.FacesContext;
  */
 public class FacesUtil {
 
+    private FacesUtil() {
+    }
+
     public static void mensInfo(String message) {
         mensagem(message, FacesMessage.SEVERITY_INFO);
     }

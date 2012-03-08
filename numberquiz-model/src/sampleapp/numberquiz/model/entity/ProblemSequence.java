@@ -2,19 +2,12 @@ package sampleapp.numberquiz.model.entity;
 
 import java.io.Serializable;
 import java.util.Arrays;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
- * Representa a sequência de números contida em cada problema.
- * É composta pela sequência de números e uma solução (próximo termo da sequência).
- * <br><br>
- * Ex.: Sequência: [1, 1, 2, 3, 5]; Solução: 8.
- *      (Sequência de Fibonacci)
+ * Representa a sequência de números contida em cada problema. É composta pela
+ * sequência de números e uma solução (próximo termo da sequência). <br><br>
+ * Ex.: Sequência: [1, 1, 2, 3, 5]; Solução: 8. (Sequência de Fibonacci)
  *
  * @author heverson.vasconcelos
  */

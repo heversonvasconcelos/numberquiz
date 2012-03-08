@@ -16,6 +16,9 @@ public class SessionUtil {
      */
     private static HttpSession session;
 
+    private SessionUtil() {
+    }
+
     /**
      * Método para recuperar um objeto (atributo) previamente salvo na sessão.
      *

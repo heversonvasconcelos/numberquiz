@@ -1,13 +1,5 @@
 package sampleapp.numberquiz.ui.controller;
 
-import sampleapp.numberquiz.model.dao.ProblemDao;
-import sampleapp.numberquiz.model.dao.QuizDao;
-import sampleapp.numberquiz.model.entity.Problem;
-import sampleapp.numberquiz.model.entity.Quiz;
-import sampleapp.numberquiz.model.entity.User;
-import sampleapp.numberquiz.ui.util.Constants;
-import sampleapp.numberquiz.ui.util.SessionUtil;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -15,15 +7,20 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Named;
 import org.springframework.context.annotation.Scope;
+import sampleapp.numberquiz.model.dao.ProblemDao;
+import sampleapp.numberquiz.model.dao.QuizDao;
+import sampleapp.numberquiz.model.entity.Problem;
+import sampleapp.numberquiz.model.entity.Quiz;
+import sampleapp.numberquiz.model.entity.User;
+import sampleapp.numberquiz.ui.util.Constants;
+import sampleapp.numberquiz.ui.util.SessionUtil;
 
 /**
  * Bean gerenciável utilizado no controle dos quizzes (jogos realizados). <br>
- * Este controle envolve principalmente:
- *                          verificar se a resposta do usuário está correta;
- *                          salvar o jogo atual com a sua devida pontuação;
- *                          iniciar um novo jogo;
- *                          apresentar as melhores pontuações;
- *                          
+ * Este controle envolve principalmente: verificar se a resposta do usuário está
+ * correta; salvar o jogo atual com a sua devida pontuação; iniciar um novo
+ * jogo; apresentar as melhores pontuações;
+ *
  *
  *
  * @author heverson.vasconcelos
@@ -81,7 +78,7 @@ public class QuizBean {
 
     /**
      * Método que retorna o score atual.
-     * 
+     *
      * @return O score atual.
      */
     public int getScore() {
@@ -100,10 +97,10 @@ public class QuizBean {
     /**
      * Este método só foi implementado pela necessidade do JSF obter o valor
      * atual de uma propriedade acessada pela "expression language", antes do
-     * novo valor ser submetido pelo formulário. <br>
-     * No caso desta aplicação, a expression language #{quizBean.answer} definida
-     * na página numberquiz.xhtml, acessa primeiramente o método getAnswer
-     * antes de setar a resposta do usuário no método setAnswer.
+     * novo valor ser submetido pelo formulário. <br> No caso desta aplicação, a
+     * expression language #{quizBean.answer} definida na página
+     * numberquiz.xhtml, acessa primeiramente o método getAnswer antes de setar
+     * a resposta do usuário no método setAnswer.
      *
      * @return String vazia ("").
      */
@@ -112,8 +109,8 @@ public class QuizBean {
     }
 
     /**
-     * Método que verifica se a resposta do usuário está correta.
-     * Incrementa o score caso a resposta esteja correta.
+     * Método que verifica se a resposta do usuário está correta. Incrementa o
+     * score caso a resposta esteja correta.
      *
      * @param answeredByUser Resposta do usuário.
      */
@@ -145,8 +142,9 @@ public class QuizBean {
 
     /**
      * Método para iniciar um novo jogo.
+     *
      * @return String contendo o endereço de redirecionamento para início do
-     *          jogo (numberquiz.xhtml).
+     * jogo (numberquiz.xhtml).
      */
     public String newGame() {
         init();
@@ -156,9 +154,9 @@ public class QuizBean {
 
     /**
      * Método para apresentar ao usuário a sua pontuação final.
-     * 
-     * @return String contendo o endereço de redirecionamento para a página
-     *          de apresentação das pontuações (stats.xhtml).
+     *
+     * @return String contendo o endereço de redirecionamento para a página de
+     * apresentação das pontuações (stats.xhtml).
      */
     public String showScore() {
         saveScore();
@@ -168,8 +166,9 @@ public class QuizBean {
 
     /**
      * Método para listar as melhores pontuações já realizadas.
-     * 
-     * @return Lista contendo os quizzes(jogos realizados) com as melhores pontuações.
+     *
+     * @return Lista contendo os quizzes(jogos realizados) com as melhores
+     * pontuações.
      */
     public List<Quiz> getTopScores() {
         return quizDao.getTopScores(Constants.CONFIG_NUMBER_OF_SCORES);

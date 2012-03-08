@@ -1,23 +1,20 @@
 package sampleapp.numberquiz.ui.controller;
 
+import javax.annotation.PostConstruct;
+import javax.inject.Inject;
+import javax.inject.Named;
+import org.springframework.context.annotation.Scope;
 import sampleapp.numberquiz.model.dao.UserDao;
 import sampleapp.numberquiz.model.entity.User;
 import sampleapp.numberquiz.ui.util.Constants;
 import sampleapp.numberquiz.ui.util.FacesUtil;
 import sampleapp.numberquiz.ui.util.SessionUtil;
-import java.io.Serializable;
-import javax.annotation.PostConstruct;
-import javax.inject.Inject;
-import javax.inject.Named;
-import org.springframework.context.annotation.Scope;
 
 /**
  * Bean gerenciável utilizado no controle do login de usuários na aplicação.
- * Este controle envolve principalmente:
- *                          verificação do login e senha;
- *                          login e logout;
- *                          cadastro de um novo usuário;
- *                          verificar se o usuário está autenticado e logado;
+ * Este controle envolve principalmente: verificação do login e senha; login e
+ * logout; cadastro de um novo usuário; verificar se o usuário está autenticado
+ * e logado;
  *
  * @author heverson.vasconcelos
  */
@@ -55,8 +52,8 @@ public class LoginBean {
     }
 
     /**
-     * Método que retorna o usuário que foi previamente autenticado e
-     * está logado na sessão.
+     * Método que retorna o usuário que foi previamente autenticado e está
+     * logado na sessão.
      *
      * @return Usuário autenticado.
      */
@@ -67,8 +64,8 @@ public class LoginBean {
     }
 
     /**
-     * Método para verificar o login do usuário.
-     * Consulta um determinado a partir do nome de login.
+     * Método para verificar o login do usuário. Consulta um determinado a
+     * partir do nome de login.
      *
      * @return Usuário encontrado. Null caso o usuário não seja encontrado.
      */
@@ -94,9 +91,8 @@ public class LoginBean {
      * Método para autenticar o usuário. Verifica o login e a senha deste.
      *
      * @return String contendo o endereço de redirecionamento caso o usuário foi
-     *          corretamente autenticado. Neste caso será redirecionado para o
-     *          início do jogo (numberquiz.xhtml) <br>
-     *          Null caso houver um erro na autenticação.
+     * corretamente autenticado. Neste caso será redirecionado para o início do
+     * jogo (numberquiz.xhtml) <br> Null caso houver um erro na autenticação.
      */
     public String login() {
         authenticatedUser = verifyLogin();
@@ -119,7 +115,7 @@ public class LoginBean {
      * Método para executar o logout da sessão.
      *
      * @return String contendo o endereço de redirecionamento para a página
-     *          inicial (index.xhtml).
+     * inicial (index.xhtml).
      */
     public String logout() {
         user = new User();
@@ -133,9 +129,8 @@ public class LoginBean {
      * Método para cadastrar um novo usuário.
      *
      * @return String contendo o endereço de redirecionamento para início do
-     *          jogo (numberquiz.xhtml). <br>
-     *          Null caso exista um usuário previamente cadastrado com o mesmo
-     *          nome de login que o usuário corrente.
+     * jogo (numberquiz.xhtml). <br> Null caso exista um usuário previamente
+     * cadastrado com o mesmo nome de login que o usuário corrente.
      */
     public String newUser() {
 
@@ -155,11 +150,10 @@ public class LoginBean {
 
     /**
      * Método para verificar se o usuário foi autenticado e está logado.
-     * 
+     *
      * @return String contendo o endereço de redirecionamento para a página
-     *          informando ao (usernotlogged.xhtml). <br>
-     *          Null caso exista um usuário previamente cadastrado com o mesmo
-     *          nome de login que o usuário corrente.
+     * informando ao (usernotlogged.xhtml). <br> Null caso exista um usuário
+     * previamente cadastrado com o mesmo nome de login que o usuário corrente.
      */
     public boolean verifyAuthenticatedUser() {
         authenticatedUser = (User) SessionUtil.getAttribute(Constants.LOGGED_USER);

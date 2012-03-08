@@ -10,10 +10,9 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 /**
- * Classe entidade que representa um usuário do 
- * jogo. É composto por um nome de login e uma senha.
- * O atributo nome define a unicidade de um usuário, ou seja, para cada usuário
- * existirá somente um nome de login.
+ * Classe entidade que representa um usuário do jogo. É composto por um nome de
+ * login e uma senha. O atributo nome define a unicidade de um usuário, ou seja,
+ * para cada usuário existirá somente um nome de login.
  *
  * Possui uma NamedQuery (User.findByUserName) que será utilizada para consultar
  * um usuário a partir de um nome de login.
@@ -99,7 +98,7 @@ public class User implements Serializable {
 
     /**
      * Método para retornar uma representação dos dados do usuário em modo texto
-     * 
+     *
      * @return String contendo os dados do usuário
      */
     @Override
