@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!--
+    NumberQuizJSF2
+    @author heverson.vasconcelos
+
+    Pagina onde o quiz sera apresentado ao usuario.
+    O usuario visualiza uma sequencia de numeros e tenta descobrir o proximo
+    termo.
+-->
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.prime.com.tr/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="/resources/template/template.xhtml">
+
+    <!-- CENTER -->
+    <ui:define name="content">
+        <h:form id="numberquizForm">
+            <ui:include src="/resources/sections/toolbar.xhtml"/>
+
+            <div class="aligncenter" style="padding: 65px">
+                <div class="alignleft" style="width: 35%">
+                    <!-- CENTER LEFT PANEL -->
+                    <p:panel style="height: 300px" header="#{msgs.welcome}, #{loginBean.authenticatedUser.name}">
+<!--                        <img src="resources/images/numberquiz.png" alt="#{msgs.cubosMagicosNumeros}" width="256" height="201"/>-->
+                        <h:graphicImage library="images" name="numberquiz.png" alt="#{msgs.cubosMagicosNumeros}"/>
+                    </p:panel>
+                </div>
+                <div class="alignright" style="width: 65%">
+                    <!-- CENTER RIGHT PANEL -->
+                    <p:panel id="panel" style="height: 300px; text-align: left">
+                        <h:panelGrid columns="1" >
+                            <h:outputFormat value="#{msgs.currentScore}">
+                                <f:param value="#{quizBean.score}"/>
+                            </h:outputFormat>
+                            <h:outputText value="#{msgs.guessNext}: "/>
+                            <h:outputText value="#{quizBean.current.problemSequence}" style="font-weight: bolder"/>
+                        </h:panelGrid>
+
+                        <br/>
+                        <br/>
+                        <br/>
+                        <h:outputText value="#{msgs.answer}: "/>
+                        <p:inputText value="#{quizBean.answer}"/>
+
+                        <br/>
+                        <br/>
+                        <br/>
+                        <p:commandButton id="nextSequenceButton" value="#{msgs.next}" action="#{quizBean.checkSolution}" update="panel"/>
+                        <p:commandButton id="quitGameButton" value="#{msgs.quit}" action="#{quizBean.showScore}" ajax="false" />
+                    </p:panel>
+                </div>
+            </div>
+        </h:form>
+    </ui:define>
+
+</ui:composition>
