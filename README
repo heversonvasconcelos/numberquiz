@@ -1,0 +1,17 @@
+NumberQuiz é uma aplicação de exemplo que foi implementada com o intuito de fixar algumas questões básicas durante a introdução e aprendizagem da plataforma Java EE. 
+
+--Ferramentas utilizadas no desenvolvimento da webapp
+	Maven 2
+	Tomcat 7
+	PostgreSQL 8.4
+
+--Frameworks: JSF2, PrimeFaces 2, Spring 3 e Hibernate JPA 1.0
+
+--Existe um arquivo de backup do banco com os dados iniciais e de teste
+	src/main/resources/META-INF/numberquiz-postgresql.backup
+
+-- Restaurado o backup numberquiz-postgresql.backup será criado um usuário de teste para login na aplicação
+	login: joao
+	senha: joao
+
+
