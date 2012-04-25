@@ -13,96 +13,99 @@ import javax.persistence.Table;
  * Classe entidade que representa um usuário do jogo. É composto por um nome de
  * login e uma senha. O atributo nome define a unicidade de um usuário, ou seja,
  * para cada usuário existirá somente um nome de login.
- *
+ * 
  * Possui uma NamedQuery (User.findByUserName) que será utilizada para consultar
  * um usuário a partir de um nome de login.
- *
+ * 
  * @author heverson.vasconcelos
  */
 @Entity
 @Table(name = "TB_USER")
-@NamedQuery(name = "User.findByUserName",
-query = "SELECT u FROM User AS u WHERE u.name = :userName")
+@NamedQuery(name = "User.findByUserName", query = "SELECT u FROM User AS u WHERE u.name = :userName")
 public class User implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    /**
-     * Nome de login do usuário
-     */
-    @Column(length = 20, nullable = false, unique = true)
-    private String name;
-    /**
-     * Senha do usuário
-     */
-    @Column(length = 10, nullable = false)
-    private String password;
-    //TODO: criptografar a senha armazenada no banco
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7682352979280269302L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+	/**
+	 * Nome de login do usuário
+	 */
+	@Column(length = 20, nullable = false, unique = true)
+	private String name;
+	/**
+	 * Senha do usuário
+	 */
+	@Column(length = 10, nullable = false)
+	private String password;
 
-    /*
-     *
-     * GETTERS e SETTERS
-     *
-     */
-    public Integer getId() {
-        return id;
-    }
+	// TODO: criptografar a senha armazenada no banco
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	/*
+	 * 
+	 * GETTERS e SETTERS
+	 */
+	public Integer getId() {
+		return id;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public String getPassword() {
-        return password;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+	public String getPassword() {
+		return password;
+	}
 
-    /*
-     * Hashcode e equals foram sobrescritos para que um usuário possa ser
-     * comparado com outro a partir do nome
-     *
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final User other = (User) obj;
-        if ((this.name == null) ? (other.name != null) : !this.name.equals(other.name)) {
-            return false;
-        }
-        return true;
-    }
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 71 * hash + (this.name != null ? this.name.hashCode() : 0);
-        return hash;
-    }
+	/*
+	 * Hashcode e equals foram sobrescritos para que um usuário possa ser
+	 * comparado com outro a partir do nome
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		final User other = (User) obj;
+		if ((this.name == null) ? (other.name != null) : !this.name
+				.equals(other.name)) {
+			return false;
+		}
+		return true;
+	}
 
-    /**
-     * Método para retornar uma representação dos dados do usuário em modo texto
-     *
-     * @return String contendo os dados do usuário
-     */
-    @Override
-    public String toString() {
-        return (getId() + " - " + getName() + " - " + getPassword());
-    }
+	@Override
+	public int hashCode() {
+		int hash = 5;
+		hash = 71 * hash + (this.name != null ? this.name.hashCode() : 0);
+		return hash;
+	}
+
+	/**
+	 * Método para retornar uma representação dos dados do usuário em modo texto
+	 * 
+	 * @return String contendo os dados do usuário
+	 */
+	@Override
+	public String toString() {
+		return (getId() + " - " + getName() + " - " + getPassword());
+	}
 }

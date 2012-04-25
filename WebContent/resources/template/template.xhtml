@@ -1,45 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+<!--
+	NumberQuizJSF2
+	@author heverson.vasconcelos
+	
+	Template de definicao do layout padrao das paginas da aplicacao.
+-->
+
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-br"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html">
-    <!--
-        NumberQuizJSF2
-        @author heverson.vasconcelos
-    
-        Template de definicao do layout padrao das paginas da aplicacao.
-    -->
-    <h:head>
-        <title>#{msgs.title}</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <link href="resources/css/style.css" rel="stylesheet" type="text/css"/>
-    </h:head>
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html">
 
-    <h:body>
-        <div id="page">
-            <!-- PAGE HEADER -->
-            <div id="header" class="headerFooterConfig">
-                <ui:include src="/resources/sections/header.xhtml"/>
-            </div>
+<h:head>
+	<title>#{msgs.title}</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link href="#{request.contextPath}/resources/css/style.css"
+		rel="stylesheet" type="text/css" />
+</h:head>
 
-            <!-- PAGE CONTENT -->
-            <div id="content">
-                <ui:insert name="content">
+<h:body>
+	<div id="page">
+		<!-- PAGE HEADER -->
+		<div id="header" class="headerFooterConfig">
+			<ui:include src="/resources/sections/header.xhtml" />
+		</div>
 
-                </ui:insert>
-            </div>
+		<h:form>
+			<ui:insert name="toolbar">
+				<ui:include src="/resources/sections/toolbar.xhtml" />
+			</ui:insert>
 
-            <!-- PAGE FOOTER -->
-            <div id="footer" class="headerFooterConfig">
-                <ui:insert name="footer">
-                    <ui:include src="/resources/sections/footer.xhtml"/>
-                </ui:insert>
-            </div>
-            <div id="poweredby">
-                <h:graphicImage library="images" name="primefaces.png" title="Primefaces logo" alt="Primefaces logo"/>
-            </div>
-        </div>
-    </h:body>
+			<!-- PAGE CONTENT -->
+			<div id="content">
+				<ui:insert name="content">
+				</ui:insert>
+			</div>
+		</h:form>
 
+		<!-- PAGE FOOTER -->
+		<div id="footer" class="headerFooterConfig">
+			<ui:insert name="footer">
+				<ui:include src="/resources/sections/footer.xhtml" />
+			</ui:insert>
+		</div>
+		<div id="poweredby">
+			<h:graphicImage library="images" name="primefaces.png"
+				title="Primefaces logo" alt="Primefaces logo" />
+		</div>
+	</div>
+</h:body>
 </html>

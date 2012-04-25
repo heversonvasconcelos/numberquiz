@@ -1,93 +1,90 @@
-#body{
-    font-family: Verdana, Arial, sans-serif;
-    font-size: 12px;
+#body {
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 12px;
 }
 
-.headerFooterConfig{
-    background: repeat scroll 0 0 #C4C4C4;
-    border: 1px solid #A8A8A8;
-    color: #333333;
-    font-weight: bold;
-    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
-    margin: 0 auto;
-    padding: 0 80px;
+.headerFooterConfig {
+	background: repeat scroll 0 0 #C4C4C4;
+	border: 1px solid #A8A8A8;
+	color: #333333;
+	font-weight: bold;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+	margin: 0 auto;
+	padding: 0 80px;
 }
 
-.logo{
-    font-size: 42px;
-    float: left;
+.logo {
+	font-size: 42px;
+	float: left;
 }
 
 .alignleft {
-    float: left;
+	float: left;
 }
+
 .alignright {
-    float: right;
+	float: right;
 }
 
 .aligncenter {
-    margin: auto;
-    text-align: center;
+	margin: auto;
+	text-align: center;
 }
 
 .aboutIcon {
-    height: 50px;
-    width: 50px;
-    position: fixed;
-    top: 38px;
-    left: 1060px;
-    border: 1px solid #A8A8A8;
+	height: 50px;
+	width: 50px;
+	position: fixed;
+	top: 38px;
+	left: 1060px;
+	border: 1px solid #A8A8A8;
 }
 
 .aboutMessageTopic {
-    font-size: 15px;
-    font-weight: bolder;
+	font-size: 15px;
+	font-weight: bolder;
 }
 
 .aboutMessageItem {
-    font-size: 13px;
-    font-weight: normal;
+	font-size: 13px;
+	font-weight: normal;
 }
 
 #page {
-    width: 1024px;
-    height: 768px;
-    margin: auto;
-    border: 1px solid black;
-    font-family: Verdana,Arial,sans-serif;
+	width: 1024px;
+	height: 768px;
+	margin: auto;
+	border: 1px solid black;
+	font-family: Verdana, Arial, sans-serif;
 }
 
 #header {
-    height: 120px;
-
+	height: 120px;
 }
 
 #content {
-    background-color: #EBECEC;
-    height: 604px;
-    font-size: 15px;
-
+	background-color: #EBECEC;
+	height: 604px;
+	font-size: 15px;
 }
 
-#footer  {
-    height: 40px;
-    font-size: 12px;
-
+#footer {
+	height: 40px;
+	font-size: 12px;
 }
 
-#toolbaricons{
-    width: 122px;
-    float: right;
-    top: -80px;
-    right: 80px;
-    position: relative;
+#toolbaricons {
+	float: right;
+	top: -80px;
+	right: 80px;
+	position: relative;
 }
 
-#poweredby{
-    padding-top: 1px;
-    text-align: right;
+#poweredby {
+	padding-top: 1px;
+	text-align: right;
 }
 
 .ui-widget {
-    font-size: 90% !important;
+	font-size: 90% !important;
 }

@@ -15,7 +15,11 @@ import javax.persistence.*;
 @Table(name = "TB_PROBLEMSEQUENCE")
 public class ProblemSequence implements Serializable {
 
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -652670746528979461L;
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     /**

@@ -15,7 +15,12 @@ import sampleapp.numberquiz.model.entity.User;
 @Named
 public class UserDaoImpl extends GenericDaoImpl<User, Integer> implements UserDao {
 
-    @Override
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 8482621001626958639L;
+
+	@Override
     public Class<User> getDomainClass() {
         return User.class;
     }

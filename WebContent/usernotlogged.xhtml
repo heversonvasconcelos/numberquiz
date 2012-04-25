@@ -10,20 +10,20 @@
     O usuario podera ser redirecionado para a pagina de login.
 -->
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:p="http://primefaces.prime.com.tr/ui"
-                xmlns:ui="http://java.sun.com/jsf/facelets"
-                template="/resources/template/template.xhtml">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/template/template.xhtml">
 
-    <!-- CENTER -->
-    <ui:define name="content">
-        <h:form>
-            <div class="aligncenter" style="width: 70%; padding: 50px">
-                <p:panel>
-                    <h3> #{msgs.userIsNotLogged}</h3>
-                    <p> <p:commandButton  value="#{msgs.login}" action="index" ajax="false"/> </p>
-                </p:panel>
-            </div>
-        </h:form>
-    </ui:define>
+	<!-- CENTER -->
+	<ui:define name="content">
+		<div class="aligncenter" style="width: 70%; padding: 50px">
+			<p:panel>
+				<h3>#{msgs.userIsNotLogged}</h3>
+				<p>
+					<p:commandButton value="#{msgs.login}" action="index" ajax="false" />
+				</p>
+			</p:panel>
+		</div>
+	</ui:define>
 </ui:composition>
