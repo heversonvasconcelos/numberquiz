@@ -21,10 +21,11 @@ h2. Frameworks
 h2. Configurações
 
 Existe um arquivo de backup do banco com os dados iniciais e de teste
- > src/main/resources/META-INF/numberquiz-postgresql.backup
+
+p(((. src/main/resources/META-INF/numberquiz-postgresql.backup
 
 Restaurado o backup numberquiz-postgresql.backup será criado um usuário de teste para login na aplicação
- > login: joao
- > senha: joao
 
+p(((. login: joao
+senha: joao
 

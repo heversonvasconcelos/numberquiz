@@ -57,7 +57,7 @@
 					<archiveClasses>false</archiveClasses>
 				</configuration>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-eclipse-plugin</artifactId>
@@ -136,6 +136,12 @@
 			<groupId>org.springframework</groupId>
 			<version>${spring.version}</version>
 		</dependency>
+		<dependency>
+			<artifactId>spring-test</artifactId>
+			<groupId>org.springframework</groupId>
+			<version>${spring.version}</version>
+			<scope>test</scope>
+		</dependency>
 
 
 		<!-- hibernate -->
@@ -186,9 +192,9 @@
 			<version>9.1-901-1.jdbc4</version>
 		</dependency>
 		<dependency>
-			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
+			<groupId>junit</groupId>
+			<version>4.10</version>
 			<scope>test</scope>
 		</dependency>
 

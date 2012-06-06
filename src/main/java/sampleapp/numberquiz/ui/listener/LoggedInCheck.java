@@ -15,6 +15,11 @@ import sampleapp.numberquiz.ui.util.SessionUtil;
  */
 public class LoggedInCheck implements PhaseListener {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	public void afterPhase(PhaseEvent event) {
 		FacesContext facesContext = event.getFacesContext();

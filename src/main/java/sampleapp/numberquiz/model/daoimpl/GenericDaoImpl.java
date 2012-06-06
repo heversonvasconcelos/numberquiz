@@ -2,12 +2,15 @@ package sampleapp.numberquiz.model.daoimpl;
 
 import java.io.Serializable;
 import java.util.List;
+
 import javax.annotation.PreDestroy;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+
 import org.springframework.transaction.annotation.Transactional;
+
 import sampleapp.numberquiz.model.dao.GenericDao;
 
 /**
@@ -17,11 +20,12 @@ import sampleapp.numberquiz.model.dao.GenericDao;
  * 
  * @author heverson.vasconcelos
  */
+@SuppressWarnings("unchecked")
 public abstract class GenericDaoImpl<T, ID extends Serializable> implements
 		GenericDao<T, ID>, Serializable {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 6911972148588745364L;
 	@PersistenceContext
@@ -48,7 +52,7 @@ public abstract class GenericDaoImpl<T, ID extends Serializable> implements
 
 	@Override
 	public T retrieve(ID id) {
-		return (T) getEntityManager().find(getDomainClass(), id);
+		return getEntityManager().find(getDomainClass(), id);
 
 	}
 
@@ -81,7 +85,7 @@ public abstract class GenericDaoImpl<T, ID extends Serializable> implements
 		T objReturn = null;
 
 		if (obj != null) {
-			objReturn = (T) getEntityManager().merge(obj);
+			objReturn = getEntityManager().merge(obj);
 		}
 
 		return objReturn;

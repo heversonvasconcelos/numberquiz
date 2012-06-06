@@ -63,7 +63,7 @@ public class LoginBean {
 		authenticatedUser = (User) SessionUtil
 				.getAttribute(Constants.LOGGED_USER);
 
-		return (authenticatedUser != null) ? authenticatedUser : null;
+		return authenticatedUser;
 	}
 
 	/**
