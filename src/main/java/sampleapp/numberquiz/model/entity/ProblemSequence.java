@@ -6,7 +6,9 @@ import javax.persistence.*;
 
 /**
  * Representa a sequência de números contida em cada problema. É composta pela
- * sequência de números e uma solução (próximo termo da sequência). <br><br>
+ * sequência de números e uma solução (próximo termo da sequência).
+ *
+ *
  * Ex.: Sequência: [1, 1, 2, 3, 5]; Solução: 8. (Sequência de Fibonacci)
  *
  * @author heverson.vasconcelos
@@ -16,10 +18,10 @@ import javax.persistence.*;
 public class ProblemSequence implements Serializable {
 
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = -652670746528979461L;
-	@Id
+     *
+     */
+    private static final long serialVersionUID = -652670746528979461L;
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     /**
@@ -39,49 +41,49 @@ public class ProblemSequence implements Serializable {
      *
      */
     public Integer getId() {
-        return id;
+	return id;
     }
 
     public void setId(Integer id) {
-        this.id = id;
+	this.id = id;
     }
 
     public Integer[] getProblemSequence() {
-        return problemSequence;
+	return problemSequence;
     }
 
     public void setProblemSequence(Integer[] problemSequence) {
-        this.problemSequence = problemSequence;
+	this.problemSequence = problemSequence;
     }
 
     public int getSolution() {
-        return solution;
+	return solution;
     }
 
     public void setSolution(int solution) {
-        this.solution = solution;
+	this.solution = solution;
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final ProblemSequence other = (ProblemSequence) obj;
-        if (!Arrays.deepEquals(this.problemSequence, other.problemSequence)) {
-            return false;
-        }
-        return true;
+	if (obj == null) {
+	    return false;
+	}
+	if (getClass() != obj.getClass()) {
+	    return false;
+	}
+	final ProblemSequence other = (ProblemSequence) obj;
+	if (!Arrays.deepEquals(this.problemSequence, other.problemSequence)) {
+	    return false;
+	}
+	return true;
     }
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 97 * hash + Arrays.deepHashCode(this.problemSequence);
-        return hash;
+	int hash = 3;
+	hash = 97 * hash + Arrays.deepHashCode(this.problemSequence);
+	return hash;
     }
 
     /**
@@ -92,6 +94,6 @@ public class ProblemSequence implements Serializable {
      */
     @Override
     public String toString() {
-        return Arrays.toString(problemSequence);
+	return Arrays.toString(problemSequence);
     }
 }

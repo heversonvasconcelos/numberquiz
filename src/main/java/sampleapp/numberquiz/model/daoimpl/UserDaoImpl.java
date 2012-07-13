@@ -16,13 +16,13 @@ import sampleapp.numberquiz.model.entity.User;
 public class UserDaoImpl extends GenericDaoImpl<User, Integer> implements UserDao {
 
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = 8482621001626958639L;
+     *
+     */
+    private static final long serialVersionUID = 8482621001626958639L;
 
-	@Override
+    @Override
     public Class<User> getDomainClass() {
-        return User.class;
+	return User.class;
     }
 
     /**
@@ -35,14 +35,14 @@ public class UserDaoImpl extends GenericDaoImpl<User, Integer> implements UserDa
      */
     @Override
     public User getUserByName(String userName) {
-        Query query = getEntityManager().createNamedQuery("User.findByUserName");
-        query.setParameter("userName", userName);
+	Query query = getEntityManager().createNamedQuery("User.findByUserName");
+	query.setParameter("userName", userName);
 
-        try {
-            return (User) query.getSingleResult();
-        } catch (NoResultException nre) {
-            return null;
-        }
+	try {
+	    return (User) query.getSingleResult();
+	} catch (NoResultException nre) {
+	    return null;
+	}
 
     }
 
@@ -55,6 +55,6 @@ public class UserDaoImpl extends GenericDaoImpl<User, Integer> implements UserDa
      */
     @Override
     public boolean verifyIfUserNameExists(String userName) {
-        return (getUserByName(userName) != null) ? true : false;
+	return (getUserByName(userName) != null) ? true : false;
     }
 }
