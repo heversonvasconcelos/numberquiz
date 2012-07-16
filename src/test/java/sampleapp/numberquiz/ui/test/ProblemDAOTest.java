@@ -4,12 +4,11 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
 
-import javax.annotation.Resource;
+import javax.inject.Inject;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
 import sampleapp.numberquiz.model.dao.ProblemDao;
 import sampleapp.numberquiz.model.entity.Problem;
@@ -18,12 +17,12 @@ import sampleapp.numberquiz.model.entity.Problem;
  * 
  * @author heverson.vasconcelos
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "file:web/WEB-INF/application-context.xml" })
-public final class ProblemDAOTest {
+@ContextConfiguration("classpath:application-context.xml")
+public class ProblemDAOTest extends AbstractJUnit4SpringContextTests {
 
-	@Resource
+	@Inject
 	private ProblemDao problemDao;
+
 	private final Random rd = new Random(Calendar.getInstance()
 			.getTimeInMillis());
 

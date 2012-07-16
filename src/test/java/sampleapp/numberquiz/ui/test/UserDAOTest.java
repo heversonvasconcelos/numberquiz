@@ -3,29 +3,26 @@ package sampleapp.numberquiz.ui.test;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.annotation.Resource;
+import javax.inject.Inject;
 
 import junit.framework.Assert;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
 import sampleapp.numberquiz.model.dao.UserDao;
 import sampleapp.numberquiz.model.entity.User;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "file:web/WEB-INF/application-context.xml" })
-public final class UserDAOTest {
+@ContextConfiguration("classpath:application-context.xml")
+public class UserDAOTest extends AbstractJUnit4SpringContextTests {
 
-	@Resource
+	@Inject
 	private UserDao userDao;
 
 	@Test
 	public void testLoadService() {
 		Assert.assertNotNull(userDao);
-
 	}
 
 	@Test
@@ -42,6 +39,8 @@ public final class UserDAOTest {
 		user.setPassword("joao");
 
 		userDao.create(user);
+
+		Assert.assertNotNull(user.getId());
 	}
 
 	public void printUserList(List<User> userList) {
