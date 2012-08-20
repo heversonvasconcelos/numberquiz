@@ -2,10 +2,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
 	<groupId>sampleapp</groupId>
 	<artifactId>numberquiz</artifactId>
 	<packaging>war</packaging>
 	<version>1.0-SNAPSHOT</version>
+
 	<name>Numberquiz</name>
 	<description>WebApp de exemplo que implementa um simples quiz de números</description>
 
@@ -17,9 +19,9 @@
 
 		<!-- versoes -->
 		<mojarra.version>2.1.7</mojarra.version>
-		<spring.version>3.0.6.RELEASE</spring.version>
-		<slf4j.version>1.6.1</slf4j.version>
-		<hibernate.version>3.4.0.GA</hibernate.version>
+		<hibernate.version>3.6.9.Final</hibernate.version>
+		<slf4j.version>1.6.4</slf4j.version>
+		<spring.version>3.1.1.RELEASE</spring.version>
 	</properties>
 
 	<developers>
@@ -144,22 +146,16 @@
 			<scope>test</scope>
 		</dependency>
 
-
 		<!-- hibernate -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>${hibernate.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-annotations</artifactId>
-			<version>${hibernate.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>ejb3-persistence</artifactId>
-			<version>1.0.2.GA</version>
 		</dependency>
 
 		<dependency>
@@ -192,11 +188,11 @@
 			<artifactId>log4j-over-slf4j</artifactId>
 			<version>${slf4j.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>postgresql</groupId>
-			<artifactId>postgresql</artifactId>
-			<version>9.1-901-1.jdbc4</version>
-		</dependency>
+		 <dependency>
+            <groupId>postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>9.1-901.jdbc4</version>
+        </dependency>
 		<dependency>
 			<artifactId>junit</artifactId>
 			<groupId>junit</groupId>
@@ -207,8 +203,24 @@
 	</dependencies>
 	<repositories>
 		<repository>
+			<id>mavensearch</id>
+			<url>http://www.mvnsearch.org/maven2/</url>
+		</repository>
+		<repository>
+			<id>JBoss Repo</id>
+			<url>https://repository.jboss.org/nexus/content/repositories/releases</url>
+		</repository>
+		<repository>
+			<id>jboss-public</id>
+			<url>http://repository.jboss.org/nexus/content/groups/public/</url>
+		</repository>
+		<repository>
 			<id>spring-maven-release</id>
 			<url>http://maven.springframework.org/release</url>
+		</repository>
+		<repository>
+			<id>spring-maven-milestone</id>
+			<url>http://maven.springframework.org/milestone</url>
 		</repository>
 		<repository>
 			<id>java.net2</id>
@@ -221,12 +233,13 @@
 			<layout>default</layout>
 		</repository>
 		<repository>
-			<id>JBoss Repository</id>
-			<url>https://repository.jboss.org/nexus/content/repositories/releases</url>
+			<id>EclipseLink Repo</id>
+			<url>http://www.eclipse.org/downloads/download.php?r=1&amp;nf=1&amp;file=/rt/eclipselink/maven.repo</url>
 		</repository>
 		<repository>
-			<id>jboss-public</id>
-			<url>https://repository.jboss.org/nexus/content/repositories/public</url>
+			<id>ocpsoft</id>
+			<url>http://ocpsoft.com/repository/com/ocpsoft/</url>
+			<name>ocpsoft</name>
 		</repository>
 	</repositories>
 </project>

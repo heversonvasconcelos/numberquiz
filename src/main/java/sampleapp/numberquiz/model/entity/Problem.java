@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -24,7 +25,7 @@ import javax.persistence.Table;
  * @author heverson.vasconcelos
  */
 @Entity
-@Table(name = "TB_PROBLEM")
+@Table(name = "tb_problem")
 @NamedQuery(name = "Problem.findByProblemSequence", query = "SELECT p FROM Problem p "
 		+ "JOIN p.problemSequence pseq "
 		+ "WHERE problemSequence = :problemSequence")
@@ -34,15 +35,18 @@ public class Problem implements Serializable {
      *
      */
 	private static final long serialVersionUID = -89930616621289568L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+
 	/**
 	 * Representa a sequência de números que o usuário deverá adivinhar o
 	 * próximo número desta mesma.
 	 */
+	@JoinColumn(name = "problem_sequence_id")
 	@OneToOne(cascade = javax.persistence.CascadeType.ALL)
-	private ProblemSequence problemSequence = new ProblemSequence();
+	private ProblemSequence problemSequence;
 
 	/*
 	 * 

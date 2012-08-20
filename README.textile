@@ -2,8 +2,8 @@ h1. NumberQuiz
 
 h2. Descrição
 
-NumberQuiz é um jogo (quiz) simples, onde são apresentadas sequências de números ao jogador e este deve descobrir qual é o termo posterior. 
-Aplicação de exemplo que foi implementada com o intuito de fixar algumas questões básicas durante a introdução e aprendizagem da plataforma Java EE. 
+NumberQuiz é um jogo (quiz) simples, onde são apresentadas sequências de números ao jogador e este deve descobrir qual é o termo posterior.
+Aplicação de exemplo que foi implementada com o intuito de fixar algumas questões básicas durante a introdução e aprendizagem da plataforma Java EE.
 
 h2. Ferramentas utilizadas no desenvolvimento da webapp
 
@@ -20,11 +20,8 @@ h2. Frameworks
 
 h2. Configurações
 
-Existe um arquivo de backup do banco com os dados iniciais e de teste
-
-p(((. src/main/resources/META-INF/numberquiz-postgresql.backup
-
-Restaurado o backup numberquiz-postgresql.backup será criado um usuário de teste para login na aplicação
+Crie o banco numberquiz e o esquema numberquiz.
+Feito isso a aplicação irá popular o banco com alguns dados iniciais inclusive um usuário de para login na aplicação
 
 p(((. login: joao
 senha: joao

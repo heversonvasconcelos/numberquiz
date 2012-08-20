@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
@@ -25,7 +26,7 @@ import javax.persistence.Table;
  * @author heverson.vasconcelos
  */
 @Entity
-@Table(name = "TB_QUIZ")
+@Table(name = "tb_quiz")
 @NamedQuery(name = "Quiz.getTopScores", query = "SELECT q FROM Quiz AS q ORDER BY SCORE desc")
 public class Quiz implements Serializable {
 
@@ -33,13 +34,19 @@ public class Quiz implements Serializable {
      *
      */
 	private static final long serialVersionUID = -714232475989204830L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+
+	@JoinColumn(name = "problems_id")
 	@ManyToMany
 	private List<Problem> problems = new ArrayList<Problem>();
+
+	@JoinColumn(name = "user_id")
 	@ManyToOne
-	private User user = new User();
+	private User user;
+
 	@Column(nullable = false)
 	private int score;
 
