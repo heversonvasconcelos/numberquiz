@@ -1,5 +1,9 @@
 package sampleapp.numberquiz.ui.test;
 
+import javax.inject.Inject;
+
+import junit.framework.Assert;
+
 import org.junit.Test;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
@@ -12,7 +16,7 @@ import com.google.gson.Gson;
 @ContextConfiguration("classpath:application-test-context.xml")
 public class ProblemSequenceTest extends AbstractJUnit4SpringContextTests {
 
-	// @Inject
+	@Inject
 	private ProblemSequenceDao problemSequenceDao;
 
 	private final Gson gson = new Gson();
@@ -23,5 +27,8 @@ public class ProblemSequenceTest extends AbstractJUnit4SpringContextTests {
 		String json = gson.toJson(problemSequence);
 		System.out.println(json);
 
+		ProblemSequence problemSequenceGson = gson.fromJson(json,
+				ProblemSequence.class);
+		Assert.assertEquals(problemSequenceGson, problemSequence);
 	}
 }

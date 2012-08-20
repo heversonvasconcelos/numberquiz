@@ -25,7 +25,7 @@ public class UserDAOTest extends AbstractJUnit4SpringContextTests {
 		Assert.assertNotNull(userDao);
 	}
 
-	// @Test
+	@Test
 	public void testListAllUsers() {
 		List<User> userList = userDao.list();
 
