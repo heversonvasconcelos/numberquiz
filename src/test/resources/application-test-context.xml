@@ -7,7 +7,7 @@
 
 	<!-- HOLDING PROPERTIES FOR DATABASE CONNECTIVITY / -->
 	<context:property-placeholder
-		location="classpath*:META-INF/database-config.properties" />
+		location="classpath*:database-test-config.properties" />
 
 	<import resource="classpath*:base-context.xml" />
 

@@ -19,7 +19,7 @@
 
 		<!-- versoes -->
 		<mojarra.version>2.1.7</mojarra.version>
-		<hibernate.version>3.6.9.Final</hibernate.version>
+		<hibernate.version>4.1.6.Final</hibernate.version>
 		<slf4j.version>1.6.4</slf4j.version>
 		<spring.version>3.1.1.RELEASE</spring.version>
 	</properties>
@@ -157,6 +157,11 @@
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>${hibernate.version}</version>
 		</dependency>
+		<dependency>
+			<artifactId>hibernate-jpa-2.0-api</artifactId>
+			<groupId>org.hibernate.javax.persistence</groupId>
+			<version>1.0.1.Final</version>
+		</dependency>
 
 		<dependency>
 			<artifactId>servlet-api</artifactId>
@@ -198,6 +203,11 @@
 			<groupId>junit</groupId>
 			<version>4.10</version>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<artifactId>gson</artifactId>
+			<groupId>com.google.code.gson</groupId>
+			<version>2.1</version>
 		</dependency>
 
 	</dependencies>

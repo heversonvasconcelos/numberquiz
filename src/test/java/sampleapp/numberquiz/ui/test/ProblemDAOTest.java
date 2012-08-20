@@ -17,7 +17,7 @@ import sampleapp.numberquiz.model.entity.Problem;
  * 
  * @author heverson.vasconcelos
  */
-@ContextConfiguration("classpath:application-context.xml")
+@ContextConfiguration("classpath:application-test-context.xml")
 public class ProblemDAOTest extends AbstractJUnit4SpringContextTests {
 
 	@Inject

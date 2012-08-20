@@ -16,8 +16,8 @@ import sampleapp.numberquiz.model.dao.QuizDao;
 import sampleapp.numberquiz.model.entity.Problem;
 import sampleapp.numberquiz.model.entity.Quiz;
 import sampleapp.numberquiz.model.entity.User;
-import sampleapp.numberquiz.ui.util.Constants;
-import sampleapp.numberquiz.ui.util.SessionUtil;
+import sampleapp.numberquiz.util.Constants;
+import sampleapp.numberquiz.util.SessionUtil;
 
 /**
  * Bean gerenciável utilizado no controle dos quizzes (jogos realizados). <br>

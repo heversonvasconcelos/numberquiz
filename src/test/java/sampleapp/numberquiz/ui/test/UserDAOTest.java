@@ -14,7 +14,7 @@ import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import sampleapp.numberquiz.model.dao.UserDao;
 import sampleapp.numberquiz.model.entity.User;
 
-@ContextConfiguration("classpath:application-context.xml")
+@ContextConfiguration("classpath:application-test-context.xml")
 public class UserDAOTest extends AbstractJUnit4SpringContextTests {
 
 	@Inject
@@ -25,7 +25,7 @@ public class UserDAOTest extends AbstractJUnit4SpringContextTests {
 		Assert.assertNotNull(userDao);
 	}
 
-	@Test
+	// @Test
 	public void testListAllUsers() {
 		List<User> userList = userDao.list();
 

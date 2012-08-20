@@ -8,9 +8,9 @@ import org.springframework.context.annotation.Scope;
 
 import sampleapp.numberquiz.model.dao.UserDao;
 import sampleapp.numberquiz.model.entity.User;
-import sampleapp.numberquiz.ui.util.Constants;
-import sampleapp.numberquiz.ui.util.FacesUtil;
-import sampleapp.numberquiz.ui.util.SessionUtil;
+import sampleapp.numberquiz.util.Constants;
+import sampleapp.numberquiz.util.FacesUtil;
+import sampleapp.numberquiz.util.SessionUtil;
 
 /**
  * Bean gerenciável utilizado no controle do login de usuários na aplicação.
