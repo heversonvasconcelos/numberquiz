@@ -20,8 +20,8 @@
 		</resource-bundle>
 	</application>
 	<!-- Listeners -->
-	<!-- <lifecycle> -->
-	<!-- <phase-listener>sampleapp.numberquiz.ui.listener.LoggedInCheck</phase-listener> -->
-	<!-- </lifecycle> -->
+	<lifecycle>
+		<phase-listener>sampleapp.numberquiz.ui.listener.LoggedInCheck</phase-listener>
+	</lifecycle>
 
 </faces-config>
