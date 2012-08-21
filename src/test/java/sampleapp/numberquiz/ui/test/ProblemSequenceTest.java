@@ -21,7 +21,7 @@ public class ProblemSequenceTest extends AbstractJUnit4SpringContextTests {
 
 	private final Gson gson = new Gson();
 
-	@Test
+	// @Test
 	public void testConvertToGson() {
 		ProblemSequence problemSequence = problemSequenceDao.retrieve(-1);
 		String json = gson.toJson(problemSequence);
@@ -30,5 +30,27 @@ public class ProblemSequenceTest extends AbstractJUnit4SpringContextTests {
 		ProblemSequence problemSequenceGson = gson.fromJson(json,
 				ProblemSequence.class);
 		Assert.assertEquals(problemSequenceGson, problemSequence);
+	}
+
+	// @Test
+	public void testConvertArrayToGson() {
+		Integer[] problemSequence = { 1, 2, 3, 4 };
+
+		String json = gson.toJson(problemSequence);
+		System.out.println(json);
+	}
+
+	@Test
+	public void testSaveProblemSequence() {
+		Integer[] problemSequence = { 1, 2, 3, 4 };
+
+		String json = gson.toJson(problemSequence);
+		ProblemSequence ps = new ProblemSequence();
+		ps.setProblemSequence(json);
+		ps.setSolution(5);
+
+		problemSequenceDao.create(ps);
+		Assert.assertNotNull(ps.getId());
+
 	}
 }

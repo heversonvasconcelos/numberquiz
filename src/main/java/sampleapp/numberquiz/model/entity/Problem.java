@@ -68,24 +68,11 @@ public class Problem implements Serializable {
 		this.problemSequence = problemSequence;
 	}
 
-	public Integer[] getIntegerArrayProblemSequence() {
-		return problemSequence.getProblemSequence();
-	}
-
-	public void setProblemSequence(Integer[] problemSequence) {
-		this.problemSequence.setProblemSequence(problemSequence);
-	}
-
 	public int getSolution() {
 		return problemSequence.getSolution();
 	}
 
 	public void setSolution(int solution) {
-		this.problemSequence.setSolution(solution);
-	}
-
-	public void setProblemSequenceAndSolution(Integer[] values, int solution) {
-		this.problemSequence.setProblemSequence(values);
 		this.problemSequence.setSolution(solution);
 	}
 

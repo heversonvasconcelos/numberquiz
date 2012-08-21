@@ -1,7 +1,6 @@
 package sampleapp.numberquiz.model.entity;
 
 import java.io.Serializable;
-import java.util.Arrays;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -40,7 +39,7 @@ public class ProblemSequence implements Serializable {
 	 * Sequência de números
 	 */
 	@Column(nullable = false, unique = true)
-	private Integer[] problemSequence;
+	private String problemSequence;
 
 	/**
 	 * Representa a solução do problema, ou seja, o próximo termo da sequência.
@@ -60,11 +59,11 @@ public class ProblemSequence implements Serializable {
 		this.id = id;
 	}
 
-	public Integer[] getProblemSequence() {
+	public String getProblemSequence() {
 		return problemSequence;
 	}
 
-	public void setProblemSequence(Integer[] problemSequence) {
+	public void setProblemSequence(String problemSequence) {
 		this.problemSequence = problemSequence;
 	}
 
@@ -77,35 +76,33 @@ public class ProblemSequence implements Serializable {
 	}
 
 	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
+
+	@Override
 	public boolean equals(Object obj) {
-		if (obj == null) {
+		if (this == obj)
+			return true;
+		if (obj == null)
 			return false;
-		}
-		if (getClass() != obj.getClass()) {
+		if (getClass() != obj.getClass())
 			return false;
-		}
-		final ProblemSequence other = (ProblemSequence) obj;
-		if (!Arrays.deepEquals(this.problemSequence, other.problemSequence)) {
+		ProblemSequence other = (ProblemSequence) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
 			return false;
-		}
 		return true;
 	}
 
 	@Override
-	public int hashCode() {
-		int hash = 3;
-		hash = 97 * hash + Arrays.deepHashCode(this.problemSequence);
-		return hash;
+	public String toString() {
+		return problemSequence;
 	}
 
-	/**
-	 * Método para retornar uma representação dos dados da sequência em modo
-	 * texto
-	 * 
-	 * @return String contendo os dados da sequência
-	 */
-	@Override
-	public String toString() {
-		return Arrays.toString(problemSequence);
-	}
 }
