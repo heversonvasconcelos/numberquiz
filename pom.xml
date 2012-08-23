@@ -22,6 +22,9 @@
 		<hibernate.version>4.1.6.Final</hibernate.version>
 		<slf4j.version>1.6.4</slf4j.version>
 		<spring.version>3.1.1.RELEASE</spring.version>
+
+		<!-- compile on save - hot deploy netbeans -->
+		<netbeans.compile.on.save>all</netbeans.compile.on.save>
 	</properties>
 
 	<developers>
