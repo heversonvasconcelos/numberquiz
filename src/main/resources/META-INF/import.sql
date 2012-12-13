@@ -1,4 +1,4 @@
-set search_path = numberquiz;
+-- set search_path = numberquiz;
 --
 -- Data for Name: tb_problem_sequence; Type: TABLE DATA; Schema: public; Owner: database
 --

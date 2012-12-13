@@ -6,13 +6,13 @@
 	<persistence-unit name="numberquiz-pu">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<properties>
-			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect" />
 			<property name="hibernate.hbm2ddl.auto" value="create" />
 			<property name="hibernate.ejb.naming_strategy" value="org.hibernate.cfg.ImprovedNamingStrategy" />
 			<property name="hibernate.connection.charSet" value="UTF-8" />
-			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.show_sql" value="false" />
 			<property name="hibernate.format_sql" value="true" />
-			<property name="hibernate.default_schema" value="numberquiz" />
+<!-- 			<property name="hibernate.default_schema" value="numberquiz" /> -->
 			<property name="hibernate.hbm2ddl.import_files" value="META-INF/import.sql" />
 		</properties>
 	</persistence-unit>
@@ -20,13 +20,13 @@
 	<persistence-unit name="numberquiz-test-pu">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<properties>
-			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect" />
 			<property name="hibernate.hbm2ddl.auto" value="create" />
 			<property name="hibernate.ejb.naming_strategy" value="org.hibernate.cfg.ImprovedNamingStrategy" />
 			<property name="hibernate.connection.charSet" value="UTF-8" />
-			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.show_sql" value="false" />
 			<property name="hibernate.format_sql" value="true" />
-			<property name="hibernate.default_schema" value="numberquiz_test" />
+<!-- 			<property name="hibernate.default_schema" value="numberquiz_test" /> -->
 			<property name="hibernate.hbm2ddl.import_files" value="/test-data.sql" />
 		</properties>
 	</persistence-unit>
